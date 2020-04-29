@@ -1,6 +1,6 @@
 <?php include("config/class.Conexion.php")?>
 <?php include("files/header.html")?>
-
+<!-- Comentario ejemplo -->
 <body>
     <!-- banner-leyenda -->
 <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
