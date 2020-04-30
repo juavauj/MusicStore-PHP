@@ -12,7 +12,7 @@ body {
       rgba(21, 21, 56, 0.8),
       rgba(21, 21, 56, 0.5)
     ),
-    url("../images/bg_img_user_login_registration.jpg");
+    url("../../images/bg_img_user_login_registration.jpg");
   background-repeat: no-repeat;
   background-position: center;
   padding: 0 10px;

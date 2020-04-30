@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music Store - Bienvenidos</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-    <link href="./files/styles/user_login_registration.css" rel="stylesheet">
+    <link href="../subpages/styles/user_login_registration.css" rel="stylesheet">
 </head>
 
 <body>
@@ -32,7 +32,7 @@
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous">
     </script>
-    <script src="./files/scripts/user_login_registration.js"></script>
+    <script src="../subpages/scripts/user_login_registration.js"></script>
 </body>
 
 </html>
