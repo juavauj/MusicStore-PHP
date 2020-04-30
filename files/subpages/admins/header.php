@@ -3,39 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="subpages/styles/estilos.css">
-    <title>Music Store</title>
+    <title> MusicStore </title>
+    <!-- boostrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/7045981063.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header class="bar">
-        <a class="logo" href=""><img src="images/Captura de pantalla (91)tr.png" alt=""></a>
-        <button class="anvorguesa">
-            <div id="t1"></div>
-            <div id="t2"></div>
-            <div id="t3"></div>
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        
+        <a class="navbar-brand" > 
+            <i class="fas fa-music"></i> Music Store <i class="fas fa-music"></i>
+        </a>
+        <button class="navbar-toggler" data-target="#menu" data-toggle="collapse">
+            <span class="navbar-toggler-icon"></span>
         </button>
-<<<<<<< HEAD:files/header.html
-        <nav class="menu">
-            <ul class="">
-                <li class="items">
-                    <a href="">Home</a>
-                </li>
-                <li class="items">
-                    <a href="">Álbumes</a>
-                </li>
-                <li class="items">
-                    <a href="">Artistas</a>
-                </li>
-                <li class="items">
-                    <a href="">Géneros</a>
-                </li>
-                <li class="items">
-                    <a href="">About</a>
-                </li>
-                <li class="items">
-                    <a href="">Log-In</a>
-                </li>
-=======
         <div class="collapse navbar-collapse" id="menu">
             <ul class="navbar-nav ml-auto" >    
                 <li class="nav-item active">
@@ -43,9 +26,7 @@
                 </li>      
                 <li class="nav-item active">
                     <!-- in process -->
-                  
                     <a href="" class="nav-link"> Artistas </a>
-
                 </li>      
                 <li class="nav-item active">
                     <a href="#" class="nav-link"> Generos </a>
@@ -63,9 +44,7 @@
                     </d> -->
                                         
                 
->>>>>>> 1103fbe1c9e8f8af3029981bdeb81e9461138ed1:files/subpages/header.html
             </ul>
-        </nav>
-    </header>   
-</body>
-</html>
+        </div>
+    </nav>       
+</header>
