@@ -1,0 +1,83 @@
+/* Estilos similares a los del formulario de registro y login de usuario */
+
+html {
+  font-family: "Roboto", sans-serif;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  background: rgb(37, 37, 38);
+  background: linear-gradient(
+    90deg,
+    rgba(37, 37, 38, 1) 0%,
+    rgba(116, 111, 140, 1) 71%
+  );
+  padding: 0 10px;
+}
+
+h1 {
+    font-size: 2em;
+    text-transform: uppercase;
+}
+
+.login-container {
+  max-width: 360px;
+  margin: 100px auto 0;
+  padding: 30px;
+  text-align: center;
+  background-color: lightgray;
+  box-shadow: 1px 1px 10px #000;
+}
+
+.login-container input {
+  font-family: "Roboto", sans-serif;
+  background-color: #f2f2f2;
+  width: 100%;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+  border: 1px solid black;
+}
+
+.login-container button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  background-color: #3f7fbf;
+  width: 100%;
+  padding: 15px;
+  color: #fff;
+  border: 1px solid black;
+  font-size: 14px;
+  cursor: pointer;
+
+  /* Transicion fluida */
+  transition-property: background-color;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+}
+
+.login-container button:hover,
+.login-container button:active,
+.login-container button:focus {
+  background: #264c72;
+}
+
+.notice p {
+  margin: 15px 0 0;
+  color: #333;
+  font-size: 12px;
+  line-height: 2;
+}
+
+.notice span {
+  background-color: #720202;
+  color: white;
+  padding: 4px;
+}
