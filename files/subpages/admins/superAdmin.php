@@ -1,5 +1,14 @@
 <?php include("header.php")?>
-<link rel="stylesheet" href="..styles/admin.css">
+<!-- <?php include("/config/class.Conexion.php"); ?> -->
+<?php include("db.php")?>
+
+
+<?php
+if (isset($conn)){
+    echo "DB is connected";
+}
+
+?>
 <body>
 
 
@@ -7,41 +16,55 @@
  <!--    formularios Albumes -->
 <div class="container-fluid py-5">
 	<div class="row">
-		<div class="col-md-6 px-5">
+		<div class="col-md-12 px-5">
             <h3 class='pb-3'>Albumes actuales</h3>
-            <div class="col-md-8">
+            <div class="col-md-12">
             <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th>nombre</th>
                         <th>imagen</th>
                         <th>precio</th>
+                        <th>fecha</th>
                         <th>stockF</th>
-                        <th>stockD</th>
                         <th>idEstado</th>
+                        <th>idGenero</th>
+                        <th>idArtista</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <!--  <?php
-                    $query = "SELECT * FROM users";
+                 <tbody>
+              <?php
+                    $query = "SELECT * FROM albumes";
                     $result_users = mysqli_query($conn, $query);
                     while($row = mysqli_fetch_array($result_users)){ ?>
                         <tr>
-                           <td><?php echo $row['surname'] ?></td> 
+                           <td><?php echo $row['nombre'] ?></td> 
+                           <td><img src="<?php echo $row['imagen'] ?>" alt=""></td>
+                           <td><?php echo $row['precio'] ?></td>                           
+                           <td><?php echo $row['fecha'] ?></td> 
+                           <td><?php echo $row['stockFisico'] ?></td> 
+                           <td><?php echo $row['idEstado'] ?></td> 
+                           <td><?php echo $row['idGenero'] ?></td> 
+                           <td><?php echo $row['idArtista'] ?></td> 
+                            <td>
+                                <a href="edit.php?id=<?php echo $row['id'] ?>" class="btn btn-secondary" > <i class="fas fa-edit"></i> </a>
+                                <a href="delete_task.php?id=<?php echo $row['id'] ?>" class="btn btn-danger" > <i class="fas fa-user-times"></i> </a>                          
+                                <a href="disable_task.php?id=<?php echo $row['id'] ?>" class="btn btn-danger" > <i class="fas fa-user-times"></i> </a>                          
+                            </td>
                         </tr> 
-                    <?php } ?>    -->                 
-                </tbody>
+                    <?php } ?>          
+                </tbody> 
             </table>
         </div>
 		</div>
 		<div class="col-md-6">
-        <h2> Anadir nuevo album</h2>
+        <h2 class="pb-2"> Anadir nuevo album</h2>
         <form>
         <div class="form-group">
             <input type="text" class="form-control" placeholder="Nombre album" aria-describedby="emailHelp">
             <input type="text" class="form-control" placeholder="imagen" aria-describedby="emailHelp">
             <input type="text" class="form-control" placeholder="precio" aria-describedby="emailHelp">
-            <input type="text" class="form-control" placeholder="descripcion" aria-describedby="emailHelp">
             <input type="text" class="form-control" placeholder="fecha" aria-describedby="emailHelp">
             <input type="text" class="form-control" placeholder="stockFisico" aria-describedby="emailHelp">
             <input type="text" class="form-control" placeholder="idEstado" aria-describedby="emailHelp">
@@ -93,7 +116,6 @@
 		</div>
 	</div>
 </div>
- <hr>
 
         <!-- formularios generos -->
 <hr>
