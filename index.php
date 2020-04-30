@@ -1,8 +1,8 @@
 <?php include("config/class.Conexion.php")?>
-<?php include("files/header.html")?>
+<?php include("files/subpages/header.html")?>
 <!-- Comentario ejemplo -->
 <body>
-    <!-- banner-leyenda -->
+  <!-- banner-leyenda -->
 <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
@@ -119,4 +119,4 @@
 
 
 
-<?php include("files/footer.php")?>
+<?php include("files/subpages/footer.php")?>

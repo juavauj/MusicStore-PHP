@@ -14,7 +14,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         
         <a class="navbar-brand" > 
-            <i class="fas fa-music"></i> MusicStore <i class="fas fa-music"></i>
+            <i class="fas fa-music"></i> Music Store <i class="fas fa-music"></i>
         </a>
         <button class="navbar-toggler" data-target="#menu" data-toggle="collapse">
             <span class="navbar-toggler-icon"></span>
@@ -26,7 +26,7 @@
                 </li>      
                 <li class="nav-item active">
                     <!-- in process -->
-                    <a href="#" class="nav-link"> Artistas </a>
+                    <a href="" class="nav-link"> Artistas </a>
                 </li>      
                 <li class="nav-item active">
                     <a href="#" class="nav-link"> Generos </a>

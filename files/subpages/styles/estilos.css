@@ -1,0 +1,90 @@
+body{
+    margin: 0;
+    font-family: sans-serif;
+}
+.bar{
+    background-color: rgba(0, 0, 0, 0.644);
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+.menu{
+    float: right;
+    min-width: 65%;
+    text-align: right;
+}
+.menu ul{
+    margin: 0;
+}
+.items{
+    display: inline-block;
+    padding: 3.2%;
+}
+.items:hover{
+    background-color: magenta;
+}
+.items a{
+    text-decoration: none;
+    color: white;
+}
+.logo img{
+    max-height: 65px;
+}
+.anvorguesa{
+    height: 50px;
+    width: 50px;
+    border: solid magenta 3px;
+    background: none;
+    border-radius: 10px;
+    position: relative;
+    display: none;
+}
+.anvorguesa div{
+    width: 29px;
+    height: 10%;
+    background-color: white;   
+}
+#t1{
+    position: absolute;
+    top: 10px;
+}
+#t1{
+    position: absolute;
+}
+#t3{
+    position: absolute;
+    bottom: 10px;
+}
+@media(max-width: 870px){
+    .anvorguesa{
+        display: block;
+        float: right;
+        margin: 1% 4%;
+    }
+    .menu{
+        display: none;
+    }
+}
+@media(max-width: 700px){
+    .logo img{
+        max-height: 60px;
+    }
+} 
+.foot{
+    background-color: rgb(78, 78, 78);
+    color: white;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.foot div{
+    min-width: 20%;
+    margin: 2%;
+    color: rgb(184, 184, 184);
+}
+.foot img{
+    width: 15%;
+}
+.foot img:hover{
+    opacity: 50%;
+}
