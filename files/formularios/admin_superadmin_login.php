@@ -16,10 +16,10 @@
             <p>Acceso administrativo</p>
         </header>
         <main class="login">
-            <form action="" method="POST">
+            <form action="../../control/usuariosControl.php?accion=login_administrativo" method="POST">
                 <input type="email" name="correo" placeholder="Email" required>
                 <input type="password" name="contrasena" placeholder="Contraseña" required>
-                <button type="submit">Ingresar</button>
+                <button type="submit" name="form-login">Ingresar</button>
             </form>
         </main>
         <footer class="notice">
