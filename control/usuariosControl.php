@@ -47,10 +47,10 @@ if ($_GET["accion"] == "registro_usuario") {
 // Login de usuario en la tienda
 if ($_GET["accion"] == "login_usuario") {
     if (isset($_POST["form-login"])) {
-        $correo = $_POST["correo"];
-
         // Comparacion sin tener en cuenta el case
-        $contrasena = strtolower($_POST["contrasena"]);
+        $correo = strtolower($_POST["correo"]);
+
+        $contrasena = $_POST["contrasena"];
 
         if (empty($correo) || empty($contrasena)) {
             header("Location: ../files/formularios/user_login_registration.php?error=empty_fields");
@@ -77,4 +77,30 @@ if ($_GET["accion"] == "login_usuario") {
     }
 }
 
+// Login administrativo
+if ($_GET["accion"] == "login_administrativo") {
+    if (isset($_POST["form-login"])) {
+        $correo = strtolower($_POST["correo"]);
+
+        $contrasena = $_POST["contrasena"];
+
+        // Intentar el login del usuario
+        $usuarios = new Usuarios();
+        $result = $usuarios->adminLogin($correo, $contrasena);
+
+        if ($result == "admin") {
+            header("Location: ../files/subpages/admins/admin.php");
+            exit();
+        }
+
+        if ($result == "superadmin") {
+            header("Location: ../files/subpages/admins/superAdmin.php");
+            exit();
+        }
+
+        // Podria ser que un usuario comun esta intentando login o el
+        // usuario no existe
+        header("Location: ../files/formularios/admin_superadmin_login.php?error=login_invalid");
+    }
+}
 ?>
