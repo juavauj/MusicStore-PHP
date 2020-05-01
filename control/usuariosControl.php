@@ -17,7 +17,7 @@ if ($_GET["accion"] == "registro_usuario") {
         // Los campos no estan vacios
         if (empty($nombre) || empty($apellido) || empty($correo) || empty($contrasena)) {
             // Redireccion de nuevo al formulario
-            header("Location: ../files/formularios/user_login_registration.php?error=empty_fields");
+            header("Location: ../files/formularios/user_login_registration.php?form=form_registration&error=empty_fields");
 
             // Finalizar inmediatamente el script
             exit();
@@ -25,7 +25,7 @@ if ($_GET["accion"] == "registro_usuario") {
 
         // El correo es valido
         if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
-            header("Location: ../files/formularios/user_login_registration.php?error=invalid_email");
+            header("Location: ../files/formularios/user_login_registration.php?form=form_registration&error=invalid_email");
             exit();
         }
 
@@ -35,10 +35,10 @@ if ($_GET["accion"] == "registro_usuario") {
 
         if ($success) {
             // Redireccion a la vista de login
-            header("Location: ../files/formularios/user_login_registration.php?success=ok");
+            header("Location: ../files/formularios/user_login_registration.php?form=form_login&success=ok");
             exit();
         } else {
-            header("Location: ../files/formularios/user_login_registration.php?error=user_exists");
+            header("Location: ../files/formularios/user_login_registration.php?form=form_registration&error=user_exists");
             exit();
         }
     }
@@ -51,16 +51,6 @@ if ($_GET["accion"] == "login_usuario") {
         $correo = strtolower($_POST["correo"]);
 
         $contrasena = $_POST["contrasena"];
-
-        if (empty($correo) || empty($contrasena)) {
-            header("Location: ../files/formularios/user_login_registration.php?error=empty_fields");
-            exit();
-        }
-
-        if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
-            header("Location: ../files/formularios/user_login_registration.php?error=invalid_email");
-            exit();
-        }
 
         // Intentar el login del usuario
         $usuarios = new Usuarios();
