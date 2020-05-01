@@ -22,10 +22,10 @@
                 <button type="submit" name="form-registration">Registrarme</button>
                 <p class="message">Si ya esta registrado <a href="#">inicie sesión</a></p>
             </form>
-            <form action="" class="form-login" method="POST">
+            <form action="../../control/usuariosControl.php?accion=login_usuario" class="form-login" method="POST">
                 <input type="email" name="correo" placeholder="Correo" required>
                 <input type="password" name="contrasena" placeholder="Contraseña" required>
-                <button type="submit">Iniciar sesión</button>
+                <button type="submit" name="form-login">Iniciar sesión</button>
                 <p class="message">Si no tiene cuenta <a href="#">registrese</a></p>
             </form>
         </section>
@@ -40,6 +40,11 @@
                 <?php if ($error == "invalid_email") : ?>
                     <p>
                         Correo electrónico inválido.
+                    </p>
+                <?php endif; ?>
+                <?php if ($error == "user_not_exists") : ?>
+                    <p>
+                        Revise los datos ingresados
                     </p>
                 <?php endif; ?>
             </section>
