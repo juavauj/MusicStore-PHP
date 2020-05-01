@@ -48,14 +48,16 @@ class Usuarios
     public function userLogin($correo, $contrasena)
     {
         $conexion = new Conexion();
-        $query_exists = "SELECT * FROM usuarios WHERE correo = '$correo' AND contrasena = '$contrasena'";
+        $query_exists = ("SELECT * FROM usuarios AS u " .
+            "INNER JOIN estados as e ON u.idEstado = e.idEstado " .
+            "WHERE correo = '$correo' AND contrasena = '$contrasena' AND estado = 'activo'");
         $res = $conexion->query($query_exists);
 
         if ($res->num_rows == 1) {
             return true;
         }
 
-        // El usuario no existe
+        // El usuario no existe (o esta inactivo)
         return false;
     }
 
@@ -63,11 +65,10 @@ class Usuarios
     public function adminLogin($correo, $contrasena)
     {
         $conexion = new Conexion();
-        $query_exists = (
-            "SELECT * FROM usuarios AS u " .
+        $query_exists = ("SELECT * FROM usuarios AS u " .
             "INNER JOIN roles AS r ON u.idRol = r.idRol " .
-            "WHERE correo = '$correo' AND contrasena = '$contrasena'"
-        );
+            "INNER JOIN estados as e ON u.idEstado = e.idEstado " .
+            "WHERE correo = '$correo' AND contrasena = '$contrasena' AND estado = 'activo'");
         $res = $conexion->query($query_exists);
 
         if ($res->num_rows == 1) {
@@ -75,7 +76,7 @@ class Usuarios
             return $row["rol"];
         }
 
-        // El usuario no existe
+        // El usuario no existe (o esta inactivo)
         return false;
     }
 }
