@@ -14,7 +14,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         
         <a class="navbar-brand" > 
-            <i class="fas fa-music"></i> Music Store <i class="fas fa-music"></i>
+            <i class="fas fa-music"></i> Interfaz de super admin <i class="fas fa-music"></i>
         </a>
         <button class="navbar-toggler" data-target="#menu" data-toggle="collapse">
             <span class="navbar-toggler-icon"></span>
@@ -22,17 +22,7 @@
         <div class="collapse navbar-collapse" id="menu">
             <ul class="navbar-nav ml-auto" >    
                 <li class="nav-item active">
-                    <a href="#" class="nav-link"> Inicio </a>
-                </li>      
-                <li class="nav-item active">
-                    <!-- in process -->
-                    <a href="" class="nav-link"> Artistas </a>
-                </li>      
-                <li class="nav-item active">
-                    <a href="#" class="nav-link"> Generos </a>
-                </li>  
-                <li class="nav-item active">
-                    <a href="#" class="nav-link"> Login </a>
+                    <a href="#" class="nav-link"> Cerrar sesion </a>
                 </li>            
                 <!-- <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown" data-target="desplegable">
