@@ -61,7 +61,7 @@ if ($_GET["accion"] == "login_usuario") {
             header("Location: ../index.php");
             exit();
         } else {
-            header("Location: ../files/formularios/user_login_registration.php?error=user_not_exists");
+            header("Location: ../files/formularios/user_login_registration.php?form=form_login&error=user_not_exists");
             exit();
         }
     }
