@@ -153,9 +153,7 @@
                             <td><?php echo $row['idGenero'] ?></td> 
                             <td><?php echo $row['genero'] ?></td> 
                             <td>
-                                <a href="formularios/editarAlbum.php?id=<?php echo $row['id']?>" class="btn btn-secondary" > <i class="fas fa-edit"></i> </a>
-                                <a href="delete_task.php?id=<?php echo $row['id'] ?>" class="btn btn-danger" > <i class="fas fa-user-times"></i> </a>                          
-                                <a href="disable_task.php?id=<?php echo $row['id'] ?>" class="btn btn-danger" > <i class="fas fa-user-times"></i> </a>                          
+                                <a href="delete.php?id2=<?php echo $row['idGenero']?>&tabla=generos"><i class="fas fa-trash-alt"></i> </a>   
                             </td>
                             </tr> 
                         <?php } ?>                   
