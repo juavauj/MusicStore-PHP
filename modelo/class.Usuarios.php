@@ -58,6 +58,26 @@ class Usuarios
         // El usuario no existe
         return false;
     }
+
+    // Login administrativo
+    public function adminLogin($correo, $contrasena)
+    {
+        $conexion = new Conexion();
+        $query_exists = (
+            "SELECT * FROM usuarios AS u " .
+            "INNER JOIN roles AS r ON u.idRol = r.idRol " .
+            "WHERE correo = '$correo' AND contrasena = '$contrasena'"
+        );
+        $res = $conexion->query($query_exists);
+
+        if ($res->num_rows == 1) {
+            $row = $res->fetch_assoc();
+            return $row["rol"];
+        }
+
+        // El usuario no existe
+        return false;
+    }
 }
 
 ?>
