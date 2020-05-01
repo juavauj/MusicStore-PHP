@@ -32,6 +32,16 @@
             </p>
         </footer>
     </section>
+    <?php if (isset($_GET["error"])) : ?>
+        <section class="error">
+            <?php $error = $_GET["error"]; ?>
+            <?php if ($error == "login_invalid") : ?>
+                <p>
+                    Usuario o contraseña incorrectos.
+                </p>
+            <?php endif; ?>
+        </section>
+    <?php endif; ?>
 </body>
 
 </html>
