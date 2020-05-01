@@ -46,7 +46,13 @@
                 <?php endif; ?>
                 <?php if ($error == "user_not_exists") : ?>
                     <p>
-                        Revise los datos ingresados
+                        No ha sido posible iniciar sesión.
+                    </p>
+                <?php endif; ?>
+                <!-- Posibilidad de enumeracion (sacrificio usabilidad vs seguridad) -->
+                <?php if ($error == "user_exists") : ?>
+                    <p>
+                        El usuario ya esta registrado.
                     </p>
                 <?php endif; ?>
             </section>
