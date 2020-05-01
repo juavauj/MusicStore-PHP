@@ -26,7 +26,9 @@
             <p>
                 Absténgase de ingresar si usted no es un usuario
                 administrativo.
-                <span>Se aplicarán las acciones legales a que de lugar.</span>
+            </p>
+            <p>
+                Se aplicarán las acciones legales a que de lugar.
             </p>
         </footer>
     </section>
