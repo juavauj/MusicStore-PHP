@@ -10,7 +10,8 @@ if ($_GET["accion"] == "registro_usuario") {
         // Obtener datos del formulario
         $nombre = $_POST["nombre"];
         $apellido = $_POST["apellido"];
-        $correo = $_POST["correo"];
+        // El correo es case insensitive
+        $correo = strtolower($_POST["correo"]);
         $contrasena = $_POST["contrasena"];
 
         // Los campos no estan vacios
@@ -42,4 +43,38 @@ if ($_GET["accion"] == "registro_usuario") {
         }
     }
 }
+
+// Login de usuario en la tienda
+if ($_GET["accion"] == "login_usuario") {
+    if (isset($_POST["form-login"])) {
+        $correo = $_POST["correo"];
+
+        // Comparacion sin tener en cuenta el case
+        $contrasena = strtolower($_POST["contrasena"]);
+
+        if (empty($correo) || empty($contrasena)) {
+            header("Location: ../files/formularios/user_login_registration.php?error=empty_fields");
+            exit();
+        }
+
+        if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
+            header("Location: ../files/formularios/user_login_registration.php?error=invalid_email");
+            exit();
+        }
+
+        // Intentar el login del usuario
+        $usuarios = new Usuarios();
+        $success = $usuarios->userLogin($correo, $contrasena);
+
+        if ($success) {
+            // Redireccion al index
+            header("Location: ../index.php");
+            exit();
+        } else {
+            header("Location: ../files/formularios/user_login_registration.php?error=user_not_exists");
+            exit();
+        }
+    }
+}
+
 ?>
