@@ -33,6 +33,7 @@ class Usuarios
         if ($user_type == "admin") {
             $idEstado = 1;
             $idRol = 2;
+
             $query_insert_user = ("INSERT INTO usuarios (nombre, apellido, correo, contrasena, idEstado, idRol) " .
                 "VALUES ('$nombre', '$apellido', '$correo', '$contrasena', $idEstado, $idRol)");
             $conexion->query($query_insert_user);
@@ -42,5 +43,21 @@ class Usuarios
         // No es un tipo de usuario valido
         return false;
     }
+
+    // Login al usuario
+    public function userLogin($correo, $contrasena)
+    {
+        $conexion = new Conexion();
+        $query_exists = "SELECT * FROM usuarios WHERE correo = '$correo' AND contrasena = '$contrasena'";
+        $res = $conexion->query($query_exists);
+
+        if ($res->num_rows == 1) {
+            return true;
+        }
+
+        // El usuario no existe
+        return false;
+    }
 }
+
 ?>
