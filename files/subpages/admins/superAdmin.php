@@ -48,7 +48,7 @@ if (isset($conn)){
                            <td><?php echo $row['idGenero'] ?></td> 
                            <td><?php echo $row['idArtista'] ?></td> 
                             <td>
-                                <a href="edit.php?id=<?php echo $row['id'] ?>" class="btn btn-secondary" > <i class="fas fa-edit"></i> </a>
+                                <a href="../../../files/formularios/editarAlbum.php?id=2" class="btn btn-secondary" > <i class="fas fa-edit"></i> </a>
                                 <a href="delete_task.php?id=<?php echo $row['id'] ?>" class="btn btn-danger" > <i class="fas fa-user-times"></i> </a>                          
                                 <a href="disable_task.php?id=<?php echo $row['id'] ?>" class="btn btn-danger" > <i class="fas fa-user-times"></i> </a>                          
                             </td>

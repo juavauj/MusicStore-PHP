@@ -2,28 +2,45 @@
 
 require_once(__DIR__ . '/../modelo/class.Albumes.php');
 
-$json = file_get_contents('php://input');
+
+    
+/* $json = file_get_contents('php://input');
 $data=json_decode($json);
-$accionAlbum=$data->accion;
-$album=($accionAlbum=='consultaAlbum')?$data->album :''; // parametro varible de busqueda dependiente de landing page admins, puede ser isset->$_GET[]
+$accionAlbum=$data->accion; */
+ //($accionAlbum=='consultaAlbum')?$data->album :''; // parametro varible de busqueda dependiente de landing page admins, puede ser isset->$_GET[]
 
-switch ($accionAlbum) {
+/* switch ($accionAlbum) {
     case 'consultaAlbumes':
-        $albumes = new Albumes();
+        
 
-        $result= $albumes->mostrarAlbumes();
-
+        
         
         break;
     
     default:
        
         break;
+} */
+
+function listarAlbum($idAlbum){
+    $album = new Albumes();
+    $result=$album->listarAlbum($idAlbum);
+
+    if($result!='error'){
+        return $result;
+
+        
+    }else{
+        echo "Error - No hay productos";
+    }
+
+
+
+
 }
 
 
 
 
 
-echo $album;
 ?>

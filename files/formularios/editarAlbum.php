@@ -1,39 +1,55 @@
-<?php include("../header.html")?>
-<body>
-    <input type="button" value="1" id="1">
-    
-    </select>
+ <?php include("../subpages/header.html")?> 
 
-        <div class="editar-album">
+<?php
+require(__DIR__.'/../../control/albumesControl.php');
+$idAlbum= $_GET['id'];//1; //$_GET['idAlbum'];  id obtenido desde SuperAdmin
+    $dataAlbum=listarAlbum($idAlbum); // funcion de AlbumesControl
+
+?>
+
+
+<body>
+    
+
+    <div class="editar-album">
 
         <form action="" method="post">
 
         <label for="">Nombre</label>
-        <input type="text" name="" id="">
+        <input type="text" name="nombre" id="nombreIn" value="<?php echo $dataAlbum['nombre'];?>">
 
+        <div class="img-album-edit-contenedor">
+        <picture></picture>
         <label for="">Imagen</label>
         <input type="text" name="" id="">
+        </div>
+        
 
         <label for="">Precio</label>
-        <input type="text" name="" id="">
+        <input type="number" step="any" name="" id="" value="<?php echo $dataAlbum['precio'];?>">
 
         <label for="">Descripcion</label>
-        <input type="text" name="" id="">
+        <textarea name="descripcion" id="" ><?php echo $dataAlbum['descripcion'];?></textarea>
 
         <label for="">Fecha</label>
-        <input type="text" name="" id="">
+        <input type="date" name="" id="" value="<?php echo $dataAlbum['fecha'];?>">
 
         <label for="">Stock Fisico</label>
-        <input type="text" name="" id="">
-
-        <label for="">Stock Digital</label>
-        <input type="text" name="" id="">
+        <input type="number" name="" id="" value="<?php echo $dataAlbum['stockFisico'];?>">
 
         <label for="">Estado</label>
-        <input type="text" name="" id="">
+        <div class="rad-btn-contenedor">
 
-        <label for="">Genero</label>
-        <input type="text" name="" id="">
+        <input type="hidden" name="estado" id="estadoHidden" value="<?php echo $dataAlbum['idEstado'];?>">
+
+
+        </div>
+
+        <label for="generoSelect">Genero</label>
+        <select name="genero" id="generoSelect">
+            <option value="<?php echo $dataAlbum['idGenero'];?>"></option>
+
+        </select>
         
         <input type="submit" value="Editar">
         
