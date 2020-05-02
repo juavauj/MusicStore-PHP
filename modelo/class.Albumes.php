@@ -61,7 +61,7 @@ class Albumes
         $query  = "SELECT a.nombre AS nombreAlbum, ";
         $query .= "ar.nombre AS nombreArtista, ";
         $query .= "a.descripcion AS descripcion, ";
-        $query .= "a.precio AS precio, a.imagen AS imagen";
+        $query .= "a.precio AS precio, a.imagen AS imagen ";
         $query .= "FROM albumes AS a ";
         $query .= "INNER JOIN estados AS e ON a.idEstado = e.idEstado ";
         $query .= "INNER JOIN artistas AS ar ON a.idArtista = ar.idArtista ";
