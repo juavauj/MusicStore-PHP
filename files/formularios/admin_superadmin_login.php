@@ -16,10 +16,10 @@
             <p>Acceso administrativo</p>
         </header>
         <main class="login">
-            <form action="" method="POST">
+            <form action="../../control/usuariosControl.php?accion=login_administrativo" method="POST">
                 <input type="email" name="correo" placeholder="Email" required>
                 <input type="password" name="contrasena" placeholder="Contraseña" required>
-                <button type="submit">Ingresar</button>
+                <button type="submit" name="form-login">Ingresar</button>
             </form>
         </main>
         <footer class="notice">
@@ -32,6 +32,16 @@
             </p>
         </footer>
     </section>
+    <?php if (isset($_GET["error"])) : ?>
+        <section class="error">
+            <?php $error = $_GET["error"]; ?>
+            <?php if ($error == "login_invalid") : ?>
+                <p>
+                    Usuario o contraseña incorrectos.
+                </p>
+            <?php endif; ?>
+        </section>
+    <?php endif; ?>
 </body>
 
 </html>
