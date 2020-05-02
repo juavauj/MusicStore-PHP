@@ -7,15 +7,12 @@
 } */
 ?>
 <body>
-
-
-<h1 class='py-5 text-center'>Bienvenido Super Admin</h1>
-
-        <!--    formularios Albumes -->
-<div class="container-fluid py-5">
+<h1 class='py-4 text-center'>Bienvenido Super Admin</h1>
+<!-- zona de albumes  -->
+<h3 class='px-5'>ALBUMES  <button type="button" class="btn btn-info" onclick="showAlbum()"><i class="fas fa-record-vinyl" style="font-size: 1.7em"></i></button> </h3>
+<div class="container-fluid py-5" id="albumes" style="display:none">
 	<div class="row">
-		<div class="col-md-12">
-            <h3 class='pb-3'>Albumes actuales</h3>
+		<div class="col-md-12">           
             <div class="col-md-12">
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover">
@@ -119,16 +116,13 @@
 		</div>
 	</div>
 </div>
-
 <hr>
-
-<!--  SEPARACION Artistas -->
-
+<!-- zona de artistas  -->
+<h3 class='px-5'> ARTISTAS <button type="button" class="btn btn-info" onclick="showArtista()"><i class="fas fa-vr-cardboard" style="font-size: 1.7em"></i></button> </h3>
 <div>
-    <div class="container-fluid py-5">
+    <div class="container-fluid py-5" id="artistas" style="display:none">
         <div class="row">
             <div class="col-md-6">
-                <h3 class='pb-3'>Artistas Actuales</h3>
                 <div class="col-md-12">
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover">
@@ -188,14 +182,13 @@
         </div>
 	</div>
 </div>
-
 <hr>
-
+<!-- zona de Canciones  -->
+<h3 class='px-5'> CANCIONES <button type="button" class="btn btn-info" onclick="showCancion()"><i class="fas fa-guitar" style="font-size: 1.7em"></i></button> </h3>
         <!-- formularios canciones -->
-<div class="container-fluid py-5">
+<div class="container-fluid py-5" id="canciones" style="display:none">
 	<div class="row">
 		<div class="col-md-12">
-            <h3 class='pb-3'>Canciones</h3>
             <div class="col-md-12">
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover">
@@ -264,16 +257,14 @@
             </div>                  
 		</div>
 	</div>
-
-
         <!-- formularios generos -->
 <hr>
-
+<!-- zona de generos  -->
+<h3 class='px-5'> GENEROS <button type="button" class="btn btn-info" onclick="showGenero()"><i class="fas fa-photo-video" style="font-size: 1.7em"></i></button> </h3>
 <div>
-    <div class="container-fluid py-5">
+    <div class="container-fluid py-5" id="generos" style="display: none">
         <div class="row">
             <div class="col-md-6">
-                <h3 class='pb-3'>Generos Actuales</h3>
                 <div class="col-md-12">
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover">
@@ -327,13 +318,10 @@
         </div>
 	</div>
 </div>
-
  <hr>
-
-        
-
-        <!-- zona de admins  -->
-<div class="container-fluid py-5">
+  <!-- zona de admins  -->
+ <h3 class='px-5'> ADMINS <button type="button" class="btn btn-info" onclick="showAdmin()"><i class="fas fa-user-shield" style="font-size: 1.7em"></i></button> </h3>      
+<div class="container-fluid py-5" id="admins" style="display: none">
 	<div class="row">
 		<div class="col-md-12">
             <h2 class="pb-2"> Administradores actuales </h2>
@@ -410,12 +398,7 @@
         </div> 
     </div>
 </div>
-
-
-
 <hr>
-
 <?php include("footer.php")?>
 </body>
-
 </html>
