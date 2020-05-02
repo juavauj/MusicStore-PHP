@@ -7,14 +7,9 @@
           printf("Conexión fallida: %s\n", $mysqli->connect_error);
           exit();
       } else {
-<<<<<<< HEAD
-
-      }
-=======
           echo "is working";
       }
 
->>>>>>> 5b8f96bb965f02aa066ffb9ee2fdf0de18499a25
       if (isset($_GET['id'])) {
         $id = $_GET['id'];
         $tabla = $_GET['tabla'];
@@ -25,13 +20,6 @@
         if(!$result){
             die("Query Failed");
         }
-<<<<<<< HEAD
-      
-        header("location: superAdmin.php");
-      }
-      
-
-=======
 
         header("location: superAdmin.php");
       
@@ -75,7 +63,6 @@
         header("location: superAdmin.php");                    
   }
       
->>>>>>> 5b8f96bb965f02aa066ffb9ee2fdf0de18499a25
       
 
 

@@ -7,20 +7,7 @@ class Generos{
     public function __construct(){
 
     }
-
-<<<<<<< HEAD
-    // Mostrar albumes por genero
-
-    public function mostrarAlbumes(){
-        $db = new Conexion();
-
-        $sql = "SELECT nombre, imagen FROM albumes AS a INNER JOIN generos AS g ON a.idGenero = g.idGenero"
-    }
-
-
-    // Filtrar albumes por genero
-=======
-
+    
     public function mostrarGeneros(){
         $db=new Conexion();
         $sql="SELECT * FROM generos ";
@@ -64,7 +51,6 @@ class Generos{
         
 
     }
->>>>>>> 5b8f96bb965f02aa066ffb9ee2fdf0de18499a25
 
 }
 

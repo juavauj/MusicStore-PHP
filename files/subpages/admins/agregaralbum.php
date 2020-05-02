@@ -5,12 +5,18 @@ include('db.php');
 if (isset($_POST['save_album'])){
   $nombre = $_POST['nombre'];
   $imagen = $_POST['imagen'];
+  $carpeta = "/../../images/albumes/";
   $precio = $_POST['precio'];
   $fecha = $_POST['fecha'];
   $stockFisico = $_POST['stockFisico'];
   $idEstado = $_POST['idEstado'];
   $idGenero = $_POST['idGenero'];
-  $idArtista = $_POST['idArtista'];       
+  $idArtista = $_POST['idArtista'];
+  
+  // Agregar imágen
+  opendir($carpeta);
+  $destino = $carpeta . $_FILES['imagen']['name'];
+  move_uploaded_file($_FILES['imagen']['tmp_name'],$destino);
 
   $query = "INSERT INTO albumes(nombre, imagen, precio, fecha, stockFisico, idEstado, idGenero, idArtista ) VALUES ('$nombre', '$imagen','$precio','$fecha','$stockFisico','$idEstado','$idGenero','$idArtista')";
   $result = mysqli_query($conn, $query);
