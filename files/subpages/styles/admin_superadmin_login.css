@@ -1,5 +1,6 @@
 /* Estilos similares a los del formulario de registro y login de usuario */
 
+@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 html {
   font-family: "Roboto", sans-serif;
 }
@@ -104,13 +105,16 @@ h1 {
   padding: 30px;
   text-align: center;
   border-radius: 10px;
-  color: #151538;
-}
-
-.error p {
-  margin: 0;
+  font-size: 1em;
+  font-weight: bold;
 }
 
 .error {
-  background-color: #eb4559;
+  color: #d8000c;
+  background-color: #ffd2d2;
+}
+
+.success {
+  color: #4f8a10;
+  background-color: #dff2bf;
 }

@@ -37,6 +37,7 @@
             <?php $error = $_GET["error"]; ?>
             <?php if ($error == "login_invalid") : ?>
                 <p>
+                    <span class="fa fa-times-circle"></span>
                     Usuario o contraseña incorrectos. Intente
                     de nuevo o comuníquese con el administrador.
                 </p>
