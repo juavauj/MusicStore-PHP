@@ -36,16 +36,19 @@
                 <?php $error = $_GET["error"]; ?>
                 <?php if ($error == "empty_fields") : ?>
                     <p>
+                        <span class="fa fa-times-circle"></span>
                         Los campos no pueden estar vacíos.
                     </p>
                 <?php endif; ?>
                 <?php if ($error == "invalid_email") : ?>
                     <p>
+                        <span class="fa fa-times-circle"></span>
                         Correo electrónico inválido.
                     </p>
                 <?php endif; ?>
                 <?php if ($error == "login_failed") : ?>
                     <p>
+                        <span class="fa fa-times-circle"></span>
                         Usuario o contraseña incorrectos. Intente de nuevo
                         o comuníquese con el administrador.
                     </p>
@@ -53,6 +56,7 @@
                 <!-- Posibilidad de enumeracion (sacrificio usabilidad vs seguridad) -->
                 <?php if ($error == "registration_failed") : ?>
                     <p>
+                        <span class="fa fa-times-circle"></span>
                         El registro no ha sido posible. Si usted ya tiene una
                         cuenta, inicie sesión, de lo contrario, comuníquese con el
                         administrador.
@@ -62,7 +66,10 @@
         <?php endif; ?>
         <?php if (isset($_GET["success"])) : ?>
             <section class="success">
-                <p>Registro exitoso, ya puede iniciar sesión.</p>
+                <p>
+                    <span class="fa fa-check"></span>
+                    Registro exitoso, ya puede iniciar sesión.
+                </p>
             </section>
         <?php endif; ?>
     </section>
