@@ -58,7 +58,7 @@ class Generos{
     public function getGenerosActivos() {
         $db = new Conexion();
         // No se tiene en cuenta el case, solo generos distintos
-        $query  = "SELECT DISTINCT(LOWER(g.genero)) FROM generos AS g ";
+        $query  = "SELECT DISTINCT(LOWER(g.genero)), g.idGenero FROM generos AS g ";
         $query .= "INNER JOIN albumes AS a ON g.idGenero = a.idGenero ";
         $query .= "INNER JOIN estados AS e ON a.idEstado = e.idEstado ";
         $query .= "WHERE e.estado = 'activo'";
