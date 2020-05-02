@@ -111,13 +111,8 @@
                     <input type="texto" class="form-control"  name="idArtista" placeholder="Ref de # en Artistas">
                 </div>
             </div>
-<<<<<<< HEAD
-            <input type="submit" class="btn btn-success btn-block" name="save_album" value="Guardar album"></input>
-        </form>                    
-=======
             <input type="submit" class="btn btn-success btn-block" name="save_album" value="Crear album nuevo"></input>
             </form>                    
->>>>>>> 4b22e22da1d21013f302c36c9b5545d2ab1c4dcb
 		</div>
 	</div>
 </div>

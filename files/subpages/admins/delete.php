@@ -63,16 +63,10 @@
             die("Query Failed");
         }
         header("location: superAdmin.php");                    
-<<<<<<< HEAD
-  }
-      
-      
-=======
   } elseif (isset($_GET['id5'])) {
         
     $id = $_GET['id5'];
     $tabla = $_GET['tabla5'];
->>>>>>> 4b22e22da1d21013f302c36c9b5545d2ab1c4dcb
 
     $query = "DELETE FROM $tabla WHERE idArtista=$id";
     $result = mysqli_query($mysqli, $query);
