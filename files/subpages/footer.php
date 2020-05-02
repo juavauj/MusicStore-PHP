@@ -88,7 +88,7 @@ menuRes.addEventListener("click", function dropDown() {
     }
 })
     </script>
-    <script src="./scripts/cargaDinamicaAlbumesYGeneros.js"></script>
+    <script src="files/subpages/scripts/cargaDinamicaAlbumesYGeneros.js"></script>
 </body>
 <link rel="stylesheet" href="files/subpages/styles/estilos.css">
 </html>
