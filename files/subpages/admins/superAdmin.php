@@ -14,47 +14,51 @@
         <!--    formularios Albumes -->
 <div class="container-fluid py-5">
 	<div class="row">
-		<div class="col-md-12 px-5">
+		<div class="col-md-12">
             <h3 class='pb-3'>Albumes actuales</h3>
             <div class="col-md-12">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>nombre</th>
-                        <th>imagen</th>
-                        <th>precio</th>
-                        <th>fecha</th>
-                        <th>stockF</th>
-                        <th>idEstado</th>
-                        <th>idGenero</th>
-                        <th>idArtista</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                 <tbody>
-              <?php
-                    $query = "SELECT * FROM albumes";
-                    $result_users = mysqli_query($conn, $query);
-                    while($row = mysqli_fetch_array($result_users)){ ?>
-                        <tr>
-                           <td><?php echo $row['nombre'] ?></td>                 
-                           <td><img src="<?php echo "../../../" . $row['imagen']?>" alt="noimage" height="100px"></td>
-                           <td><?php echo $row['precio'] ?></td>                           
-                           <td><?php echo $row['fecha'] ?></td> 
-                           <td><?php echo $row['stockFisico'] ?></td> 
-                           <td><?php echo $row['idEstado'] ?></td> 
-                           <td><?php echo $row['idGenero'] ?></td> 
-                           <td><?php echo $row['idArtista'] ?></td> 
-                            <td>
-                                <a href="formularios/editarAlbum.php?id=<?php echo $row['id']?>" class="btn btn-secondary" > <i class="fas fa-edit"></i> </a>
-                                <a href="delete_task.php?id=<?php echo $row['id'] ?>" class="btn btn-danger" > <i class="fas fa-user-times"></i> </a>                          
-                                <a href="disable_task.php?id=<?php echo $row['id'] ?>" class="btn btn-danger" > <i class="fas fa-user-times"></i> </a>                          
-                            </td>
-                        </tr> 
-                    <?php } ?>          
-                </tbody> 
-            </table>
-        </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>#</th>
+                                <th>nombre</th>
+                                <th>imagen</th>
+                                <th>precio</th>
+                                <th>fecha</th>
+                                <th>stockF</th>
+                                <th>idEstado</th>
+                                <th>idGenero</th>
+                                <th>idArtista</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                    <?php
+                            $query = "SELECT * FROM albumes";
+                            $result_users = mysqli_query($conn, $query);
+                            while($row = mysqli_fetch_array($result_users)){ ?>
+                                <tr>
+                                <td><?php echo $row['idAlbum'] ?></td>                 
+                                <td><?php echo $row['nombre'] ?></td>                 
+                                <td><img src="<?php echo "../../../" . $row['imagen']?>" alt="noimage" height="80px"></td>
+                                <td><?php echo $row['precio'] ?></td>                           
+                                <td><?php echo $row['fecha'] ?></td> 
+                                <td><?php echo $row['stockFisico'] ?></td> 
+                                <td><?php echo $row['idEstado'] ?></td> 
+                                <td><?php echo $row['idGenero'] ?></td> 
+                                <td><?php echo $row['idArtista'] ?></td> 
+                                    <td>
+                                        <a href="delete.php?id4=<?php echo $row['idAlbum']?>&tabla4=albumes"><i class="fas fa-trash-alt"></i> </a> 
+                                        <a href="disable.php?id4=<?php echo $row['idAlbum']?>&tabla4=albumes&estado=<?php echo $row['idEstado'] ?>"><i class="fas fa-microphone-slash"></i></a>                          
+                                        <a href="../../formularios/editarAlbum.php?id=<?php echo $row['idAlbum']?>"><i class="fas fa-edit"></i> </a> 
+                                    </td>
+                                </tr> 
+                            <?php } ?>          
+                        </tbody> 
+                    </table>
+                </div>
+            </div>
 		</div>
 		<div class="col-md-12 px-5">
         <h2 class="pb-2" name="addalbum"> Anadir nuevo album</h2>
@@ -90,6 +94,7 @@
                             <th>nombre</th>
                             <th>idArtista</th>
                             <th>idAlbum</th>
+                            <th>idEstado</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -103,10 +108,11 @@
                             <td><?php echo $row['nombre'] ?></td> 
                             <td><?php echo $row['idArtista'] ?></td> 
                             <td><?php echo $row['idAlbum'] ?></td>                             
+                            <td><?php echo $row['idEstado'] ?></td>                             
                             <td>
-                                <a href="formularios/editarAlbum.php?id=<?php echo $row['id']?>" class="btn btn-secondary" > <i class="fas fa-edit"></i> </a>
-                                <a href="delete_task.php?id=<?php echo $row['id'] ?>" class="btn btn-danger" > <i class="fas fa-user-times"></i> </a>                          
-                                <a href="disable_task.php?id=<?php echo $row['id'] ?>" class="btn btn-danger" > <i class="fas fa-user-times"></i> </a>                          
+                             <a href="delete.php?id3=<?php echo $row['idCancion']?>&tabla3=canciones"><i class="fas fa-trash-alt"></i> </a> 
+                             <a href="disable.php?id3=<?php echo $row['idCancion']?>&tabla3=canciones&estado=<?php echo $row['idEstado'] ?>"><i class="fas fa-microphone-slash"></i></a>  
+                             <a href="../../formularios/editarCancion.php?id=<?php echo $row['idCancion']?>"><i class="fas fa-edit"></i> </a> 
                             </td>                            
                             </tr> 
                         <?php } ?>                   
@@ -141,6 +147,7 @@
                         <tr>
                             <th>idGenero</th>
                             <th>Genero</th>
+                            <th>idEstado</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -152,10 +159,11 @@
                             <tr>
                             <td><?php echo $row['idGenero'] ?></td> 
                             <td><?php echo $row['genero'] ?></td> 
+                            <td><?php echo $row['idEstado'] ?></td> 
                             <td>
-                                <a href="formularios/editarAlbum.php?id=<?php echo $row['id']?>" class="btn btn-secondary" > <i class="fas fa-edit"></i> </a>
-                                <a href="delete_task.php?id=<?php echo $row['id'] ?>" class="btn btn-danger" > <i class="fas fa-user-times"></i> </a>                          
-                                <a href="disable_task.php?id=<?php echo $row['id'] ?>" class="btn btn-danger" > <i class="fas fa-user-times"></i> </a>                          
+                                <a href="delete.php?id2=<?php echo $row['idGenero']?>&tabla2=generos"><i class="fas fa-trash-alt"></i> </a>  
+                                <a href="disable.php?id2=<?php echo $row['idGenero']?>&tabla2=generos&estado=<?php echo $row['idEstado'] ?>"><i class="fas fa-microphone-slash"></i></a>  
+                                <a href="../../formularios/editarGenero.php?id=<?php echo $row['idGenero']?>"><i class="fas fa-edit"></i> </a> 
                             </td>
                             </tr> 
                         <?php } ?>                   
@@ -210,7 +218,8 @@
                            <td><?php echo $row['idEstado'] ?></td> 
                            <td>
                            <a href="delete.php?id=<?php echo $row['idUsuario']?>&tabla=usuarios"><i class="fas fa-trash-alt"></i> </a>             
-                                
+                           <a href="disable.php?id=<?php echo $row['idUsuario']?>&tabl=usuarios&estado=<?php echo $row['idEstado'] ?>"><i class="fas fa-microphone-slash"></i></a>             
+                           <a href="../../formularios/editarUsuario.php?id=<?php echo $row['idUsuario']?>"><i class="fas fa-user-edit"></i> </a>                       
                             </td>
                         </tr> 
                     <?php } ?>                  
