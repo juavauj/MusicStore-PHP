@@ -1,5 +1,9 @@
+<<<<<<< HEAD
+<?php include("../subpages/header.html")?> 
+=======
 
 <?php include('../subpages/admins/header.php'); ?>
+>>>>>>> 5b8f96bb965f02aa066ffb9ee2fdf0de18499a25
 
 <?php
 require(__DIR__.'/../../control/generosControl.php');
@@ -9,6 +13,18 @@ $idGenero= $_GET['id'];//1; //$_GET['idGenero'];  id obtenido desde SuperAdmin
 ?>
 
 <body>
+<<<<<<< HEAD
+    <form method="POST" action="">
+
+        <label for="generoIn">Genero</label>
+        <input type="text" name="genero" id="generoIn" value="<?php echo $dataGenero['genero'];?>" >
+        <input type="submit" value="Editar">
+
+
+
+    </form>
+
+=======
     
 <div class="container p-4">
     <div class="row">
@@ -33,4 +49,5 @@ $idGenero= $_GET['id'];//1; //$_GET['idGenero'];  id obtenido desde SuperAdmin
     </div>
 </div>
     <?php include("../subpages/admins/footer.php")?>
+>>>>>>> 5b8f96bb965f02aa066ffb9ee2fdf0de18499a25
 </body>
