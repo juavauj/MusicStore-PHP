@@ -155,17 +155,22 @@ text-shadow: 10px 10px 10px black;
 /* tarjetas album */
 #album{
     padding: 1%;
-    display: flex;
-    background-color: #0fa8e0;
-    flex-wrap: wrap;
+    /* background-color: #0fa8e0; */
+    background-color: rgb(214, 214, 214);
+    border-bottom: 3px solid rgb(61, 61, 61);
+    overflow-x: auto;
 }
 .titulos{
     width: 100%;
-    color: white;
+   /*  color: white; */
     font-size: xxx-large;
 }
+.titulos:first-child{
+    margin-top: 0;
+    padding-top: 3%;
+}
 .tarjeta{
-    width: 31%;
+    min-width: 31%;
     margin: 1%;
     position: relative;
     overflow: hidden;
@@ -218,7 +223,7 @@ text-shadow: 10px 10px 10px black;
     transform: translateY(10%);
 }
 .tarjetaArt{
-    width: 20%;
+    min-width: 200px;
     height: 400px;
     margin: 2%;
     position: relative;
@@ -237,18 +242,23 @@ text-shadow: 10px 10px 10px black;
      color: white;
 }
 #artistas{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;background-color: rgb(214, 214, 214);
+    overflow-x: auto;
+    justify-content: center;
+    background-color: rgb(214, 214, 214);
+    border-bottom: 3px solid rgb(48, 48, 48);
 }
 #generos{
-    background-color: #bd258f;
+    /* background-color: #bd258f; */
+    background-color: rgb(214, 214, 214);
+    border-bottom: 3px solid rgb(48, 48, 48);
+}
+.tContainer{
     display: flex;
     align-items: center;
     overflow-x: auto;
 }
 .tarjetaGn{
-    min-width: 10%;
+    min-width: 126px;
     background-color: tomato;
     color: white;
     margin: 1%;
@@ -256,7 +266,12 @@ text-shadow: 10px 10px 10px black;
     text-align: center;
     border-radius: 5px;
 }
-
+.tarjeta span{
+    position: absolute;
+    top: 10%;
+    right: 5%;
+    font-weight: bolder;
+}
 @keyframes fade{
     0% {opacity: 20%;}
     90% {opacity: 100%;}
@@ -276,6 +291,20 @@ text-shadow: 10px 10px 10px black;
     .foot{
         flex-wrap: wrap;
     }
+    .menu{
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.753);
+    }
+    .menu li{
+        width: 100%;
+        display: block;
+        text-align: start;
+    }
+    .tarjetaArt{
+        min-width: 130px;
+        height: 260px;
+        font-size: small;
+    }
 }
 @media(max-width: 700px){
     .logo img{
@@ -290,11 +319,28 @@ text-shadow: 10px 10px 10px black;
     .foot div{
         min-width: 100%;
     }
-    #album{
+    #album div{
         flex-wrap: wrap;
     }
     .tarjeta{
-        width: 80%;
-        margin: 5% auto;
-    }
+        max-width: 40%;
+        margin: 5%;
+    } 
+    .tarjetaHover {
+        font-size: small;
+        height: 101%;
+        
+    } 
 } 
+@media(max-width: 400px){
+    .tarjetaHover p, .tarjeta span{
+        display: none;
+    }
+    .tarjetaHover {
+        font-size: 9pt;
+        transform: translateY(72%);
+    }
+    .tarjetaHover h5, .tarjetaHover h4{
+        max-width: 85%;
+    }
+}
