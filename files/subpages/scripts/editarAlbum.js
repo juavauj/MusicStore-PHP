@@ -38,7 +38,8 @@ function loadGenerosDropdown (generoConsulta){
     xhr.setRequestHeader("Content-Type","application/json");
     xhr.onreadystatechange= function(){
         if (this.status==200 && this.readyState==4) {
-            let res=JSON.parse(this.responseText);            
+            let res=JSON.parse(this.responseText); 
+            console.log('respuesta',res);           
             
             renderDrobDown(res,'generoSelect',2);
             try {

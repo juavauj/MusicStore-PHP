@@ -19,6 +19,8 @@ switch ($accionGenero) {
     case 'consultarGenerosAJAX':
         generosAJAX();
         break;
+    case 'editarGenero':
+        editarGenero();
     
     default:
         # code...
@@ -31,6 +33,16 @@ function generosAJAX(){
     $generosJSON=$genero->mostrarGeneros();
 
     echo json_encode($generosJSON);
+
+};
+
+function editarGenero(){
+    $genero = new Generos();
+
+    $nombreGenero=$_POST['genero'];
+    $idGenero=$_POST['idGenero'];
+
+    $genero->editarGenero($idGenero,$nombreGenero);
 
 };
 
@@ -47,8 +59,7 @@ function listarGenero($idGenero){
 
 
 
-
-}
+};
 
 
 ?>
