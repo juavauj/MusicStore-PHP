@@ -14,16 +14,25 @@ html {
 body {
   background: rgb(37, 37, 38);
   background: linear-gradient(
-    90deg,
-    rgba(37, 37, 38, 1) 0%,
-    rgba(116, 111, 140, 1) 71%
-  );
+      90deg,
+      rgba(37, 37, 38, 0.5) 0%,
+      rgba(116, 111, 140, 0.4) 71%
+    ),
+    url("../../images/manager.jpg");
   padding: 0 10px;
+
+  /* La imagen siempre cubre por completo el body */
+  background-size: cover;
+
+  /* No se mueve al hacer scroll */
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 h1 {
-    font-size: 2em;
-    text-transform: uppercase;
+  font-size: 2em;
+  text-transform: uppercase;
 }
 
 .login-container {
@@ -31,7 +40,7 @@ h1 {
   margin: 100px auto 0;
   padding: 30px;
   text-align: center;
-  background-color: lightgray;
+  background-color: #cbbcf6;
   box-shadow: 1px 1px 10px #000;
 }
 
@@ -49,7 +58,7 @@ h1 {
 .login-container button {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
-  background-color: #3f7fbf;
+  background-color: #421b9b;
   width: 100%;
   padding: 15px;
   color: #fff;
@@ -69,15 +78,39 @@ h1 {
   background: #264c72;
 }
 
-.notice p {
-  margin: 15px 0 0;
-  color: #333;
-  font-size: 12px;
-  line-height: 2;
+/* Bordes redondeados */
+.login-container,
+.login-container input,
+.login-container button {
+  border-radius: 10px;
 }
 
-.notice span {
+.notice p {
+  /* margin: 15px 0 0; */
+  color: #000;
+  font-size: 15px;
+}
+
+.notice p:nth-child(2) {
   background-color: #720202;
   color: white;
   padding: 4px;
+}
+
+/* Estilo para mensajes */
+.error {
+  max-width: 360px;
+  margin: 10px auto;
+  padding: 30px;
+  text-align: center;
+  border-radius: 10px;
+  color: #151538;
+}
+
+.error p {
+  margin: 0;
+}
+
+.error {
+  background-color: #eb4559;
 }

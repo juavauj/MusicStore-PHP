@@ -1,47 +1,93 @@
 
-<footer>
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-4">
-            <div class="jumbotron">
-                <h1 class="display-4">Conectate a nuestras redes</h1>
-                <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-                <hr class="my-4">
-                <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-                <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-            </div>
-		</div>
-		<div class="col-md-4">
-        <div class="jumbotron">
-                <h1 class="display-4">Visitanos en nuestra tienda fisica</h1>
-                <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-                <hr class="my-4">
-                <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-                <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-            </div>
-		</div>
-		<div class="col-md-4">
-        <div class="jumbotron">
-                <h1 class="display-4">Quiere trabajar con nosotros</h1>
-                <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-                <hr class="my-4">
-                <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-                <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-                </div>
-		</div>
-	</div>
-</div>
+<footer class="foot" id="foot">
+        <div>
+            <h2 class="footText">Contáctanos</h2>
+            <p class="footContent">742 de Evergreen Terrace</p>
+            <p class="footContent">Tel: 3465346</p>
+            <p class="footContent">info@musicstore.com</p>
+        </div>
+        <div id="siguenos">
+            <h2 class="footText">Síguenos</h2>
+            <a class="footContent" href=""><img src="../Documents/GitHub/MusicStore-PHP/files/images/facebook.png" alt=""></a>
+        <a class="footContent" href=""><img src="../Documents/GitHub/MusicStore-PHP/files/images/instagram.png" alt=""></a>
+        <a class="footContent" href=""><img src="../Documents/GitHub/MusicStore-PHP/files/images/spotify-sketch.png" alt=""></a>
+        <br>
+        <a class="footContent" href=""><img src="../Documents/GitHub/MusicStore-PHP/files/images/twitter.png" alt=""></a>
+        <a class="footContent" href=""><img src="../Documents/GitHub/MusicStore-PHP/files/images/whatsapp.png" alt=""></a>
+        <a class="footContent" href=""><img src="../Documents/GitHub/MusicStore-PHP/files/images/brand.png" alt=""></a>
+        </div>
+        <div>
+            <h2 class="footText">Trabaja con nosotros</h2>
+            <input name="" id="" placeholder="Déjanos tu correo"></textarea>
+            <button>Enviar</button>
+        </div>
+        <div>
+            <h2 class="footText">Cosas aburridas</h2>
+            <p>
+                Music store 2020. Todos los derechos reservados. Dream team BICTIA 2020. Actividad académica.
+            </p>
+        </div>
+    </footer>
+    <script>
+        let fotoActiva = [];
+        let punto = [];
+       let fordward = document.getElementById("fordward");
+       let backward = document.getElementById("backward");
+       let index = 0;
+       function slider() {
+        fotoActiva = document.getElementsByClassName("carrusel-item");
+        punto = document.getElementsByClassName("puntos");
+        if(index < 0) {index = fotoActiva.length - 1}
+        if (index >= fotoActiva.length) {index = 0}
+        for (let i = 0; i < fotoActiva.length; i++) {
+            fotoActiva[i].classList.remove('img-activa')
+            punto[i].classList.remove('puntoActivo')
+         }
+        fotoActiva[index].classList.add('img-activa')
+        punto[index].classList.add('puntoActivo')
+       }
+       fordward.addEventListener("click", function next() {
+           index++
+           slider()
+       })
+       backward.addEventListener("click", function prev() {
+           index--
+           slider()
+       })
+      let puntos = document.getElementsByClassName("puntos")
+        for(j=0; j<puntos.length; j++) {
+        puntos[j].addEventListener("click", function () {
+         index++
+         slider()
+     })}
+       setInterval(function() {
+        index++
+        slider()
+       }, 7000);
+       function numAleatorio() {
+    let aleatorio = (Math.random()*255).toFixed(0)
+    return aleatorio
+}
+function losRgb() {
+   let numRgb =`rgb(${numAleatorio()}, ${numAleatorio()}, ${numAleatorio()})`
+   return numRgb 
+}
+let cuadros = document.getElementsByClassName("tarjetaArt")
+    for (let i = 0; i < cuadros.length; i++) {
+       cuadros[i].style.backgroundColor=losRgb()         
+    }
+    let menuRes = document.getElementById("anvorguesa")
 
-
-</footer>
-
-
-
-
-
-
+menuRes.addEventListener("click", function dropDown() {
+    let drop = document.getElementById("menu")
+    if(drop.style.display == "none"){
+        drop.style.display="block"
+    }
+    else{
+        drop.style.display="none"
+    }
+})
+    </script>
 </body>
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="files/subpages/styles/estilos.css">
 </html>
