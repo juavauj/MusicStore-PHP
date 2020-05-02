@@ -7,8 +7,7 @@ class Generos{
     public function __construct(){
 
     }
-
-
+    
     public function mostrarGeneros(){
         $db=new Conexion();
         $sql="SELECT * FROM generos ";
