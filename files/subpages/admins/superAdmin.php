@@ -161,7 +161,7 @@
             </div>
             <div class="col-md-6">
                 <h3 class='pb-3'>Añadir nuevo artista</h3>
-                <form method="POST" action="agregaralbum.php"> 
+                <form method="POST" action="agregaralbum.php" enctype="multipart/form-data"> 
                     <div class="form-row">
                             <div class="form-group col-md-12">
                                 <label for="inputAddress"> Nombre </label>

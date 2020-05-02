@@ -23,7 +23,7 @@ $idAlbum= $_GET['id'];//1; //$_GET['idAlbum'];  id obtenido desde SuperAdmin
                     <div class="form-group">
                         <picture></picture>
                         
-                        <input type="text" name="imagen" id="imagenIn">         
+                        <input type="file" class="form-control-file" name="imagen" id="imagenIn">         
                         
                     </div>
                     <label for="precioIn">Precio</label>

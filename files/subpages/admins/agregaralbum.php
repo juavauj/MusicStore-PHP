@@ -73,7 +73,13 @@ if (isset($_POST['save_artist'])){
   $imagen = $_POST['imagen'];
   $idEstado = $_POST['idEstado'];
 
-  $query = "INSERT INTO artistas(nombre, imagen, idEstado) VALUES('$nombre', '$imagen', '$idEstado')";
+  // Agregar imágen
+  $carpeta = "files/images/artistas/".basename($_FILES['imagen']['name']);
+  $carpetaAdmin = "../../images/artistas/".basename($_FILES['imagen']['name']);
+  $imagen = $_FILES['imagen']['name'];
+  move_uploaded_file($_FILES['imagen']['tmp_name'], $carpetaAdmin);
+
+  $query = "INSERT INTO artistas(nombre, imagen, idEstado) VALUES('$nombre', '$carpeta', '$idEstado')";
   $result = mysqli_query($conn, $query);
   var_dump($query);
   if(!$result) {
