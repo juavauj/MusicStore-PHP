@@ -1,5 +1,5 @@
 
-<footer class="foot">
+<footer class="foot" id="foot">
         <div>
             <h2 class="footText">Contáctanos</h2>
             <p class="footContent">742 de Evergreen Terrace</p>
@@ -28,6 +28,66 @@
             </p>
         </div>
     </footer>
+    <script>
+        let fotoActiva = [];
+        let punto = [];
+       let fordward = document.getElementById("fordward");
+       let backward = document.getElementById("backward");
+       let index = 0;
+       function slider() {
+        fotoActiva = document.getElementsByClassName("carrusel-item");
+        punto = document.getElementsByClassName("puntos");
+        if(index < 0) {index = fotoActiva.length - 1}
+        if (index >= fotoActiva.length) {index = 0}
+        for (let i = 0; i < fotoActiva.length; i++) {
+            fotoActiva[i].classList.remove('img-activa')
+            punto[i].classList.remove('puntoActivo')
+         }
+        fotoActiva[index].classList.add('img-activa')
+        punto[index].classList.add('puntoActivo')
+       }
+       fordward.addEventListener("click", function next() {
+           index++
+           slider()
+       })
+       backward.addEventListener("click", function prev() {
+           index--
+           slider()
+       })
+      let puntos = document.getElementsByClassName("puntos")
+        for(j=0; j<puntos.length; j++) {
+        puntos[j].addEventListener("click", function () {
+         index++
+         slider()
+     })}
+       setInterval(function() {
+        index++
+        slider()
+       }, 7000);
+       function numAleatorio() {
+    let aleatorio = (Math.random()*255).toFixed(0)
+    return aleatorio
+}
+function losRgb() {
+   let numRgb =`rgb(${numAleatorio()}, ${numAleatorio()}, ${numAleatorio()})`
+   return numRgb 
+}
+let cuadros = document.getElementsByClassName("tarjetaArt")
+    for (let i = 0; i < cuadros.length; i++) {
+       cuadros[i].style.backgroundColor=losRgb()         
+    }
+    let menuRes = document.getElementById("anvorguesa")
+
+menuRes.addEventListener("click", function dropDown() {
+    let drop = document.getElementById("menu")
+    if(drop.style.display == "none"){
+        drop.style.display="block"
+    }
+    else{
+        drop.style.display="none"
+    }
+})
+    </script>
 </body>
 <link rel="stylesheet" href="files/subpages/styles/estilos.css">
 </html>
