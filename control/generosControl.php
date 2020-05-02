@@ -4,13 +4,13 @@ require(__DIR__ . '/../modelo/class.Generos.php');
 /* 
  Recepcion de datos de peticios AJAX para la carga de dropdown list
 */
-$accionGenero='';
+$accionGenero = '';
 $json = file_get_contents('php://input');
-$data=json_decode($json);
-if(!empty($data)){
-    $accionGenero=$data->accion;
-}else if(isset($_GET['accion'])){
-    $accionGenero=$_GET['accion'];
+$data = json_decode($json);
+if (!empty($data)) {
+    $accionGenero = $data->accion;
+} else if (isset($_GET['accion'])) {
+    $accionGenero = $_GET['accion'];
 }
 // *******
 
@@ -21,45 +21,53 @@ switch ($accionGenero) {
         break;
     case 'editarGenero':
         editarGenero();
-    
+        break;
+    case 'getGenerosActivos':
+        getGenerosActivos();
+        break;
     default:
         # code...
         break;
 }
 
-function generosAJAX(){
-    $genero= new Generos();
-
-    $generosJSON=$genero->mostrarGeneros();
-
-    echo json_encode($generosJSON);
-
-};
-
-function editarGenero(){
+function generosAJAX()
+{
     $genero = new Generos();
 
-    $nombreGenero=$_POST['genero'];
-    $idGenero=$_POST['idGenero'];
+    $generosJSON = $genero->mostrarGeneros();
 
-    $genero->editarGenero($idGenero,$nombreGenero);
-
+    echo json_encode($generosJSON);
 };
 
-function listarGenero($idGenero){
-    $genero= new Generos();
-    $result=$genero->mostrarGenero($idGenero);
+function editarGenero()
+{
+    $genero = new Generos();
 
-    if($result!='error'){
+    $nombreGenero = $_POST['genero'];
+    $idGenero = $_POST['idGenero'];
+
+    $genero->editarGenero($idGenero, $nombreGenero);
+};
+
+function listarGenero($idGenero)
+{
+    $genero = new Generos();
+    $result = $genero->mostrarGenero($idGenero);
+
+    if ($result != 'error') {
         return $result;
-
-    }else{
+    } else {
         echo "Error - No hay productos";
     }
-
-
-
 };
 
-
+// Retorna todos los generos activos
+function getGenerosActivos()
+{
+    header('Content-Type: application/json');
+    $generos = new Generos();
+    $result = $generos->getGenerosActivos();
+    echo json_encode($result);
+    exit();
+}
 ?>
