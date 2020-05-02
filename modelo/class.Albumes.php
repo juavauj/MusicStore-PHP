@@ -8,16 +8,15 @@ class Albumes{
 
     }
 
-    public function listarAlbum($idAlbum){
+    public function mostrarAlbumes(){
         $db=new Conexion();
 
-        $sql="SELECT * FROM albumes WHERE idAlbum='$idAlbum' ";
+        $sql="SELECT nombre FROM albumes  ";
 
         $result=$db->query($sql);
 
         if($result->num_rows > 0){
-            $row = $result->fetch_assoc();
-            //print_r($row);
+            $row = mysqli_fetch_all($result);
             return $row;
 
         }else{
