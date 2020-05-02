@@ -28,8 +28,6 @@ body {
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: center;
-
-  opacity: 0.8;
 }
 
 h1 {
@@ -97,4 +95,22 @@ h1 {
   background-color: #720202;
   color: white;
   padding: 4px;
+}
+
+/* Estilo para mensajes */
+.error {
+  max-width: 360px;
+  margin: 10px auto;
+  padding: 30px;
+  text-align: center;
+  border-radius: 10px;
+  color: #151538;
+}
+
+.error p {
+  margin: 0;
+}
+
+.error {
+  background-color: #eb4559;
 }

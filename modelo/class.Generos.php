@@ -43,6 +43,16 @@ class Generos{
 
     }
 
+    public function editarGenero($id,$genero){
+        $db= new Conexion();
+        $sql="UPDATE generos SET genero='$genero' WHERE idGenero='$id'";
+
+        echo $db->query($sql)?  header('location: ../files/subpages/admins/superAdmin.php') :  'error';
+
+        
+
+    }
+
 }
 
 ?>
