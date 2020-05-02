@@ -19,7 +19,10 @@ switch ($accionAlbum) {
         albumesAJAX();
         break;
     case 'editarAlbum':
-    
+        break;
+    case 'getAlbumesActivos':
+        getAlbumesActivos();
+        break;
     default:
         # code...
         break;
@@ -52,8 +55,11 @@ function listarAlbum($idAlbum){
 
 }
 
-
-
-
-
-?>
+// Retorna como JSON todos los albumes activos
+function getAlbumesActivos() {
+    header('Content-Type: application/json');
+    $albumes = new Albumes();
+    $result = $albumes->getAlbumesActivos();
+    echo json_encode($result);
+    exit();
+}
