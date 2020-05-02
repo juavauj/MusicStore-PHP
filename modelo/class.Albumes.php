@@ -58,8 +58,13 @@ class Albumes
     public function getSoloGenero($idGenero)
     {
         $db = new Conexion();
-        $query  = "SELECT a.* FROM albumes AS a ";
+        $query  = "SELECT a.nombre AS nombreAlbum, ";
+        $query .= "ar.nombre as nombreArtista, ";
+        $query .= "a.descripcion as descripcion, ";
+        $query .= "a.precio as precio ";
+        $query .= "FROM albumes AS a ";
         $query .= "INNER JOIN estados AS e ON a.idEstado = e.idEstado ";
+        $query .= "INNER JOIN artistas AS ar ON a.idArtista = ar.idArtista ";
         $query .= "WHERE e.estado = 'activo' AND a.idGenero = $idGenero";
         return $db->query($query)->fetch_all(MYSQLI_ASSOC);
     }
