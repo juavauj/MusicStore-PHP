@@ -15,7 +15,8 @@
         $id = $_GET['id'];
         $tabla = $_GET['tabla'];
         $estado = $_GET['estado'];
-        if($estado == 1){
+
+        if($estado == 'activo'){
             $query = "UPDATE $tabla SET idEstado = '2' WHERE idUsuario = $id";
         } else {
             $query = "UPDATE $tabla SET idEstado = '1' WHERE idUsuario = $id";
@@ -36,7 +37,7 @@
             $tabla = $_GET['tabla2'];
             $estado = $_GET['estado'];
     
-            if($estado == 1){
+            if($estado == 'activo'){
                 $query = "UPDATE $tabla SET idEstado = '2' WHERE idGenero = $id";
             } else {
                 $query = "UPDATE $tabla SET idEstado = '1' WHERE idGenero = $id";
@@ -55,7 +56,7 @@
         $tabla = $_GET['tabla3'];
         $estado = $_GET['estado'];
 
-        if($estado == 1){
+        if($estado == 'activo'){
             $query = "UPDATE $tabla SET idEstado = '2' WHERE idCancion = $id";
         } else {
             $query = "UPDATE $tabla SET idEstado = '1' WHERE idCancion = $id";
@@ -86,5 +87,23 @@
             die("Query Failed");
         }
         header("location: superAdmin.php");
-  }
+  } elseif (isset($_GET['id5'])) {
+        
+    $id = $_GET['id5'];
+    $tabla = $_GET['tabla5'];
+    $estado = $_GET['estado'];
+
+    if($estado == 'activo'){
+        $query = "UPDATE $tabla SET idEstado = '2' WHERE idArtista = $id";
+    } else {
+        $query = "UPDATE $tabla SET idEstado = '1' WHERE idArtista = $id";
+    }
+    
+    $result = mysqli_query($mysqli, $query);
+    var_dump($query);
+    if(!$result){
+        die("Query Failed");
+    }
+    header("location: superAdmin.php");
+}
 ?>
