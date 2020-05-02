@@ -45,6 +45,15 @@ class Albumes{
 
     }
 
+    // Retorna todos los albumes activos
+    public function getAlbumesActivos() {
+        $db = new Conexion();
+        $query  = "SELECT a.* FROM albumes AS a ";
+        $query .= "INNER JOIN estados AS e ON a.idEstado = e.idEstado ";
+        $query .= "WHERE e.estado = 'activo'";
+        return $db->query($query)->fetch_all(MYSQLI_ASSOC);
+    }
+
 }
 
 ?>
