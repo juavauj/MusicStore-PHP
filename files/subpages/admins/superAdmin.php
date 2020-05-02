@@ -22,36 +22,40 @@
                         <thead class="thead-dark">
                             <tr>
                                 <th>#</th>
-                                <th>nombre</th>
-                                <th>imagen</th>
-                                <th>precio</th>
-                                <th>fecha</th>
-                                <th>stockF</th>
-                                <th>idEstado</th>
-                                <th>idGenero</th>
-                                <th>idArtista</th>
-                                <th>Actions</th>
+                                <th>ALBUM</th>
+                                <th>CARATULA</th>
+                                <th>PRECIO</th>
+                                <th>LANZAMIENTO</th>
+                                <th>STOCK</th>
+                                <th>ESTADO</th>
+                                <th>GENERO</th>
+                                <th>ARTISTA</th>
+                                <th>OPCIONES</th>
                             </tr>
                         </thead>
                         <tbody>
                     <?php
-                            $query = "SELECT * FROM albumes";
+                            $query = "SELECT albumes.idAlbum, albumes.nombre,  albumes.imagen, albumes.precio, albumes.fecha, albumes.stockFisico, estados.estado, generos.genero, artistas.nombre as artista
+                            FROM (((albumes
+                            INNER JOIN estados ON albumes.idEstado = estados.idEstado)
+                            INNER JOIN generos ON albumes.idGenero = generos.idGenero)
+                            INNER JOIN artistas ON albumes.idArtista = artistas.idArtista) order by albumes.idAlbum;";
                             $result_users = mysqli_query($conn, $query);
                             while($row = mysqli_fetch_array($result_users)){ ?>
                                 <tr>
                                 <td><?php echo $row['idAlbum'] ?></td>                 
                                 <td><?php echo $row['nombre'] ?></td>                 
                                 <td><img src="<?php echo "../../../" . $row['imagen']?>" alt="noimage" height="80px"></td>
-                                <td><?php echo $row['precio'] ?></td>                           
+                                <td><?php echo $row['precio'] ?></td>                                                                             
                                 <td><?php echo $row['fecha'] ?></td> 
                                 <td><?php echo $row['stockFisico'] ?></td> 
-                                <td><?php echo $row['idEstado'] ?></td> 
-                                <td><?php echo $row['idGenero'] ?></td> 
-                                <td><?php echo $row['idArtista'] ?></td> 
+                                <td><?php echo $row['estado'] ?></td> 
+                                <td><?php echo $row['genero'] ?></td> 
+                                <td><?php echo $row['artista'] ?></td> 
                                     <td>
-                                        <a href="delete.php?id4=<?php echo $row['idAlbum']?>&tabla4=albumes"><i class="fas fa-trash-alt"></i> </a> 
-                                        <a href="disable.php?id4=<?php echo $row['idAlbum']?>&tabla4=albumes&estado=<?php echo $row['idEstado'] ?>"><i class="fas fa-microphone-slash"></i></a>                          
-                                        <a href="../../formularios/editarAlbum.php?id=<?php echo $row['idAlbum']?>"><i class="fas fa-edit"></i> </a> 
+                                        <a href="delete.php?id4=<?php echo $row['idAlbum']?>&tabla4=albumes" class="btn btn-danger"><i class="fas fa-trash-alt"></i> </a> 
+                                        <a href="disable.php?id4=<?php echo $row['idAlbum']?>&tabla4=albumes&estado=<?php echo $row['estado'] ?>" class="btn btn-warning"><i class="fas fa-microphone-slash"></i></a>                          
+                                        <a href="../../formularios/editarAlbum.php?id=<?php echo $row['idAlbum']?>" class="btn btn-dark"><i class="fas fa-edit"></i> </a> 
                                     </td>
                                 </tr> 
                             <?php } ?>          
@@ -62,19 +66,55 @@
 		</div>
 		<div class="col-md-12 px-5">
         <h2 class="pb-2" name="addalbum"> Anadir nuevo album</h2>
-        <form action="agregaralbum.php" method="POST">
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Nombre album" name="nombre" >
-            <input type="text" class="form-control" placeholder="imagen" name="imagen" >
-            <input type="text" class="form-control" placeholder="precio" name="precio" >
-            <input type="text" class="form-control" placeholder="fecha" name="fecha" >
-            <input type="text" class="form-control" placeholder="stockFisico" name="stockFisico" >
-            <input type="text" class="form-control" placeholder="idEstado"  name="idEstado" >
-            <input type="text" class="form-control" placeholder="idGenero" name="idGenero" >
-            <input type="text" class="form-control" placeholder="idArtista" name="idArtista" >
-        </div>
-            <input type="submit" class="btn btn-success btn-block" name="save_album" value="Save Album"></input>
-        </form>
+
+            <form action="agregaralbum.php" method="POST">
+            <div class="form-row">
+                <div class="form-group col-md-8">
+                <label for="inputEmail4">Nombre del Album</label>
+                <input type="text" class="form-control" name="nombre">
+                </div>
+                <div class="form-group col-md-4">
+                <label for="inputPassword4">Caratula</label>
+                <input type="file" class="form-control-file" name="imagen">
+            <!-- opcional por si no funciona el de arriba   <input type="text" class="form-control" placeholder="imagen" name="imagen" > -->
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-8">
+                    <label for="inputAddress">Leyenda</label>
+                    <input type="text" class="form-control"  name="descripcion">
+                </div>
+                <div class="form-group col md-4">
+                    <label for="inputAddress2">Precio</label>
+                    <input type="number" class="form-control"  name="precio">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                <label for="inputCity">Lanzamiento</label>
+                <input type="text" class="form-control" placeholder="Año/Mes/Dia" name="fecha">
+                </div>
+                <div class="form-group col-md-4">
+                <label for="inputState">Stock</label>
+                <input type="number" class="form-control"  name="stockFisico">
+                </div>
+                <div class="form-group col-md-4">
+                <label for="inputZip">Estado</label>
+                <input type="text" class="form-control" placeholder="1 habilitar 2 desabilitar" name="idEstado">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputAddress">Genero</label>
+                    <input type="number" class="form-control"  name="idGenero" placeholder="Ref de # en Generos">
+                </div>
+                <div class="form-group col md-6">
+                    <label for="inputAddress2">Artista(s)</label>
+                    <input type="texto" class="form-control"  name="idArtista" placeholder="Ref de # en Artistas">
+                </div>
+            </div>
+            <input type="submit" class="btn btn-success btn-block" name="save_album" value="Guardar album"></input>
+            </form>                    
 		</div>
 	</div>
 </div>
