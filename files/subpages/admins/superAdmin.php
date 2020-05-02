@@ -67,7 +67,7 @@
 		<div class="col-md-12 px-5">
         <h2 class="pb-2" name="addalbum"> Anadir nuevo album</h2>
 
-            <form action="agregaralbum.php" method="POST">
+        <form action="agregaralbum.php" method="POST" enctype="multipart/form-data">
             <div class="form-row">
                 <div class="form-group col-md-8">
                 <label for="inputEmail4">Nombre del Album</label>
@@ -75,7 +75,7 @@
                 </div>
                 <div class="form-group col-md-4">
                 <label for="inputPassword4">Caratula</label>
-                <input type="file" class="form-control-file" name="imagen">
+                <input type="file" class="form-control-file" name="imagen"/>
             <!-- opcional por si no funciona el de arriba   <input type="text" class="form-control" placeholder="imagen" name="imagen" > -->
                 </div>
             </div>
@@ -114,7 +114,7 @@
                 </div>
             </div>
             <input type="submit" class="btn btn-success btn-block" name="save_album" value="Guardar album"></input>
-            </form>                    
+        </form>                    
 		</div>
 	</div>
 </div>

@@ -4,8 +4,6 @@ include('db.php');
 
 if (isset($_POST['save_album'])){
   $nombre = $_POST['nombre'];
-  $imagen = $_POST['imagen'];
-  $carpeta = "/../../images/albumes/";
   $precio = $_POST['precio'];
   $fecha = $_POST['fecha'];
   $stockFisico = $_POST['stockFisico'];
@@ -14,11 +12,12 @@ if (isset($_POST['save_album'])){
   $idArtista = $_POST['idArtista'];
   
   // Agregar imágen
-  opendir($carpeta);
-  $destino = $carpeta . $_FILES['imagen']['name'];
-  move_uploaded_file($_FILES['imagen']['tmp_name'],$destino);
+  $carpeta = "files/images/albumes/".basename($_FILES['imagen']['name']);
+  $carpetaAdmin = "../../images/albumes/".basename($_FILES['imagen']['name']);
+  $imagen = $_FILES['imagen']['name'];
+  move_uploaded_file($_FILES['imagen']['tmp_name'], $carpetaAdmin);
 
-  $query = "INSERT INTO albumes(nombre, imagen, precio, fecha, stockFisico, idEstado, idGenero, idArtista ) VALUES ('$nombre', '$imagen','$precio','$fecha','$stockFisico','$idEstado','$idGenero','$idArtista')";
+  $query = "INSERT INTO albumes(nombre, imagen, precio, fecha, stockFisico, idEstado, idGenero, idArtista ) VALUES ('$nombre', '$carpeta','$precio','$fecha','$stockFisico','$idEstado','$idGenero','$idArtista')";
   $result = mysqli_query($conn, $query);
   if(!$result) {
       die("Query Failed.");
