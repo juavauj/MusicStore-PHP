@@ -85,11 +85,6 @@
         if(!$result){
             die("Query Failed");
         }
-     
-
+        header("location: superAdmin.php");
   }
-      
-      
-
-
 ?>
