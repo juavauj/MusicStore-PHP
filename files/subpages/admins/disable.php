@@ -11,6 +11,7 @@
       }
 
       if (isset($_GET['id'])) {
+          
         $id = $_GET['id'];
         $tabla = $_GET['tabla'];
         $estado = $_GET['estado'];
@@ -66,13 +67,14 @@
             die("Query Failed");
         }
         header("location: superAdmin.php");
+
      } elseif (isset($_GET['id4'])) {
         
         $id = $_GET['id4'];
         $tabla = $_GET['tabla4'];
         $estado = $_GET['estado'];
 
-        if($estado == 1){
+        if($estado == 'activo'){
             $query = "UPDATE $tabla SET idEstado = '2' WHERE idAlbum = $id";
         } else {
             $query = "UPDATE $tabla SET idEstado = '1' WHERE idAlbum = $id";
@@ -83,7 +85,7 @@
         if(!$result){
             die("Query Failed");
         }
-        header("location: superAdmin.php");
+     
 
   }
       
