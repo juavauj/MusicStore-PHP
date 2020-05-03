@@ -6,6 +6,7 @@ if (isset($_POST['save_album'])){
   $nombre = $_POST['nombre'];
   $precio = $_POST['precio'];
   $fecha = $_POST['fecha'];
+  $description = $_POST['desciption'];
   $stockFisico = $_POST['stockFisico'];
   $idEstado = $_POST['idEstado'];
   $idGenero = $_POST['idGenero'];
@@ -17,10 +18,10 @@ if (isset($_POST['save_album'])){
   $imagen = $_FILES['imagen']['name'];
   move_uploaded_file($_FILES['imagen']['tmp_name'], $carpetaAdmin);
 
-  $query = "INSERT INTO albumes(nombre, imagen, precio, fecha, stockFisico, idEstado, idGenero, idArtista ) VALUES ('$nombre', '$carpeta','$precio','$fecha','$stockFisico','$idEstado','$idGenero','$idArtista')";
+  $query = "INSERT INTO albumes(nombre, imagen, descripcion, precio, fecha, stockFisico, idEstado, idGenero, idArtista ) VALUES ('$nombre', '$carpeta', '$description', '$precio','$fecha','$stockFisico','$idEstado','$idGenero','$idArtista');";
   $result = mysqli_query($conn, $query);
   if(!$result) {
-      die("Query Failed.");
+      die("introdujiste un valor no valido y la consulta no se envio. regresa y por favor verifica que los datos son los correctos");
     }
     header('Location: superadmin.php');
 }

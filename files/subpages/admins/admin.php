@@ -65,7 +65,7 @@
 		<div class="col-md-12 px-5">
         <h2 class="pb-2" name="addalbum"> Anadir nuevo album</h2>
 
-            <form action="agregaralbum.php" method="POST">
+        <form action="agregaralbum.php" method="POST" enctype="multipart/form-data">
             <div class="form-row">
                 <div class="form-group col-md-8">
                 <label for="inputEmail4">Nombre del Album</label>
@@ -73,7 +73,7 @@
                 </div>
                 <div class="form-group col-md-4">
                 <label for="inputPassword4">Caratula</label>
-                <input type="file" class="form-control-file" name="imagen">
+                <input type="file" class="form-control-file" name="imagen"/>
             <!-- opcional por si no funciona el de arriba   <input type="text" class="form-control" placeholder="imagen" name="imagen" > -->
                 </div>
             </div>
@@ -98,7 +98,7 @@
                 </div>
                 <div class="form-group col-md-4">
                 <label for="inputZip">Estado</label>
-                <input type="text" class="form-control" placeholder="1 habilitar 2 desabilitar" name="idEstado">
+                <input type="number" class="form-control" placeholder="1 habilitar 2 desabilitar" name="idEstado">
                 </div>
             </div>
             <div class="form-row">
@@ -108,7 +108,7 @@
                 </div>
                 <div class="form-group col md-6">
                     <label for="inputAddress2">Artista(s)</label>
-                    <input type="texto" class="form-control"  name="idArtista" placeholder="Ref de # en Artistas">
+                    <input type="number" class="form-control"  name="idArtista" placeholder="Ref de # en Artistas">
                 </div>
             </div>
             <input type="submit" class="btn btn-success btn-block" name="save_album" value="Crear album nuevo"></input>
@@ -161,7 +161,7 @@
             </div>
             <div class="col-md-6">
                 <h3 class='pb-3'>Añadir nuevo artista</h3>
-                <form method="POST" action="agregaralbum.php"> 
+                <form method="POST" action="agregaralbum.php" enctype="multipart/form-data"> 
                     <div class="form-row">
                             <div class="form-group col-md-12">
                                 <label for="inputAddress"> Nombre </label>
@@ -319,7 +319,8 @@
 	</div>
 </div>
  <hr>
-
- <?php include("footer.php")?>
+  
+ 
+<?php include("footer.php")?>
 </body>
 </html>

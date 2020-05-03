@@ -1,3 +1,6 @@
+/* Iconos informativos */
+@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+
 html {
   font-family: "Roboto", sans-serif;
 }
@@ -117,21 +120,19 @@ body {
 .success {
   max-width: 360px;
   margin: 0 auto;
-  padding: 15px 5px;
+  padding: 12px;
   text-align: center;
   border-radius: 10px;
-  color: #151538;
-}
-
-.error p,
-.success p {
-  margin: 0;
+  font-size: 1em;
+  font-weight: bold;
 }
 
 .error {
-  background-color: #eb4559;
+  color: #d8000c;
+  background-color: #ffd2d2;
 }
 
 .success {
-  background-color: #75daad;
+  color: #4f8a10;
+  background-color: #dff2bf;
 }
