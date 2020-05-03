@@ -1,3 +1,5 @@
+// Request para todos los albumes activos con determinado genero
+//  e inclusion en el DOM
 function getAlbumesConGenero(idGenero) {
   let requestSoloGenero = new XMLHttpRequest();
   requestSoloGenero.onreadystatechange = function () {
@@ -129,8 +131,8 @@ function getTodosLosAlbumes() {
   requestAlbumes.send();
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  // request para los generos
+// Request para todos los generos activos, e inclusion en el DOM
+function getTodosLosGeneros() {
   let requestGeneros = new XMLHttpRequest();
   requestGeneros.onreadystatechange = function () {
     try {
@@ -187,65 +189,9 @@ document.addEventListener("DOMContentLoaded", function () {
     true
   );
   requestGeneros.send();
+}
 
-  let requestAlbumes = new XMLHttpRequest();
-  requestAlbumes.onreadystatechange = function () {
-    try {
-      if (
-        requestAlbumes.readyState === XMLHttpRequest.DONE &&
-        requestAlbumes.status === 200
-      ) {
-        let contenedorAlbumes = document.querySelector("#album .tContainer");
-        // Vaciar posible contenido
-        contenedorAlbumes.innerHTML = "";
-        let albumes = JSON.parse(requestAlbumes.responseText);
-        albumes.forEach((a) => {
-          let div = document.createElement("div");
-          div.classList.add("tarjeta");
-
-          let img = document.createElement("img");
-          img.setAttribute("src", a.imagen);
-          img.setAttribute("alt", "sin imagen");
-          div.appendChild(img);
-
-          let divHover = document.createElement("div");
-          divHover.classList.add("tarjetaHover");
-
-          let h4 = document.createElement("h4");
-          h4.innerText = a.nombreAlbum;
-          divHover.appendChild(h4);
-
-          let h5 = document.createElement("h5");
-          h5.innerText = a.nombreArtista;
-          divHover.appendChild(h5);
-
-          let p = document.createElement("p");
-          p.innerText = a.descripcion;
-          divHover.appendChild(p);
-
-          let span = document.createElement("span");
-          span.innerText = a.precio;
-          divHover.appendChild(span);
-
-          let button = document.createElement("button");
-          button.innerText = "Ver más";
-          divHover.appendChild(button);
-
-          div.appendChild(divHover);
-
-          contenedorAlbumes.appendChild(div);
-        });
-      }
-    } catch (error) {
-      console.log("Fallo solicitud de albumes: " + error.description);
-    }
-  };
-  requestAlbumes.open(
-    "GET",
-    // Evitar la cache
-    "control/albumesControl.php?accion=getAlbumesActivos&" +
-      new Date().getTime(),
-    true
-  );
-  requestAlbumes.send();
+document.addEventListener("DOMContentLoaded", function () {
+  getTodosLosGeneros();
+  getTodosLosAlbumes();
 });
