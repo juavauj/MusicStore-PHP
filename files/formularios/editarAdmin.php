@@ -17,27 +17,27 @@ $dataAdmin=listarAdmin($idUsuario); // funcion de AlbumesControl
                 <label for="nombreIn">Nombre</label>
                     <div class="form-group">
                         
-                        <input type="text" name="nombre" id="nombreIn" value="<?php echo $dataAdmin['nombre'];?>" >
+                        <input type="text" name="nombre" id="nombreIn" value="<?php echo htmlspecialchars($dataAdmin['nombre']);?>" >
                         <input type="hidden" name="idUsuario" value="<?php echo $dataAdmin['idUsuario'];?>">
 
                     </div>
                     <label for="apellidoIn">Apellido</label>
                     <div class="form-group">
                         
-                        <input type="text" name="apellido" id="apellidoIn" value="<?php echo $dataAdmin['apellido'];?>" >
+                        <input type="text" name="apellido" id="apellidoIn" value="<?php echo htmlspecialchars($dataAdmin['apellido']);?>" >
 
                     </div>
                     <label for="correoIn">Correo</label>
                     <div class="form-group">
                         
-                        <input type="email" name="correo" id="correoIn" value="<?php echo $dataAdmin['correo'];?>" >
+                        <input type="email" name="correo" id="correoIn" value="<?php echo htmlspecialchars($dataAdmin['correo']);?>" >
 
                     </div>
 
                     <label for="passwordIn">Contraseña</label>
                     <div class="form-group">
                         
-                        <input type="password" name="contrasena" id="passwordIn" value="<?php echo $dataAdmin['contrasena'];?>" >
+                        <input type="password" name="contrasena" id="passwordIn" value="<?php echo htmlspecialchars($dataAdmin['contrasena']);?>" >
                         <i id="pass-status" class="fa fa-eye" aria-hidden="true" ></i>
 
                     </div>

@@ -1,5 +1,3 @@
-<?php include("../subpages/header.html")?> 
-
 <?php include('../subpages/admins/header.php'); ?>
 
 <?php
@@ -18,7 +16,7 @@ $idGenero= $_GET['id'];//1; //$_GET['idGenero'];  id obtenido desde SuperAdmin
                 <form method="POST" action="../../control/generosControl.php?accion=editarGenero">
                     <div class="form-group">
                         <label for="generoIn">Genero</label>
-                        <input type="text" name="genero" id="generoIn" value="<?php echo $dataGenero['genero'];?>" >
+                        <input type="text" name="genero" id="generoIn" value="<?php echo htmlspecialchars($dataGenero['genero']);?>" >
                         <input type="hidden" name="idGenero" value="<?php echo $dataGenero['idGenero'];?>">
 
                     </div>

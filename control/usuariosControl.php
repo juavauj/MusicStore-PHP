@@ -120,10 +120,10 @@ function editarAdmin(){
     $usuario= new Usuarios();
 
     $id=$_POST['idUsuario'];
-    $nombre=$_POST['nombre'];
-    $apellido=$_POST['apellido'];
-    $correo=$_POST['correo'];
-    $contrasena=$_POST['contrasena'];
+    $nombre=addslashes($_POST['nombre']);
+    $apellido=addslashes($_POST['apellido']);
+    $correo=addslashes($_POST['correo']);
+    $contrasena=addslashes($_POST['contrasena']);
     $idEstado=$_POST['estado'];
     $idRol=$_POST['rol'];
 

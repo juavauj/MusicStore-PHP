@@ -1,5 +1,4 @@
 <?php
-
 require_once(__DIR__ . '/../modelo/class.Albumes.php');
 
 
@@ -19,6 +18,7 @@ switch ($accionAlbum) {
         albumesAJAX();
         break;
     case 'editarAlbum':
+        editarAlbum();
         break;
     case 'getAlbumesActivos':
         getAlbumesActivos();
@@ -74,5 +74,32 @@ function getSoloGenero($idGenero)
     $result = $albumes->getSoloGenero($idGenero);
     echo json_encode($result);
     exit();
+}
+
+function editarAlbum(){
+    $album = new Albumes();
+    $id=$_POST['idAlbum'];
+    $nombre=addslashes($_POST['nombre']);
+    $imagen = "files/images/albumes/".basename($_FILES['imagen']['name']); // variable a enviar al query
+    if ($imagen!='files/images/albumes/'){
+        $carpetaAdmin = "../files/images/albumes/".basename($_FILES['imagen']['name']);
+        move_uploaded_file($_FILES['imagen']['tmp_name'], $carpetaAdmin);
+    }else{
+        $imagen=$_POST['imagen'];
+    }
+    
+    
+    $precio=$_POST['precio'];
+    $descripcion=addslashes($_POST['descripcion']);
+    $fecha=$_POST['fecha'];
+    $stock=$_POST['stock'];
+    $estado=$_POST['estado'];
+    $genero=$_POST['genero'];
+    $artista=$_POST['artista'];
+
+    $album->modificarAlbum($id,$nombre,$imagen,$precio,$descripcion,$fecha,$stock,$estado,$genero,$artista);
+
+
+
 }
 ?>
