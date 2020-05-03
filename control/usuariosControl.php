@@ -4,7 +4,7 @@
 require(__DIR__ . '/../modelo/class.Usuarios.php');
 
 // Registro de usuario en la tienda
-if(isset($_GET['accion'])){
+if (isset($_GET['accion'])) {
 
     if ($_GET["accion"] == "registro_usuario") {
         // ¿Se utilizo el formulario?
@@ -15,26 +15,26 @@ if(isset($_GET['accion'])){
             // El correo es case insensitive
             $correo = strtolower($_POST["correo"]);
             $contrasena = $_POST["contrasena"];
-    
+
             // Los campos no estan vacios
             if (empty($nombre) || empty($apellido) || empty($correo) || empty($contrasena)) {
                 // Redireccion de nuevo al formulario
                 header("Location: ../files/formularios/user_login_registration.php?form=form_registration&error=empty_fields");
-    
+
                 // Finalizar inmediatamente el script
                 exit();
             }
-    
+
             // El correo es valido
             if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
                 header("Location: ../files/formularios/user_login_registration.php?form=form_registration&error=invalid_email");
                 exit();
             }
-    
+
             // Intentar registrar al usuario
             $usuarios = new Usuarios();
             $success = $usuarios->userRegistration($nombre, $apellido, $correo, $contrasena, "user");
-    
+
             if ($success) {
                 // Redireccion a la vista de login
                 header("Location: ../files/formularios/user_login_registration.php?form=form_login&success=ok");
@@ -45,91 +45,108 @@ if(isset($_GET['accion'])){
             }
         }
     }
-    
+
     // Login de usuario en la tienda
     if ($_GET["accion"] == "login_usuario") {
         if (isset($_POST["form-login"])) {
             // Comparacion sin tener en cuenta el case
             $correo = strtolower($_POST["correo"]);
-    
+
             $contrasena = $_POST["contrasena"];
-    
+
             // Intentar el login del usuario
             $usuarios = new Usuarios();
-            $success = $usuarios->userLogin($correo, $contrasena);
-    
-            if ($success) {
+            $result = $usuarios->userLogin($correo, $contrasena);
+
+            if (count($result) > 0) {
+                // Iniciar sesion de usuario
+                session_start();
+                // Incluir info: nombre, apellido, correo, estado y rol
+                $_SESSION["nombre"] = $result[0]["nombre"];
+                $_SESSION["apellido"] = $result[0]["apellido"];
+                $_SESSION["correo"] = $result[0]["correo"];
+                $_SESSION["estado"] = $result[0]["estado"];
+                $_SESSION["rol"] = $result[0]["rol"];
+
                 // Redireccion al index
                 header("Location: ../index.php");
                 exit();
             } else {
-                header("Location: ../files/formularios/user_login_registration.php?form=form_login&error=user_not_exists");
+                header("Location: ../files/formularios/user_login_registration.php?form=form_login&error=login_failed");
                 exit();
             }
         }
     }
-    
+
     // Login administrativo
     if ($_GET["accion"] == "login_administrativo") {
         if (isset($_POST["form-login"])) {
             $correo = strtolower($_POST["correo"]);
-    
+
             $contrasena = $_POST["contrasena"];
-    
+
             // Intentar el login del usuario
             $usuarios = new Usuarios();
             $result = $usuarios->adminLogin($correo, $contrasena);
-    
-            if ($result == "admin") {
-                header("Location: ../files/subpages/admins/admin.php");
-                exit();
+
+            if (count($result) > 0 && $result[0]["rol"] != "usuario") {
+                // Iniciar sesion de usuario
+                session_start();
+                // Incluir info: nombre, apellido, correo, estado y rol
+                $_SESSION["nombre"] = $result[0]["nombre"];
+                $_SESSION["apellido"] = $result[0]["apellido"];
+                $_SESSION["correo"] = $result[0]["correo"];
+                $_SESSION["estado"] = $result[0]["estado"];
+                $_SESSION["rol"] = $result[0]["rol"];
+
+                if ($result[0]["rol"] == "admin") {
+                    header("Location: ../files/subpages/admins/admin.php");
+                    exit();
+                }
+
+                if ($result[0]["rol"] == "superadmin") {
+                    header("Location: ../files/subpages/admins/superAdmin.php");
+                    exit();
+                }
             }
-    
-            if ($result == "superadmin") {
-                header("Location: ../files/subpages/admins/superAdmin.php");
-                exit();
-            }
-    
+
             // Podria ser que un usuario comun esta intentando login o el
             // usuario no existe
             header("Location: ../files/formularios/admin_superadmin_login.php?error=login_invalid");
         }
     }
-    if($_GET["accion"] == "editarAdmin"){
+    if ($_GET["accion"] == "editarAdmin") {
         editarAdmin();
     }
-    
-
 }
 
 
 
-function listarAdmin($idAdmin){
-    $usuario= new Usuarios();
-    $result= $usuario->listarAdmin($idAdmin);
+function listarAdmin($idAdmin)
+{
+    $usuario = new Usuarios();
+    $result = $usuario->listarAdmin($idAdmin);
 
-    if($result!='error'){
+    if ($result != 'error') {
         return $result;
-
-    }else{
+    } else {
         echo "Error - No hay productos";
     }
 }
 
-function editarAdmin(){
-    $usuario= new Usuarios();
+function editarAdmin()
+{
+    $usuario = new Usuarios();
 
-    $id=$_POST['idUsuario'];
-    $nombre=$_POST['nombre'];
-    $apellido=$_POST['apellido'];
-    $correo=$_POST['correo'];
-    $contrasena=$_POST['contrasena'];
-    $idEstado=$_POST['estado'];
-    $idRol=$_POST['rol'];
+    $id = $_POST['idUsuario'];
+    $nombre = $_POST['nombre'];
+    $apellido = $_POST['apellido'];
+    $correo = $_POST['correo'];
+    $contrasena = $_POST['contrasena'];
+    $idEstado = $_POST['estado'];
+    $idRol = $_POST['rol'];
 
-    $usuario->editarAdmin($id,$nombre,$apellido,$correo,$contrasena,$idEstado,$idRol);
-
+    $usuario->editarAdmin($id, $nombre, $apellido, $correo, $contrasena, $idEstado, $idRol);
 }
-
 
 ?>
