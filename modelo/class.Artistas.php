@@ -9,6 +9,24 @@ class Artistas
     {
     }
 
+    public function listarArtista($idArtista)
+    {
+        $db = new Conexion();
+
+        $sql = "SELECT * FROM artistas WHERE idArtista='$idArtista' ";
+
+        $result = $db->query($sql);
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            //print_r($row);
+            return $row;
+        } else {
+
+            return "error";
+        }
+    }
+
 
     public function mostrarArtistas()
     {
@@ -36,6 +54,15 @@ class Artistas
         $query .= "INNER JOIN estados AS e ON a.idEstado = e.idEstado ";
         $query .= "WHERE e.estado = 'activo'";
         return $db->query($query)->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function modificarArtista($id,$nombre,$imagen,$estado){
+        $db= new Conexion();
+
+        $sql="UPDATE artistas SET nombre='$nombre',imagen='$imagen',idEstado='$estado' WHERE idArtista='$id'";
+        var_dump($sql);
+        echo $db->query($sql)?  header('location: ../files/subpages/admins/superAdmin.php') :  'error';
+
     }
 }
 ?>

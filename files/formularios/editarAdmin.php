@@ -16,22 +16,22 @@ $dataAdmin=listarAdmin($idUsuario); // funcion de AlbumesControl
                 <form method="POST" action="../../control/usuariosControl.php?accion=editarAdmin">
                     <div class="form-group">
                         <label for="nombreIn" class="text-info">Nombre</label>                                            
-                        <input type="text" name="nombre" class="form-control" id="nombreIn" value="<?php echo $dataAdmin['nombre'];?>" >
+                        <input type="text" name="nombre" class="form-control" id="nombreIn" value="<?php echo htmlspecialchars($dataAdmin['nombre']);?>" >
                         <input type="hidden" name="idUsuario" value="<?php echo $dataAdmin['idUsuario'];?>">
                     </div>
                     <div class="form-group" >
                         <label for="apellidoIn" class="text-info">Apellido</label>
-                        <input type="text" name="apellido" class="form-control" id="apellidoIn" value="<?php echo $dataAdmin['apellido'];?>" >
+                        <input type="text" name="apellido" class="form-control" id="apellidoIn" value="<?php echo htmlspecialchars($dataAdmin['apellido']);?>" >
                     </div>
                     <div class="form-group">
                         <label for="correoIn" class="text-info">Correo</label>
-                        <input type="email" name="correo" id="correoIn"   class="form-control"value="<?php echo $dataAdmin['correo'];?>" >
+                        <input type="email" name="correo" id="correoIn"   class="form-control"value="<?php echo htmlspecialchars($dataAdmin['correo']);?>" >
                     </div>
                    
                     <label for="passwordIn" class="text-info"> Contraseña </label>
                     <div class="form-row col-md-12">
                             <div class="form-group col-md-11 ">                                
-                                <input type="password" name="contrasena" class="form-control" id="passwordIn" value="<?php echo $dataAdmin['contrasena'];?>" >
+                                <input type="password" name="contrasena" class="form-control" id="passwordIn" value="<?php echo htmlspecialchars($dataAdmin['contrasena']);?>" >
                             </div>
                             <div class="form-group col md-1 mt-2">                                
                                 <i id="pass-status" class="fa fa-eye" aria-hidden="true" ></i>

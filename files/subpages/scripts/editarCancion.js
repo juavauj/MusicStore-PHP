@@ -71,9 +71,9 @@ function loadGenerosDropdown (url,selector,acc){
     xhr.onreadystatechange= function(){
         if (this.status==200 && this.readyState==4) {
             let res=JSON.parse(this.responseText); 
-
-            renderDrobDown(res,`${selector}`,2,1);
-           
+            
+            renderDrobDown(res,`${selector}`,2,peticion-1);
+            
             if(carga==true){
                 carga=false;
                 peticionesJAXA()
@@ -129,11 +129,11 @@ function loadGenerosDropdown (url,selector,acc){
                 if(params[0].idAlbum!=null){
                     
                     params.forEach(param => {
-                        
                         if(modo===2 && param.idAlbum===cancionAlbum){
+                            
                             option=`<option value="${param.idAlbum}" selected>${param.nombre}</option>`;
                         }else{
-                            option=`<option value="${param.idAalbum}">${param.nombre}</option>`;
+                            option=`<option value="${param.idAlbum}">${param.nombre}</option>`;
                         }
                        
                         selectAlbum.innerHTML+=option;
