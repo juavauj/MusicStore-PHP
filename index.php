@@ -72,6 +72,35 @@
     <section id="album">
         <h1 class="titulos">Álbumes</h1>
         <div class="tContainer">
+        <div class="modal">
+                <div class="mWindow">
+                    <div><img src="+44 when your heart.jpg" alt="">
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Assumenda, nihil accusamus! Nesciunt laudantium voluptate perspiciatis exercitationem architecto molestiae voluptas, dolorem officiis eum atque deleniti modi, id aut alias delectus. Ad</p>
+                </div>
+                <div>
+                    <h1> Nombre del Album</h1>
+                    <h3>Nombre del Artista</h3>
+                    <ol>
+                        <li>Cancion 1</li>
+                        <li>Cancion 1</li>
+                        <li>Cancion 1</li>
+                        <li>Cancion 1</li>
+                        <li>Cancion 1</li>
+                        <li>Cancion 1</li>
+                        <li>Cancion 1</li>
+                        <li>Cancion 1</li>
+                        <li>Cancion 1</li>
+                        <li>Cancion 1</li>
+                        <li>Cancion 1</li>
+                        <li>Cancion 1</li>
+                        <li>Cancion 1</li>
+                        <li>Cancion 1</li>
+                    </ol>
+                </div>
+                <button id="modalClose">x</button>
+                </div>
+                
+            </div>
         <div class="tarjeta">
             <img src="files/images/albumes/kindOfBlue.jpg" alt="">
             <div class="tarjetaHover">
