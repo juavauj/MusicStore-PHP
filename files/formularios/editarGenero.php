@@ -42,6 +42,7 @@ $idGenero= $_GET['id'];//1; //$_GET['idGenero'];  id obtenido desde SuperAdmin
         </div>
     </div>
 </div>
-    <?php include("../subpages/admins/footer.php")?>
-    <script src="../subpages/scripts/editarGenero.js"></script>
-</body>
+    
+<script src="../subpages/scripts/editarGenero.js"></script>
+<?php include("../subpages/admins/footer.php")?>
+    
