@@ -95,7 +95,6 @@ if(isset($_GET['accion'])){
             header("Location: ../files/formularios/admin_superadmin_login.php?error=login_invalid");
         }
     }
-
     if($_GET["accion"] == "editarAdmin"){
         editarAdmin();
     }

@@ -36,30 +36,40 @@
                 <?php $error = $_GET["error"]; ?>
                 <?php if ($error == "empty_fields") : ?>
                     <p>
+                        <span class="fa fa-times-circle"></span>
                         Los campos no pueden estar vacíos.
                     </p>
                 <?php endif; ?>
                 <?php if ($error == "invalid_email") : ?>
                     <p>
+                        <span class="fa fa-times-circle"></span>
                         Correo electrónico inválido.
                     </p>
                 <?php endif; ?>
-                <?php if ($error == "user_not_exists") : ?>
+                <?php if ($error == "login_failed") : ?>
                     <p>
-                        No ha sido posible iniciar sesión.
+                        <span class="fa fa-times-circle"></span>
+                        Usuario o contraseña incorrectos. Intente de nuevo
+                        o comuníquese con el administrador.
                     </p>
                 <?php endif; ?>
                 <!-- Posibilidad de enumeracion (sacrificio usabilidad vs seguridad) -->
-                <?php if ($error == "user_exists") : ?>
+                <?php if ($error == "registration_failed") : ?>
                     <p>
-                        El usuario ya esta registrado.
+                        <span class="fa fa-times-circle"></span>
+                        El registro no ha sido posible. Si usted ya tiene una
+                        cuenta, inicie sesión, de lo contrario, comuníquese con el
+                        administrador.
                     </p>
                 <?php endif; ?>
             </section>
         <?php endif; ?>
         <?php if (isset($_GET["success"])) : ?>
             <section class="success">
-                <p>Registro exitoso, ahora inicie sesión.</p>
+                <p>
+                    <span class="fa fa-check"></span>
+                    Registro exitoso, ya puede iniciar sesión.
+                </p>
             </section>
         <?php endif; ?>
     </section>

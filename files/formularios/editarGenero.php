@@ -1,3 +1,4 @@
+<?php include("../subpages/header.html")?> 
 
 <?php include('../subpages/admins/header.php'); ?>
 
