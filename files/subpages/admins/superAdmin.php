@@ -98,7 +98,7 @@
                 </div>
                 <div class="form-group col-md-4">
                 <label for="inputZip">Estado</label>
-                <input type="text" class="form-control" placeholder="1 habilitar 2 desabilitar" name="idEstado">
+                <input type="number" class="form-control" placeholder="1 habilitar 2 desabilitar" name="idEstado">
                 </div>
             </div>
             <div class="form-row">
@@ -108,7 +108,7 @@
                 </div>
                 <div class="form-group col md-6">
                     <label for="inputAddress2">Artista(s)</label>
-                    <input type="texto" class="form-control"  name="idArtista" placeholder="Ref de # en Artistas">
+                    <input type="number" class="form-control"  name="idArtista" placeholder="Ref de # en Artistas">
                 </div>
             </div>
             <input type="submit" class="btn btn-success btn-block" name="save_album" value="Crear album nuevo"></input>
