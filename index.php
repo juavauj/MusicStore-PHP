@@ -38,71 +38,11 @@
         <section id="generos">
             <h1 class="titulos">Géneros</h1>
             <div class="tContainer">
-                <div class="tarjetaGn">
-                    <h4>Rock</h4>
-                </div>
-                <div class="tarjetaGn">
-                    <h4>Pop</h4>
-                </div>
-                <div class="tarjetaGn">
-                    <h4>Jazz</h4>
-                </div>
-                <div class="tarjetaGn">
-                    <h4>Blues</h4>
-                </div>
-                <div class="tarjetaGn">
-                    <h4>Reggaetón</h4>
-                </div>
-                <div class="tarjetaGn">
-                    <h4>Dancehall</h4>
-                </div>
-                <div class="tarjetaGn">
-                    <h4>Salsa</h4>
-                </div>
-                <div class="tarjetaGn">
-                    <h4>Country</h4>
-                </div>
-                <div class="tarjetaGn">
-                    <h4>Metal</h4>
-                </div>
-                <div class="tarjetaGn">
-                    <h4>Rap</h4>
-                </div>
             </div>
         </section>
         <section id="album">
             <h1 class="titulos">Álbumes</h1>
             <div class="tContainer">
-                <div class="tarjeta">
-                    <img src="files/images/albumes/kindOfBlue.jpg" alt="">
-                    <div class="tarjetaHover">
-                        <h4>Kind of Blue</h4>
-                        <h5>Miles Davis</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore similique cupiditate consequuntur consequatur iusto animi eveniet, incidunt placeat voluptatum tempore nam ullam laudantium deleniti excepturi saepe nulla accusamus expedita reprehenderit!</p>
-                        <span>$30.000</span>
-                        <button>Ver más</button>
-                    </div>
-                </div>
-                <div class="tarjeta">
-                    <img src="files/images/albumes/laquidity.jpg" alt="">
-                    <div class="tarjetaHover">
-                        <h4>Kind of Blue</h4>
-                        <h5>Miles Davis</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore similique cupiditate consequuntur consequatur iusto animi eveniet, incidunt placeat voluptatum tempore nam ullam laudantium deleniti excepturi saepe nulla accusamus expedita reprehenderit!</p>
-                        <span>$30.000</span>
-                        <button>Ver más</button>
-                    </div>
-                </div>
-                <div class="tarjeta">
-                    <img src="files/images/albumes/aLoveSupreme.jpg" alt="">
-                    <div class="tarjetaHover">
-                        <h4>Kind of Blue</h4>
-                        <h5>Miles Davis</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore similique cupiditate consequuntur consequatur iusto animi eveniet, incidunt placeat voluptatum tempore nam ullam laudantium deleniti excepturi saepe nulla accusamus expedita reprehenderit!</p>
-                        <span>$30.000</span>
-                        <button>Ver más</button>
-                    </div>
-                </div>
             </div>
         </section>
         <section id="artistas">
