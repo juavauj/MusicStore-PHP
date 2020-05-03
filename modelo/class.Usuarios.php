@@ -48,56 +48,47 @@ class Usuarios
     public function userLogin($correo, $contrasena)
     {
         $conexion = new Conexion();
-        $query_exists = ("SELECT * FROM usuarios AS u " .
-            "INNER JOIN estados as e ON u.idEstado = e.idEstado " .
-            "WHERE correo = '$correo' AND contrasena = '$contrasena' AND estado = 'activo'");
-        $res = $conexion->query($query_exists);
+        $query_exists  = "SELECT u.nombre AS nombre, u.apellido AS apellido, ";
+        $query_exists .= "u.correo AS correo, e.estado AS estado, r.rol AS rol ";
+        $query_exists .= "FROM usuarios AS u ";
+        $query_exists .= "INNER JOIN estados AS e ON u.idEstado = e.idEstado ";
+        $query_exists .= "INNER JOIN roles AS r ON u.idRol = r.idRol ";
+        $query_exists .= "WHERE correo = '$correo' AND contrasena = '$contrasena' AND estado = 'activo'";
 
-        if ($res->num_rows == 1) {
-            return true;
-        }
-
-        // El usuario no existe (o esta inactivo)
-        return false;
+        return $conexion->query($query_exists)->fetch_all(MYSQLI_ASSOC);
     }
 
     // Login administrativo
     public function adminLogin($correo, $contrasena)
     {
         $conexion = new Conexion();
-        $query_exists = ("SELECT * FROM usuarios AS u " .
-            "INNER JOIN roles AS r ON u.idRol = r.idRol " .
-            "INNER JOIN estados as e ON u.idEstado = e.idEstado " .
-            "WHERE correo = '$correo' AND contrasena = '$contrasena' AND estado = 'activo'");
-        $res = $conexion->query($query_exists);
+        $query_exists  = "SELECT u.nombre AS nombre, u.apellido AS apellido, ";
+        $query_exists .= "u.correo AS correo, e.estado AS estado, r.rol AS rol ";
+        $query_exists .= "FROM usuarios AS u ";
+        $query_exists .= "INNER JOIN estados AS e ON u.idEstado = e.idEstado ";
+        $query_exists .= "INNER JOIN roles AS r ON u.idRol = r.idRol ";
+        $query_exists .= "WHERE correo = '$correo' AND contrasena = '$contrasena' AND estado = 'activo'";
 
-        if ($res->num_rows == 1) {
-            $row = $res->fetch_assoc();
-            return $row["rol"];
-        }
-
-        // El usuario no existe (o esta inactivo)
-        return false;
+        return $conexion->query($query_exists)->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function listarAdmin($id){
+    public function listarAdmin($id)
+    {
 
-        $db=new Conexion();
+        $db = new Conexion();
 
-        $sql="SELECT * FROM usuarios WHERE idUsuario='$id' AND idRol=2 ";
+        $sql = "SELECT * FROM usuarios WHERE idUsuario='$id' AND idRol=2 ";
 
-        $result=$db->query($sql);
+        $result = $db->query($sql);
 
-        if($result->num_rows > 0){
+        if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
             //print_r($row);
             return $row;
-
-        }else{
+        } else {
 
             return "error";
         }
-
     }
 
     public function editarAdmin($id,$nombre,$apellido,$correo,$contrasena,$idEstado,$idRol){
@@ -105,10 +96,6 @@ class Usuarios
         $sql="UPDATE usuarios SET nombre='$nombre',apellido='$apellido',correo='$correo',contrasena='$contrasena',idEstado='$idEstado',idRol='$idRol' WHERE idUsuario='$id'";
         
         echo $db->query($sql)?  header('location: ../files/subpages/admins/superAdmin.php') :  'error';
-
-        
-
     }
 }
-
 ?>

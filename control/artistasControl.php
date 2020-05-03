@@ -3,13 +3,13 @@
 require(__DIR__ . '/../modelo/class.Artistas.php');
 
 
-$accionArtista='';
+$accionArtista = '';
 $json = file_get_contents('php://input');
-$data=json_decode($json);
-if(!empty($data)){
-    $accionArtista=$data->accion;
-}else if(isset($_GET['accion'])){
-    $accionArtista=$_GET['accion'];
+$data = json_decode($json);
+if (!empty($data)) {
+    $accionArtista = $data->accion;
+} else if (isset($_GET['accion'])) {
+    $accionArtista = $_GET['accion'];
 }
 // *******
 
@@ -20,7 +20,10 @@ switch ($accionArtista) {
         break;
     case 'editarArtista':
         editarArtista();
-    
+        break;
+    case 'getArtistasActivos':
+        getArtistasActivos();
+        break;
     default:
         # code...
         break;
@@ -39,13 +42,13 @@ function listarArtista($idArtista)
 }
 
 
-function artistasAJAX(){
-    $artista= new Artistas();
+function artistasAJAX()
+{
+    $artista = new Artistas();
 
-    $artistasJSON=$artista->mostrarArtistas();
+    $artistasJSON = $artista->mostrarArtistas();
 
     echo json_encode($artistasJSON);
-
 };
 
 function editarArtista(){
@@ -66,8 +69,15 @@ function editarArtista(){
     
     $artista->modificarArtista($id,$nombre,$imagen,$estado);
 
-
-
 }
 
+?>
+function getArtistasActivos()
+{
+    header('Content-Type: application/json');
+    $artistas = new Artistas();
+    $result = $artistas->getArtistasActivos();
+    echo json_encode($result);
+    exit();
+}
 ?>
