@@ -45,10 +45,12 @@ function editarCancion(){
     $idCancion=$_POST['idCancion'];
     $idArtista=$_POST['idArtista'];
     $idAlbum=$_POST['idAlbum'];
+    $estado=$_POST['estado'];
 
     
+    
 
-    $cancion->editarCancion($idCancion,$nombreCancion,$idArtista,$idAlbum);
+    $cancion->editarCancion($idCancion,$nombreCancion,$idArtista,$idAlbum,$estado);
 
 };
 

@@ -43,7 +43,7 @@ function editarGenero()
 {
     $genero = new Generos();
 
-    $nombreGenero=$_POST['genero'];
+    $nombreGenero=addslashes($_POST['genero']);
     $idGenero=$_POST['idGenero'];
     $idEstado=$_POST['estado'];
 
