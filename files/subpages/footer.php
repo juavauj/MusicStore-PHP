@@ -8,13 +8,13 @@
         </div>
         <div id="siguenos">
             <h2 class="footText">Síguenos</h2>
-            <a class="footContent" href=""><img src="../Documents/GitHub/MusicStore-PHP/files/images/facebook.png" alt=""></a>
-        <a class="footContent" href=""><img src="../Documents/GitHub/MusicStore-PHP/files/images/instagram.png" alt=""></a>
-        <a class="footContent" href=""><img src="../Documents/GitHub/MusicStore-PHP/files/images/spotify-sketch.png" alt=""></a>
+            <a class="footContent" href=""><img src="files/images/facebook.png" alt=""></a>
+        <a class="footContent" href=""><img src="files/images/instagram.png" alt=""></a>
+        <a class="footContent" href=""><img src="files/images/spotify-sketch.png" alt=""></a>
         <br>
-        <a class="footContent" href=""><img src="../Documents/GitHub/MusicStore-PHP/files/images/twitter.png" alt=""></a>
-        <a class="footContent" href=""><img src="../Documents/GitHub/MusicStore-PHP/files/images/whatsapp.png" alt=""></a>
-        <a class="footContent" href=""><img src="../Documents/GitHub/MusicStore-PHP/files/images/brand.png" alt=""></a>
+        <a class="footContent" href=""><img src="files/images/twitter.png" alt=""></a>
+        <a class="footContent" href=""><img src="files/images/whatsapp.png" alt=""></a>
+        <a class="footContent" href=""><img src="files/images/brand.png" alt=""></a>
         </div>
         <div>
             <h2 class="footText">Trabaja con nosotros</h2>
@@ -86,6 +86,23 @@ menuRes.addEventListener("click", function dropDown() {
     else{
         drop.style.display="none"
     }
+})
+let abrir = document.getElementsByClassName("modalAbrir")
+let modal = document.getElementsByClassName("modal")
+let tarjetas = document.getElementsByClassName("tarjeta")
+
+for (let k = 0; k < tarjetas.length; k++) {
+    abrir[k].addEventListener("click", function () {
+    modal[0].style.display="block"})
+    if (tarjetas[k].style.width <= "800px") {
+        tarjetas[k].addEventListener("click", function () {
+        modal[0].style.display="block"}) 
+    }  
+}
+    
+let cerrar = document.getElementById("modalClose")
+cerrar.addEventListener("click", function () {
+    modal[0].style.display="none"     
 })
     </script>
 </body>
