@@ -1,3 +1,14 @@
+// Funciones relacionadas con estilo (Jonathan)
+function numAleatorio() {
+  let aleatorio = (Math.random() * 255).toFixed(0);
+  return aleatorio;
+}
+
+function losRgb() {
+  let numRgb = `rgb(${numAleatorio()}, ${numAleatorio()}, ${numAleatorio()})`;
+  return numRgb;
+}
+
 // Request para todos los albumes activos con determinado genero
 //  e inclusion en el DOM
 function getAlbumesConGenero(idGenero) {
@@ -230,6 +241,12 @@ function getTodosLosArtistas() {
 
           contenedorArtistas.appendChild(tarjetaArt);
         });
+
+        // Jonathan
+        let cuadros = document.getElementsByClassName("tarjetaArt");
+        for (let i = 0; i < cuadros.length; i++) {
+          cuadros[i].style.backgroundColor = losRgb();
+        }
       }
     } catch (error) {
       console.log("Fallo solicitud de artistas: " + error.description);
