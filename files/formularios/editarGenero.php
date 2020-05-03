@@ -21,6 +21,17 @@ $idGenero= $_GET['id'];//1; //$_GET['idGenero'];  id obtenido desde SuperAdmin
                         <input type="hidden" name="idGenero" value="<?php echo $dataGenero['idGenero'];?>">
 
                     </div>
+                    <label for="estadoIn">Estado</label>
+                    <div class="form-group">
+                        
+                        <div class="rad-btn-contenedor">
+
+                            <input type="hidden" name="estado" id="estadoHidden" value="<?php echo $dataGenero['idEstado'];?>">
+
+
+                         </div>
+
+                    </div>
                 
                     <button  type="submit" class="btn-success" name="update">
                         Editar
@@ -33,4 +44,5 @@ $idGenero= $_GET['id'];//1; //$_GET['idGenero'];  id obtenido desde SuperAdmin
     </div>
 </div>
     <?php include("../subpages/admins/footer.php")?>
+    <script src="../subpages/scripts/editarGenero.js"></script>
 </body>
