@@ -1,7 +1,8 @@
-<?php include("config/class.Conexion.php")?>
-<?php include("files/subpages/header.html")?>
+<?php include("config/class.Conexion.php") ?>
+<?php include("files/subpages/header.html") ?>
 <!-- Comentario ejemplo -->
 <link rel="stylesheet" href="files/subpages/styles/estilos.css">
+
 <body>
     <section id="carrusel">
             <div class="carrusel-item img-activa">
@@ -187,4 +188,4 @@
     </div>
     </section>
 
-<?php include("files/subpages/footer.php")?>
+        <?php include("files/subpages/footer.php") ?>

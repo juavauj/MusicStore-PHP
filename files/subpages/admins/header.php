@@ -9,32 +9,14 @@
     <script src="https://kit.fontawesome.com/7045981063.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
 <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-        
-        <a class="navbar-brand" > 
-            <i class="fas fa-music"></i> Interfaz de super admin <i class="fas fa-music"></i>
-        </a>
-        <button class="navbar-toggler" data-target="#menu" data-toggle="collapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="menu">
-            <ul class="navbar-nav ml-auto" >    
-                <li class="nav-item active">
-                    <a href="#" class="nav-link"> Cerrar sesion </a>
-                </li>            
-                <!-- <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown" data-target="desplegable">
-                        Redes
-                    </a>
-                    <div class="dropdown-menu">
-                        <a href="#" target="blank" class="dropdown-item"> Facebook </a>
-                        <a href="#" target="blank" class="dropdown-item"> Instagram </a>                            
-                    </d> -->
-                                        
-                
-            </ul>
-        </div>
-    </nav>       
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="#superadmin.php">Bandeja de administrador</a>
+        <form class="form-inline">
+            <input class="form-control mr-sm-2" type="search" placeholder="no funcional" aria-label="Search">
+            <a class="btn btn-outline-success my-2 my-sm-0" type="input" href="#">Search</a>
+            <a class="btn btn-outline-success my-2 my-sm-0" type="input" target="blank" href="../../../index.php">User view</a>
+            <a class="btn btn-outline-success my-2 my-sm-0" type="input" target="blank" href="../../../index.php">Cerrar sesion</a>
+        </form>
+    </nav>    
 </header>
