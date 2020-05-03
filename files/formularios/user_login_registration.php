@@ -14,6 +14,7 @@
     <section class="form-container">
         <section class="form">
             <form action="../../control/usuariosControl.php?accion=registro_usuario" class="form-registration" method="POST">
+                <h2>Registro</h2>
                 <!-- Correspondencia directa con los campos en DB -->
                 <input type="text" name="nombre" placeholder="Nombre" required>
                 <input type="text" name="apellido" placeholder="Apellido" required>
@@ -23,6 +24,7 @@
                 <p class="message">Si ya esta registrado <a href="#">inicie sesión</a></p>
             </form>
             <form action="../../control/usuariosControl.php?accion=login_usuario" class="form-login" method="POST">
+                <h2>Inicio de sesión</h2>
                 <input type="email" name="correo" placeholder="Correo" required>
                 <input type="password" name="contrasena" placeholder="Contraseña" required>
                 <button type="submit" name="form-login">Iniciar sesión</button>
@@ -44,7 +46,13 @@
                 <?php endif; ?>
                 <?php if ($error == "user_not_exists") : ?>
                     <p>
-                        Revise los datos ingresados
+                        No ha sido posible iniciar sesión.
+                    </p>
+                <?php endif; ?>
+                <!-- Posibilidad de enumeracion (sacrificio usabilidad vs seguridad) -->
+                <?php if ($error == "user_exists") : ?>
+                    <p>
+                        El usuario ya esta registrado.
                     </p>
                 <?php endif; ?>
             </section>
