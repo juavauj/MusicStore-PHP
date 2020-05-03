@@ -1,34 +1,65 @@
 document.addEventListener('DOMContentLoaded', function(){
     const xhr = new XMLHttpRequest();  
+    let peticion=1;
+    let carga =false;
     let urls = [
         '../../control/artistasControl.php',
         '../../control/albumesControl.php'
     ];
-
-    try {
-        procesoCarga(1);
-    } catch (error) {
-        console.log(error);
-    }
+    peticionesJAXA();
     
-    
-    
-    function procesoCarga(processState){
-        switch (processState) {
+    function peticionesJAXA(){
+        switch (peticion) {
             case 1:
-                loadGenerosDropdown(urls[0],'artistaSelect','consultarArtistasAJAX');
+                try {
+                    if(carga==false){
+                        loadGenerosDropdown(urls[0],'artistaSelect','consultarArtistasAJAX');
+                        peticion++;
+                        
+                        carga =true;
+                    }
+                    
+                    
+                    
+                } catch (error) {
+                    console.log(error);
+                }
+                
                 break;
             case 2:
-                loadGenerosDropdown(urls[1],'albumSelect','consultarAlbumesAJAX');                
+                try {
+                    if(carga==false){
+                        loadGenerosDropdown(urls[1],'albumSelect','consultarAlbumesAJAX'); 
+                        peticion++;                        
+                        carga =true;
+                    
+                    }
+                    
+                } catch (error) {
+                    console.log(error);
+                }
+                               
+            break;
+            case 3:
+                try {
+                    if(carga==false){
+                    loadEstadoRadioBtn();
+                    //peticion++;                        
+                    carga =true;
+                    }
+                } catch (error) {
+                    console.log(error);
+                }
+
             break;
         
             default:
                 break;
         }
+
     }
-
-
-
+        
+        
 function loadGenerosDropdown (url,selector,acc){
     let genero={
         accion:`${acc}`,
@@ -42,11 +73,12 @@ function loadGenerosDropdown (url,selector,acc){
             let res=JSON.parse(this.responseText); 
 
             renderDrobDown(res,`${selector}`,2,1);
-            try {
-                procesoCarga(2);           
-            } catch (error) {
-                console.log(error);
+           
+            if(carga==true){
+                carga=false;
+                peticionesJAXA()
             }
+            
             
         };
     };
@@ -118,6 +150,53 @@ function loadGenerosDropdown (url,selector,acc){
 
           
         
+    }
+
+
+    function loadEstadoRadioBtn(){
+    
+        let estado={
+            accion:'consultarEstadosAJAX',
+    
+        };
+        let estadoString=JSON.stringify(estado);
+        xhr.open('POST','../../control/estadosControl.php');
+        xhr.setRequestHeader("Content-Type","application/json");
+        xhr.onreadystatechange= function(){
+            if (this.status==200 && this.readyState===4) {
+                let res=JSON.parse(this.responseText);            
+                
+                renderRodioBtns(res,'rad-btn-contenedor')
+               
+            };
+        };
+    
+        xhr.send(estadoString);
+
+    };
+
+    function renderRodioBtns(params,selector){
+
+        let option='';  
+        const divRadioBtns=document.querySelector(`.${selector}`);
+        const estadoGenero=document.getElementById('estadoHidden').value;
+        
+        divRadioBtns.innerHTML='';
+        
+        if(params[0].idEstado!=null){
+            params.forEach(param => {
+                if(param.idEstado===estadoGenero){
+                    option=`<input type="radio" name="estado" value=${param.idEstado} checked> ${param.estado} `;
+                }else{
+
+                    option=`<input type="radio" name="estado" value=${param.idEstado}> ${param.estado} `;
+                }
+
+                divRadioBtns.innerHTML+=option;
+            });
+
+        }
+
     }
 
 

@@ -42,9 +42,9 @@ class Generos{
 
     }
 
-    public function editarGenero($id,$genero){
+    public function editarGenero($id,$genero,$estado){
         $db= new Conexion();
-        $sql="UPDATE generos SET genero='$genero' WHERE idGenero='$id'";
+        $sql="UPDATE generos SET genero='$genero',idEstado='$estado'  WHERE idGenero='$id'";
 
         echo $db->query($sql)?  header('location: ../files/subpages/admins/superAdmin.php') :  'error';
 
@@ -52,6 +52,17 @@ class Generos{
 
     }
 
-}
+    // Un genero esta activo si hay al menos un album (activo)
+    // que tiene ese genero
+    public function getGenerosActivos() {
+        $db = new Conexion();
+        // No se tiene en cuenta el case, solo generos distintos
+        $query  = "SELECT DISTINCT(LOWER(g.genero)) AS genero, g.idGenero FROM generos AS g ";
+        $query .= "INNER JOIN albumes AS a ON g.idGenero = a.idGenero ";
+        $query .= "INNER JOIN estados AS e ON a.idEstado = e.idEstado ";
+        $query .= "WHERE e.estado = 'activo'";
+        return $db->query($query)->fetch_all(MYSQLI_ASSOC);
+    }
 
+}
 ?>
