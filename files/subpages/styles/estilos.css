@@ -3,7 +3,7 @@ body{
     font-family: sans-serif;
 }
 .bar{
-    background-color: rgba(0, 0, 0, 0.644);
+    background-color: rgba(0, 0, 0, 0.637);
     position: fixed;
     top: 0;
     width: 100%;
@@ -176,7 +176,6 @@ text-shadow: 10px 10px 10px black;
     overflow: hidden;
     text-align: justify;
     box-shadow: 5px 5px 20px black;
-
 }
 .tarjeta img{
     width: 100%;
@@ -193,7 +192,7 @@ text-shadow: 10px 10px 10px black;
 .tarjeta p{
     margin-top: 10%;
 }
-.tarjeta button{
+.boton{
     margin-top: 3%;
     background: none;
     border: 4px solid rgb(68, 54, 255);
@@ -222,6 +221,77 @@ text-shadow: 10px 10px 10px black;
 .tarjetaHover:hover{
     transform: translateY(10%);
 }
+.modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.637);
+    width: 100%;
+    height: 100%;
+    z-index: 999999;
+    display: none;
+}
+.mWindow{
+    width: 65%;
+    margin: auto;
+    margin-top: 10%;
+    background-color: white;
+    opacity: initial;
+    display: flex;
+    border-radius: 5px;
+    position: relative;
+    color: rgb(77, 77, 77);
+    box-shadow: 5px 5px 20px black;
+}
+.mWindow div{
+    min-width: 40%;
+    max-width: 60%;
+    position: relative;
+}
+.mWindow div p{
+    padding: 0 5% 0 10%;
+    text-align: justify;
+
+}
+.mWindow img{
+    width: 65%;
+    position: relative;
+    top: -10%;
+    left: 10%;
+    box-shadow: 5px 5px 20px black;
+}
+.mWindow h1{
+    margin-left: 8%; 
+    font-weight: normal; 
+    margin-bottom: 8px;
+}
+.mWindow h3{
+    margin-left: 8%; 
+    font-weight: normal;
+    margin-top: 0;
+    margin-bottom: 10%;
+}
+.mWindow ol{
+    border-top: gray solid 3px;
+    margin-left: 8%;
+    padding-top: 10%;
+    padding-left: 15%;
+    
+}.mWindow ol li{
+    padding-left: 50%;
+    padding-bottom: 1%;
+}
+#modalClose{
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: x-large;
+    background-color: tomato;
+    border: none;
+    padding: 0 2%;
+    border-radius: 0 5px 0 0;
+}
+
 .tarjetaArt{
     min-width: 200px;
     height: 400px;
@@ -235,11 +305,16 @@ text-shadow: 10px 10px 10px black;
 .tarjetaArt img{
     height: 80%;
     object-fit: cover;    
-    }
+}
 .tarjetaArt h4{
     padding: 8%;
      margin: 0;
      color: white;
+}
+.tarjetaArt:hover{
+    min-width: 230px;
+    height: 460px;
+    transition: 0.2s;
 }
 #artistas{
     overflow-x: auto;
@@ -259,12 +334,17 @@ text-shadow: 10px 10px 10px black;
 }
 .tarjetaGn{
     min-width: 126px;
-    background-color: tomato;
+    background-color: #21183b;
     color: white;
     margin: 1%;
     height: 70px;
     text-align: center;
     border-radius: 5px;
+    cursor: pointer;
+}
+.tarjetaGn:hover{
+    min-width: 136px;
+    height: 76px;
 }
 .tarjeta span{
     position: absolute;
@@ -305,6 +385,15 @@ text-shadow: 10px 10px 10px black;
         height: 260px;
         font-size: small;
     }
+    .tarjetaArt:hover{
+        min-width: 150px;
+        height: 300px;
+        font-size: small;
+    }
+    .mWindow div{
+        min-width: 50%;
+        max-width: 50%;
+    }
 }
 @media(max-width: 700px){
     .logo img{
@@ -328,10 +417,22 @@ text-shadow: 10px 10px 10px black;
     } 
     .tarjetaHover {
         font-size: small;
-        height: 101%;
-        
+        height: 101%; 
     } 
-} 
+    .mWindow{
+        flex-wrap: wrap;
+        overflow: auto;
+    }
+    .mWindow div{
+        min-width: 100%;
+    }
+    .mWindow img{
+        top: 0;
+    }
+    #modalClose{
+        position: fixed;
+    }
+}
 @media(max-width: 400px){
     .tarjetaHover p, .tarjeta span{
         display: none;

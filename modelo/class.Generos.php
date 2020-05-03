@@ -7,8 +7,7 @@ class Generos{
     public function __construct(){
 
     }
-
-
+    
     public function mostrarGeneros(){
         $db=new Conexion();
         $sql="SELECT * FROM generos ";
@@ -43,9 +42,9 @@ class Generos{
 
     }
 
-    public function editarGenero($id,$genero){
+    public function editarGenero($id,$genero,$estado){
         $db= new Conexion();
-        $sql="UPDATE generos SET genero='$genero' WHERE idGenero='$id'";
+        $sql="UPDATE generos SET genero='$genero',idEstado='$estado'  WHERE idGenero='$id'";
 
         echo $db->query($sql)?  header('location: ../files/subpages/admins/superAdmin.php') :  'error';
 
