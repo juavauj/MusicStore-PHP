@@ -67,7 +67,7 @@ function getAlbumesConGenero(idGenero) {
   requestSoloGenero.send();
 }
 
-// Request para todos los albumes activos, e inclusion en el DOM
+// Request para todos los albumes activos e inclusion en el DOM
 function getTodosLosAlbumes() {
   let requestAlbumes = new XMLHttpRequest();
   requestAlbumes.onreadystatechange = function () {
@@ -131,7 +131,7 @@ function getTodosLosAlbumes() {
   requestAlbumes.send();
 }
 
-// Request para todos los generos activos, e inclusion en el DOM
+// Request para todos los generos activos e inclusion en el DOM
 function getTodosLosGeneros() {
   let requestGeneros = new XMLHttpRequest();
   requestGeneros.onreadystatechange = function () {
@@ -191,7 +191,62 @@ function getTodosLosGeneros() {
   requestGeneros.send();
 }
 
+// Request para todos los artistas activos e inclusion en el DOM
+function getTodosLosArtistas() {
+  let requestArtistas = new XMLHttpRequest();
+  requestArtistas.onreadystatechange = function () {
+    try {
+      if (
+        requestArtistas.readyState === XMLHttpRequest.DONE &&
+        requestArtistas.status === 200
+      ) {
+        let contenedorArtistas = document.querySelector(
+          "#artistas .tContainer"
+        );
+        // Vaciar posible contenido
+        contenedorArtistas.innerHTML = "";
+        let artistas = JSON.parse(requestArtistas.responseText);
+        artistas.forEach((a) => {
+          let tarjetaArt = document.createElement("div");
+          tarjetaArt.classList.add("tarjetaArt");
+
+          let anchor = document.createElement("a");
+          anchor.setAttribute("href", "");
+
+          let img = document.createElement("img");
+          img.setAttribute("src", a.imagen);
+          img.setAttribute("alt", "sin imagen");
+
+          anchor.appendChild(img);
+          tarjetaArt.appendChild(anchor);
+
+          let tarjetaLabel = document.createElement("div");
+          tarjetaLabel.classList.add("tarjetaLabel");
+
+          let h4 = document.createElement("h4");
+          h4.innerText = a.nombre;
+          tarjetaLabel.appendChild(h4);
+          tarjetaArt.appendChild(tarjetaLabel);
+
+          contenedorArtistas.appendChild(tarjetaArt);
+        });
+      }
+    } catch (error) {
+      console.log("Fallo solicitud de artistas: " + error.description);
+    }
+  };
+  requestArtistas.open(
+    "GET",
+    // Evitar la cache
+    "control/artistasControl.php?accion=getArtistasActivos&" +
+      new Date().getTime(),
+    true
+  );
+  requestArtistas.send();
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   getTodosLosGeneros();
   getTodosLosAlbumes();
+  getTodosLosArtistas();
 });
