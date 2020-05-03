@@ -38,7 +38,7 @@ if ($_GET["accion"] == "registro_usuario") {
             header("Location: ../files/formularios/user_login_registration.php?form=form_login&success=ok");
             exit();
         } else {
-            header("Location: ../files/formularios/user_login_registration.php?form=form_registration&error=user_exists");
+            header("Location: ../files/formularios/user_login_registration.php?form=form_registration&error=registration_failed");
             exit();
         }
     }
@@ -61,7 +61,7 @@ if ($_GET["accion"] == "login_usuario") {
             header("Location: ../index.php");
             exit();
         } else {
-            header("Location: ../files/formularios/user_login_registration.php?form=form_login&error=user_not_exists");
+            header("Location: ../files/formularios/user_login_registration.php?form=form_login&error=login_failed");
             exit();
         }
     }
