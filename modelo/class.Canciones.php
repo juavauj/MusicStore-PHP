@@ -28,7 +28,14 @@ class Canciones{
 
     }
 
-    //mostrar canciones
+    public function editarCancion($id,$nombre,$idArtista,$idAlbum){
+        $db= new Conexion();
+        $sql="UPDATE canciones SET nombre='$nombre', idArtista='$idArtista', idAlbum='$idAlbum' WHERE idCancion='$id'";
+        $db->query($sql);
+
+        echo $db->query($sql)?  header('location: ../files/subpages/admins/superAdmin.php') :  'errorsss';
+
+    }
 
 }
 

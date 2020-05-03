@@ -3,7 +3,21 @@
 require(__DIR__ . '/../modelo/class.Canciones.php');
 
 
+$accionCancion='';
+if(isset($_GET['accion'])){
+    $accionCancion=$_GET['accion'];
+}
+// *******
 
+
+switch ($accionCancion) {
+    case 'editarCancion':
+        editarCancion();
+    
+    default:
+        # code...
+        break;
+}
 
 
 
@@ -21,6 +35,20 @@ function listarCancion($idCancion){
     }
 
 
+
+};
+
+function editarCancion(){
+    $cancion = new Canciones();
+
+    $nombreCancion=addslashes($_POST['nombre']);
+    $idCancion=$_POST['idCancion'];
+    $idArtista=$_POST['idArtista'];
+    $idAlbum=$_POST['idAlbum'];
+
+    
+
+    $cancion->editarCancion($idCancion,$nombreCancion,$idArtista,$idAlbum);
 
 };
 

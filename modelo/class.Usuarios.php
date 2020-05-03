@@ -79,6 +79,37 @@ class Usuarios
         // El usuario no existe (o esta inactivo)
         return false;
     }
+
+    public function listarAdmin($id){
+
+        $db=new Conexion();
+
+        $sql="SELECT * FROM usuarios WHERE idUsuario='$id' AND idRol=2 ";
+
+        $result=$db->query($sql);
+
+        if($result->num_rows > 0){
+            $row = $result->fetch_assoc();
+            //print_r($row);
+            return $row;
+
+        }else{
+
+            return "error";
+        }
+
+    }
+
+    public function editarAdmin($id,$nombre,$apellido,$correo,$contrasena,$idEstado,$idRol){
+        $db= new Conexion();
+        $sql="UPDATE usuarios SET nombre='$nombre',apellido='$apellido',correo='$correo',contrasena='$contrasena',idEstado='$idEstado',idRol='$idRol' WHERE idUsuario='$id'";
+        var_dump($sql);
+
+        echo $db->query($sql)?  header('location: ../files/subpages/admins/superAdmin.php') :  'error';
+
+        
+
+    }
 }
 
 ?>
