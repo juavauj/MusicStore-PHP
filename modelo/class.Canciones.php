@@ -28,10 +28,11 @@ class Canciones{
 
     }
 
-    public function editarCancion($id,$nombre,$idArtista,$idAlbum){
+    public function editarCancion($id,$nombre,$idArtista,$idAlbum,$estado){
         $db= new Conexion();
-        $sql="UPDATE canciones SET nombre='$nombre', idArtista='$idArtista', idAlbum='$idAlbum' WHERE idCancion='$id'";
+        $sql="UPDATE canciones SET nombre='$nombre', idArtista='$idArtista', idAlbum='$idAlbum',idEstado='$estado' WHERE idCancion='$id'";
         $db->query($sql);
+       
 
         echo $db->query($sql)?  header('location: ../files/subpages/admins/superAdmin.php') :  'errorsss';
 

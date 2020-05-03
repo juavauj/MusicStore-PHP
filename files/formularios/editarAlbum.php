@@ -13,18 +13,18 @@ $idAlbum= $_GET['id'];//1; //$_GET['idAlbum'];  id obtenido desde SuperAdmin
     <div class="row">
         <div class="col-md-4 mx-auto">
             <div class="card card-body">
-                <form method="POST" action="../../control/generosControl.php?accion=editarGenero">
+                <form method="POST" action="../../control/albumesControl.php?accion=editarAlbum" enctype="multipart/form-data">
+                    <input type="hidden" name="idAlbum" value="<?php echo $dataAlbum['idAlbum'];?>">
                     <label for="nombreIn">Nombre</label>
                     <div class="form-group">                        
-                        <input type="text" name="nombre" id="nombreIn" value="<?php echo $dataAlbum['nombre'];?>">          
+                        <input type="text" name="nombre" id="nombreIn" value="<?php echo htmlspecialchars($dataAlbum['nombre']);?>">          
                         
                     </div>
                     <label for="imagenIn">Imagen</label>
                     <div class="form-group">
-                        <picture></picture>
-                        
+                                                                        
                         <input type="file" class="form-control-file" name="imagen" id="imagenIn">         
-                        
+                        <input type="hidden" name="imagen" value="<?php echo $dataAlbum['imagen'];?>">
                     </div>
                     <label for="precioIn">Precio</label>
                     <div class="form-group">
@@ -34,7 +34,7 @@ $idAlbum= $_GET['id'];//1; //$_GET['idAlbum'];  id obtenido desde SuperAdmin
                     <label for="descripcionIn">Descripcion</label>
                     <div class="form-group">
                         
-                        <textarea name="descripcion" id="descripcionIn" rows="4" cols="40" ><?php echo $dataAlbum['descripcion'];?></textarea>
+                        <textarea name="descripcion" id="descripcionIn" rows="4" cols="40" ><?php echo htmlspecialchars($dataAlbum['descripcion']);?></textarea>
                     </div>
                     <label for="fechaIn">Fecha</label>
                     <div class="form-group">
@@ -64,6 +64,16 @@ $idAlbum= $_GET['id'];//1; //$_GET['idAlbum'];  id obtenido desde SuperAdmin
                         
                         <select name="genero" id="generoSelect">
                             <option value="<?php echo $dataAlbum['idGenero'];?>"></option>
+
+                        </select>
+                    </div>
+
+
+                    <label for="artistaSelect">Artista</label>
+                    <div class="form-group">
+                        
+                        <select name="artista" id="artistaSelect">
+                            <option value="<?php echo $dataAlbum['idArtista'];?>"></option>
 
                         </select>
                     </div>

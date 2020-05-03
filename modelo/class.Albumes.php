@@ -73,5 +73,14 @@ class Albumes
         $query .= "WHERE e.estado = 'activo' AND a.idGenero = $idGenero";
         return $db->query($query)->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function modificarAlbum($id,$nombre,$imagen,$precio,$descripcion,$fecha,$stock,$estado,$genero,$artista){
+        $db = new Conexion();
+        $sql="UPDATE albumes SET nombre='$nombre',imagen='$imagen',precio='$precio',descripcion='$descripcion',fecha='$fecha', stockFisico='$stock', idEstado='$estado',idGenero='$genero',idArtista='$genero' WHERE idAlbum='$id'";
+
+        var_dump($sql);
+
+        echo $db->query($sql)?  header('location: ../files/subpages/admins/superAdmin.php') :  'error';
+    }
 }
 ?>
