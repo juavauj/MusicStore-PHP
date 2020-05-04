@@ -1,5 +1,13 @@
 <?php include('../subpages/admins/header.php'); ?>
 
+<?php 
+
+    if(!isset($_SESSION['nombre'])){
+        header('location: admin_superadmin_login.php');
+    }    
+?>
+
+
 <?php
 require(__DIR__.'/../../control/albumesControl.php');
 $idAlbum= $_GET['id'];//1; //$_GET['idAlbum'];  id obtenido desde SuperAdmin
