@@ -18,7 +18,6 @@ if (isset($_GET["accion"]) && ($_GET["accion"] == "logout")) {
 ?>
 
 <body>
-    <?php print_r($_SESSION); ?>
     <section id="carrusel">
         <div class="carrusel-item img-activa">
             <img src="files/images/woman-4158906_1920.jpg" alt="">
