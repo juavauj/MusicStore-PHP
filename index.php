@@ -35,6 +35,7 @@
                 <div class="puntos"></div>
                 <div class="puntos"></div>
             </div>
+            </section>
             <section id="generos">
         <h1 class="titulos">Géneros</h1>
         <div class="tContainer">
@@ -69,7 +70,6 @@
             <h4>Rap</h4>
         </div>
     </div>
-    </section>
     <section id="album">
         <h1 class="titulos">Álbumes</h1>
         <div class="tContainer">
