@@ -1,5 +1,5 @@
 <?php
-
+//session_start();
 require(__DIR__ . '/../config/class.Conexion.php');
 
 class Albumes
@@ -51,7 +51,7 @@ class Albumes
         $query  = "SELECT a.nombre AS nombreAlbum, ";
         $query .= "ar.nombre AS nombreArtista, ";
         $query .= "a.descripcion AS descripcion, ";
-        $query .= "a.precio AS precio, a.imagen AS imagen ";
+        $query .= "a.precio AS precio, a.imagen AS imagen, a.idAlbum AS idAlbum ";
         $query .= "FROM albumes AS a ";
         $query .= "INNER JOIN estados AS e ON a.idEstado = e.idEstado ";
         $query .= "INNER JOIN artistas AS ar ON a.idArtista = ar.idArtista ";
@@ -66,7 +66,7 @@ class Albumes
         $query  = "SELECT a.nombre AS nombreAlbum, ";
         $query .= "ar.nombre AS nombreArtista, ";
         $query .= "a.descripcion AS descripcion, ";
-        $query .= "a.precio AS precio, a.imagen AS imagen ";
+        $query .= "a.precio AS precio, a.imagen AS imagen, a.idAlbum AS idAlbum ";
         $query .= "FROM albumes AS a ";
         $query .= "INNER JOIN estados AS e ON a.idEstado = e.idEstado ";
         $query .= "INNER JOIN artistas AS ar ON a.idArtista = ar.idArtista ";
@@ -75,12 +75,20 @@ class Albumes
     }
 
     public function modificarAlbum($id,$nombre,$imagen,$precio,$descripcion,$fecha,$stock,$estado,$genero,$artista){
+        session_start();
+        $url='';
         $db = new Conexion();
         $sql="UPDATE albumes SET nombre='$nombre',imagen='$imagen',precio='$precio',descripcion='$descripcion',fecha='$fecha', stockFisico='$stock', idEstado='$estado',idGenero='$genero',idArtista='$genero' WHERE idAlbum='$id'";
 
-        var_dump($sql);
+        //var_dump($sql);
 
-        echo $db->query($sql)?  header('location: ../files/subpages/admins/superAdmin.php') :  'error';
+        if($_SESSION['rol'] == 'superadmin'){     
+            $url='location: ../files/subpages/admins/superAdmin.php';
+        } else {           
+            $url='location: ../files/subpages/admins/admin.php';
+        }; 
+
+        echo $db->query($sql)?   header($url) :  'error';
     }
 }
 ?>

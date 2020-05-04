@@ -1,4 +1,5 @@
-<?php include('../subpages/admins/header.php'); ?>
+<?php include('../subpages/admins/headerForms.php'); ?>
+
 
 <?php 
 

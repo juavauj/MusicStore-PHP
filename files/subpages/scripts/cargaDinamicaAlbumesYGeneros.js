@@ -1,3 +1,5 @@
+var canciones;
+
 // Funciones relacionadas con estilo (Jonathan)
 function numAleatorio() {
   let aleatorio = (Math.random() * 255).toFixed(0);
@@ -7,6 +9,23 @@ function numAleatorio() {
 function losRgb() {
   let numRgb = `rgb(${numAleatorio()}, ${numAleatorio()}, ${numAleatorio()})`;
   return numRgb;
+}
+
+// Todas las canciones en BDD
+function getTodasLasCanciones() {
+  let requestCanciones = new XMLHttpRequest();
+  requestCanciones.onreadystatechange = function (lista) {
+    canciones = JSON.parse(requestCanciones.responseText);
+  };
+  requestCanciones.open(
+    "GET",
+    // Evitar la cache
+    "control/cancionesControl.php?accion=getCanciones" +
+      "&" +
+      new Date().getTime(),
+    true
+  );
+  requestCanciones.send();
 }
 
 // Request para todos los albumes activos con determinado genero
@@ -31,6 +50,58 @@ function getAlbumesConGenero(idGenero) {
           img.setAttribute("alt", "sin imagen");
           tarjeta.appendChild(img);
 
+          let modal = document.createElement("div");
+          modal.classList.add("modal");
+
+          let mWindow = document.createElement("div");
+          mWindow.classList.add("mWindow");
+
+          // descripcion
+          let divDescr = document.createElement("div");
+          let imgAlbum = document.createElement("img");
+          imgAlbum.setAttribute("src", a.imagen);
+          let pDescr = document.createElement("p");
+          pDescr.innerText = a.descripcion;
+          divDescr.appendChild(imgAlbum);
+          divDescr.appendChild(pDescr);
+          mWindow.appendChild(divDescr);
+
+          // info del album
+          let divInfo = document.createElement("div");
+          let tituloAlbum = document.createElement("h1");
+          tituloAlbum.innerText = a.nombreAlbum;
+          let tituloArtista = document.createElement("h3");
+          tituloArtista.innerText = a.nombreArtista;
+          divInfo.appendChild(tituloAlbum);
+          divInfo.appendChild(tituloArtista);
+
+          // Lista de canciones
+          let ol = document.createElement("ol");
+          canciones.forEach((c) => {
+            if (c.albumCancion === a.idAlbum) {
+              let liCancion = document.createElement("li");
+              liCancion.innerText = c.nombreCancion;
+              ol.appendChild(liCancion);
+            }
+          });
+
+          divInfo.appendChild(ol);
+
+          mWindow.appendChild(divInfo);
+          modal.appendChild(mWindow);
+
+          let botonCerrarModal = document.createElement("button");
+          botonCerrarModal.innerText = "x";
+          botonCerrarModal.classList.add("modalClose");
+          // Reemplaza el for
+          botonCerrarModal.addEventListener("click", function () {
+            modal.style.display = "none";
+            document.querySelector("body").style.overflow = "scroll";
+            modal.style.overflowY = "none";
+          });
+
+          mWindow.appendChild(botonCerrarModal);
+
           let tarjetaHover = document.createElement("div");
           tarjetaHover.classList.add("tarjetaHover");
 
@@ -52,11 +123,19 @@ function getAlbumesConGenero(idGenero) {
 
           let button = document.createElement("button");
           button.innerText = "Ver más";
+          button.classList.add("boton", "modalAbrir");
+          // reemplaza el for
+          button.addEventListener("click", function () {
+            modal.style.display = "block";
+            document.querySelector("body").style.overflow = "hidden";
+            modal.style.overflowY = "scroll";
+          });
           tarjetaHover.appendChild(button);
 
           tarjeta.appendChild(tarjetaHover);
 
           contenedorAlbumes.appendChild(tarjeta);
+          contenedorAlbumes.appendChild(modal);
         });
       }
     } catch (error) {
@@ -100,6 +179,58 @@ function getTodosLosAlbumes() {
           img.setAttribute("alt", "sin imagen");
           div.appendChild(img);
 
+          let modal = document.createElement("div");
+          modal.classList.add("modal");
+
+          let mWindow = document.createElement("div");
+          mWindow.classList.add("mWindow");
+
+          // descripcion
+          let divDescr = document.createElement("div");
+          let imgAlbum = document.createElement("img");
+          imgAlbum.setAttribute("src", a.imagen);
+          let pDescr = document.createElement("p");
+          pDescr.innerText = a.descripcion;
+          divDescr.appendChild(imgAlbum);
+          divDescr.appendChild(pDescr);
+          mWindow.appendChild(divDescr);
+
+          // info del album
+          let divInfo = document.createElement("div");
+          let tituloAlbum = document.createElement("h1");
+          tituloAlbum.innerText = a.nombreAlbum;
+          let tituloArtista = document.createElement("h3");
+          tituloArtista.innerText = a.nombreArtista;
+          divInfo.appendChild(tituloAlbum);
+          divInfo.appendChild(tituloArtista);
+
+          // Lista de canciones
+          let ol = document.createElement("ol");
+          canciones.forEach((c) => {
+            if (c.albumCancion === a.idAlbum) {
+              let liCancion = document.createElement("li");
+              liCancion.innerText = c.nombreCancion;
+              ol.appendChild(liCancion);
+            }
+          });
+
+          divInfo.appendChild(ol);
+
+          mWindow.appendChild(divInfo);
+          modal.appendChild(mWindow);
+
+          let botonCerrarModal = document.createElement("button");
+          botonCerrarModal.innerText = "x";
+          botonCerrarModal.classList.add("modalClose");
+          // Reemplaza el for
+          botonCerrarModal.addEventListener("click", function () {
+            modal.style.display = "none";
+            document.querySelector("body").style.overflow = "scroll";
+            modal.style.overflowY = "none";
+          });
+
+          mWindow.appendChild(botonCerrarModal);
+
           let divHover = document.createElement("div");
           divHover.classList.add("tarjetaHover");
 
@@ -121,12 +252,38 @@ function getTodosLosAlbumes() {
 
           let button = document.createElement("button");
           button.innerText = "Ver más";
+          button.classList.add("boton", "modalAbrir");
+          // reemplaza el for
+          button.addEventListener("click", function () {
+            modal.style.display = "block";
+            document.querySelector("body").style.overflow = "hidden";
+            modal.style.overflowY = "scroll";
+          });
           divHover.appendChild(button);
 
           div.appendChild(divHover);
 
           contenedorAlbumes.appendChild(div);
+          contenedorAlbumes.appendChild(modal);
         });
+        /* let abrir = document.getElementsByClassName("modalAbrir");
+        let modales = document.getElementsByClassName("modal");
+        let tarjetas = document.getElementsByClassName("tarjeta");
+        let cerrar = document.getElementsByClassName("modalClose"); */
+
+        /* for (let k = 0; k < tarjetas.length; k++) {
+          abrir[k].addEventListener("click", function () {
+            modales[0].style.display = "block";
+          });
+          if (tarjetas[k].style.width <= "800px") {
+            tarjetas[k].addEventListener("click", function () {
+              modales[0].style.display = "block";
+            });
+          }
+          cerrar[k].addEventListener("click", function () {
+            modales[0].style.display = "none";
+          });
+        } */
       }
     } catch (error) {
       console.log("Fallo solicitud de albumes: " + error.description);
@@ -263,8 +420,8 @@ function getTodosLosArtistas() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+  getTodasLasCanciones();
   getTodosLosGeneros();
   getTodosLosAlbumes();
   getTodosLosArtistas();
 });
-

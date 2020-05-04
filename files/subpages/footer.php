@@ -81,36 +81,16 @@
             drop.style.display = "none"
         }
     })
-    //modal
-    let abrir = document.getElementsByClassName("modalAbrir")
-    let modal = document.getElementsByClassName("modal")
-    let tarjetas = document.getElementsByClassName("tarjeta")
 
-    for (let k = 0; k < tarjetas.length; k++) {
-        abrir[k].addEventListener("click", function() {
-            modal[0].style.display = "block"
-        })
-        if (tarjetas[k].style.width <= "800px") {
-            tarjetas[k].addEventListener("click", function() {
-                modal[0].style.display = "block"
-            })
-        }
-    }
-
-    let cerrar = document.getElementById("modalClose")
-    cerrar.addEventListener("click", function() {
-        modal[0].style.display = "none"
-    })
     //navbar color
     function scroll() {
-    if(window.pageYOffset > 700){
-        bar.style.backgroundColor="rgba(0, 0, 0, 0.953)"
-        bar.style.transition="0.3s"
+        if (window.pageYOffset > 200) {
+            bar.style.backgroundColor = "rgba(0, 0, 0, 0.953)"
+            bar.style.transition = "0.3s"
+        } else {
+            bar.style.backgroundColor = "rgba(0, 0, 0, 0.603)"
+        }
     }
-    else{
-        bar.style.backgroundColor="rgba(0, 0, 0, 0.603)"
-    }
-}
 </script>
 <script src="files/subpages/scripts/cargaDinamicaAlbumesYGeneros.js"></script>
 </body>
