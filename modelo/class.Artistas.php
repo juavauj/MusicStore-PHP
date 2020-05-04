@@ -1,5 +1,4 @@
 <?php
-
 require(__DIR__ . '/../config/class.Conexion.php');
 
 class Artistas
@@ -57,11 +56,19 @@ class Artistas
     }
 
     public function modificarArtista($id,$nombre,$imagen,$estado){
+        session_start();
+        $url='';
         $db= new Conexion();
 
         $sql="UPDATE artistas SET nombre='$nombre',imagen='$imagen',idEstado='$estado' WHERE idArtista='$id'";
-        var_dump($sql);
-        echo $db->query($sql)?  header('location: ../files/subpages/admins/superAdmin.php') :  'error';
+        //var_dump($sql);
+        if($_SESSION['rol'] == 'superadmin'){     
+            $url='location: ../files/subpages/admins/superAdmin.php';
+        } else {           
+            $url='location: ../files/subpages/admins/admin.php';
+        }; 
+
+        echo $db->query($sql)?   header($url) :  'error';
 
     }
 }
