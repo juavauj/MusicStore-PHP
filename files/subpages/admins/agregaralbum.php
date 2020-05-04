@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
 include('db.php');
 
 if (isset($_POST['save_album'])){
@@ -23,7 +23,11 @@ if (isset($_POST['save_album'])){
   if(!$result) {
       die("introdujiste un valor no valido y la consulta no se envio. regresa y por favor verifica que los datos son los correctos");
     }
-    header('Location: superadmin.php');
+    if($_SESSION['rol'] == 'superadmin'){     
+      header("location: superAdmin.php");
+  } else {           
+      header("location: admin.php");
+  }; 
 }
 
 if (isset($_POST['save_song'])){
@@ -37,7 +41,11 @@ if (isset($_POST['save_song'])){
   if(!$result) {
       die("Query Failed.");
     }
-    header('Location: superadmin.php');
+    if($_SESSION['rol'] == 'superadmin'){     
+      header("location: superAdmin.php");
+  } else {           
+      header("location: admin.php");
+  }; 
 }
 
 if (isset($_POST['save_genre'])){
@@ -49,7 +57,11 @@ if (isset($_POST['save_genre'])){
   if(!$result) {
     die("Query Failed.");
   }
-  header('Location: superadmin.php');
+  if($_SESSION['rol'] == 'superadmin'){     
+    header("location: superAdmin.php");
+} else {           
+    header("location: admin.php");
+}; 
 }
 
 if (isset($_POST['save_admin'])){
@@ -66,7 +78,11 @@ if (isset($_POST['save_admin'])){
   if(!$result) {
     die("Query Failed.");
   }
-  header('Location: superadmin.php');
+  if($_SESSION['rol'] == 'superadmin'){     
+    header("location: superAdmin.php");
+} else {           
+    header("location: admin.php");
+}; 
 }
 
 if (isset($_POST['save_artist'])){
@@ -86,7 +102,11 @@ if (isset($_POST['save_artist'])){
   if(!$result) {
     die("Query Failed.");
   }
-  header('Location: superadmin.php');
+  if($_SESSION['rol'] == 'superadmin'){     
+    header("location: superAdmin.php");
+} else {           
+    header("location: admin.php");
+}; 
 }
 
 ?>
