@@ -1,5 +1,5 @@
 <?php 
-      
+      session_start();
       $mysqli = new mysqli('localhost', 'root', '', 'musicstore');
 
       /* comprobar la conexión */
@@ -28,7 +28,7 @@
             die("Query Failed");
         }
 
-        if($session['rol'] == 'superadmin'){     
+        if($_SESSION['rol'] == 'superadmin'){     
             header("location: superAdmin.php");
         } else {           
             header("location: admin.php");
@@ -52,7 +52,7 @@
             if(!$result){
                 die("Query Failed");
             }
-            if($session['rol'] == 'superadmin'){     
+            if($_SESSION['rol'] == 'superadmin'){     
                 header("location: superAdmin.php");
             } else {           
                 header("location: admin.php");
@@ -75,7 +75,7 @@
         if(!$result){
             die("Query Failed");
         }
-        if($session['rol'] == 'superadmin'){     
+        if($_SESSION['rol'] == 'superadmin'){     
             header("location: superAdmin.php");
         } else {           
             header("location: admin.php");
@@ -98,7 +98,7 @@
         if(!$result){
             die("Query Failed");
         }
-        if($session['rol'] == 'superadmin'){     
+        if($_SESSION['rol'] == 'superadmin'){     
             header("location: superAdmin.php");
         } else {           
             header("location: admin.php");
@@ -120,7 +120,7 @@
     if(!$result){
         die("Query Failed");
     }
-    if($session['rol'] == 'superadmin'){     
+    if($_SESSION['rol'] == 'superadmin'){     
         header("location: superAdmin.php");
     } else {           
         header("location: admin.php");

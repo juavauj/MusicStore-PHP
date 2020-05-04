@@ -101,7 +101,7 @@
             <div class="form-row">
                 <div class="form-group col-md-4">
                 <label for="inputCity">Lanzamiento</label>
-                <input type="text" class="form-control" placeholder="Año-Mes-Dia" name="fecha">
+                <input type="date" class="form-control" placeholder="Año-Mes-Dia" name="fecha">
                 </div>
                 <div class="form-group col-md-4">
                 <label for="inputState">Stock</label>

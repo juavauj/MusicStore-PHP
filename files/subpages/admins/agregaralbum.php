@@ -1,12 +1,12 @@
 <?php 
-
+session_start();
 include('db.php');
 
 if (isset($_POST['save_album'])){
-  $nombre = $_POST['nombre'];
+  $nombre = addslashes($_POST['nombre']);
   $precio = $_POST['precio'];
   $fecha = $_POST['fecha'];
-  $description = $_POST['descripcion'];
+  $description = addslashes($_POST['descripcion']);
   $stockFisico = $_POST['stockFisico'];
   $idEstado = $_POST['idEstado'];
   $idGenero = $_POST['idGenero'];
@@ -23,11 +23,15 @@ if (isset($_POST['save_album'])){
   if(!$result) {
       die("introdujiste un valor no valido y la consulta no se envio. regresa y por favor verifica que los datos son los correctos");
     }
-    header('Location: superadmin.php');
+    if($_SESSION['rol'] == 'superadmin'){     
+      header("location: superAdmin.php");
+  } else {           
+      header("location: admin.php");
+  }; 
 }
 
 if (isset($_POST['save_song'])){
-  $nombre = $_POST['nombre'];
+  $nombre = addslashes($_POST['nombre']);
   $idArtista = $_POST['idArtista'];
   $idAlbum = $_POST['idAlbum'];
   $idEstado = $_POST['idEstado'];
@@ -37,11 +41,15 @@ if (isset($_POST['save_song'])){
   if(!$result) {
       die("Query Failed.");
     }
-    header('Location: superadmin.php');
+    if($_SESSION['rol'] == 'superadmin'){     
+      header("location: superAdmin.php");
+  } else {           
+      header("location: admin.php");
+  }; 
 }
 
 if (isset($_POST['save_genre'])){
-  $genero = $_POST['genero'];
+  $genero = addslashes($_POST['genero']);
   $idEstado = $_POST['idEstado'];
 
   $query = "INSERT INTO generos(genero, idEstado) VALUES('$genero', $idEstado)";
@@ -49,14 +57,18 @@ if (isset($_POST['save_genre'])){
   if(!$result) {
     die("Query Failed.");
   }
-  header('Location: superadmin.php');
+  if($_SESSION['rol'] == 'superadmin'){     
+    header("location: superAdmin.php");
+} else {           
+    header("location: admin.php");
+}; 
 }
 
 if (isset($_POST['save_admin'])){
-  $nombre = $_POST['nombre'];
-  $apellido = $_POST['apellido'];
-  $correo = $_POST['correo'];
-  $contrasena = $_POST['contrasena'];
+  $nombre = addslashes($_POST['nombre']);
+  $apellido = addslashes($_POST['apellido']);
+  $correo = addslashes($_POST['correo']);
+  $contrasena = addslashes($_POST['contrasena']);
   $idEstado = $_POST['idEstado'];
   $idRol = '2';
 
@@ -66,11 +78,15 @@ if (isset($_POST['save_admin'])){
   if(!$result) {
     die("Query Failed.");
   }
-  header('Location: superadmin.php');
+  if($_SESSION['rol'] == 'superadmin'){     
+    header("location: superAdmin.php");
+} else {           
+    header("location: admin.php");
+}; 
 }
 
 if (isset($_POST['save_artist'])){
-  $nombre = $_POST['nombre'];
+  $nombre = addslashes($_POST['nombre']);
   $imagen = $_POST['imagen'];
   $idEstado = $_POST['idEstado'];
 
@@ -86,7 +102,11 @@ if (isset($_POST['save_artist'])){
   if(!$result) {
     die("Query Failed.");
   }
-  header('Location: superadmin.php');
+  if($_SESSION['rol'] == 'superadmin'){     
+    header("location: superAdmin.php");
+} else {           
+    header("location: admin.php");
+}; 
 }
 
 ?>
