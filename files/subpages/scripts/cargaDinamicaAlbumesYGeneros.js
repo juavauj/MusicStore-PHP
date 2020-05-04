@@ -1,3 +1,16 @@
+// Funciones relacionadas con estilo (Jonathan)
+function numAleatorio() {
+  let aleatorio = (Math.random() * 255).toFixed(0);
+  return aleatorio;
+}
+
+function losRgb() {
+  let numRgb = `rgb(${numAleatorio()}, ${numAleatorio()}, ${numAleatorio()})`;
+  return numRgb;
+}
+
+// Request para todos los albumes activos con determinado genero
+//  e inclusion en el DOM
 function getAlbumesConGenero(idGenero) {
   let requestSoloGenero = new XMLHttpRequest();
   requestSoloGenero.onreadystatechange = function () {
@@ -65,52 +78,8 @@ function getAlbumesConGenero(idGenero) {
   requestSoloGenero.send();
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  // request para los generos
-  let requestGeneros = new XMLHttpRequest();
-  requestGeneros.onreadystatechange = function () {
-    try {
-      if (
-        requestGeneros.readyState === XMLHttpRequest.DONE &&
-        requestGeneros.status === 200
-      ) {
-        let contenedorGeneros = document.querySelector("#generos .tContainer");
-        // Vaciar posible contenido
-        contenedorGeneros.innerHTML = "";
-        let generos = JSON.parse(requestGeneros.responseText);
-        generos.forEach((g) => {
-          let div = document.createElement("div");
-          div.classList.add("tarjetaGn");
-          let h4 = document.createElement("h4");
-          // Primera en minuscula
-          h4.innerText =
-            g.genero.charAt(0).toUpperCase() + g.genero.substr(1).toLowerCase();
-
-          // Almacenar el id del genero en un atributo data-*
-          div.dataset.idGenero = g.idGenero;
-          // Gestor para el evento click
-          div.addEventListener("click", function (evento) {
-            // Realizar peticion solo por albumes con ese id de genero
-            getAlbumesConGenero(evento.currentTarget.dataset.idGenero);
-          });
-
-          div.appendChild(h4);
-          contenedorGeneros.appendChild(div);
-        });
-      }
-    } catch (error) {
-      console.log("Fallo solicitud de generos: " + error.description);
-    }
-  };
-  requestGeneros.open(
-    "GET",
-    // Evitar la cache
-    "control/generosControl.php?accion=getGenerosActivos&" +
-      new Date().getTime(),
-    true
-  );
-  requestGeneros.send();
-
+// Request para todos los albumes activos e inclusion en el DOM
+function getTodosLosAlbumes() {
   let requestAlbumes = new XMLHttpRequest();
   requestAlbumes.onreadystatechange = function () {
     try {
@@ -171,4 +140,131 @@ document.addEventListener("DOMContentLoaded", function () {
     true
   );
   requestAlbumes.send();
+}
+
+// Request para todos los generos activos e inclusion en el DOM
+function getTodosLosGeneros() {
+  let requestGeneros = new XMLHttpRequest();
+  requestGeneros.onreadystatechange = function () {
+    try {
+      if (
+        requestGeneros.readyState === XMLHttpRequest.DONE &&
+        requestGeneros.status === 200
+      ) {
+        let contenedorGeneros = document.querySelector("#generos .tContainer");
+        // Vaciar posible contenido
+        contenedorGeneros.innerHTML = "";
+        let generos = JSON.parse(requestGeneros.responseText);
+        generos.forEach((g) => {
+          let div = document.createElement("div");
+          div.classList.add("tarjetaGn");
+          let h4 = document.createElement("h4");
+          // Primera en minuscula
+          h4.innerText =
+            g.genero.charAt(0).toUpperCase() + g.genero.substr(1).toLowerCase();
+
+          // Almacenar el id del genero en un atributo data-*
+          div.dataset.idGenero = g.idGenero;
+          // Gestor para el evento click
+          div.addEventListener("click", function (evento) {
+            // Realizar peticion solo por albumes con ese id de genero
+            getAlbumesConGenero(evento.currentTarget.dataset.idGenero);
+          });
+
+          div.appendChild(h4);
+          contenedorGeneros.appendChild(div);
+        });
+        // Boton para ver todos los generos
+        divVerTodos = document.createElement("div");
+        divVerTodos.classList.add("tarjetaGn");
+
+        let h4 = document.createElement("h4");
+        h4.innerText = "Ver todo";
+        divVerTodos.appendChild(h4);
+
+        divVerTodos.addEventListener("click", function () {
+          getTodosLosAlbumes();
+        });
+
+        contenedorGeneros.appendChild(divVerTodos);
+      }
+    } catch (error) {
+      console.log("Fallo solicitud de generos: " + error.description);
+    }
+  };
+  requestGeneros.open(
+    "GET",
+    // Evitar la cache
+    "control/generosControl.php?accion=getGenerosActivos&" +
+      new Date().getTime(),
+    true
+  );
+  requestGeneros.send();
+}
+
+// Request para todos los artistas activos e inclusion en el DOM
+function getTodosLosArtistas() {
+  let requestArtistas = new XMLHttpRequest();
+  requestArtistas.onreadystatechange = function () {
+    try {
+      if (
+        requestArtistas.readyState === XMLHttpRequest.DONE &&
+        requestArtistas.status === 200
+      ) {
+        let contenedorArtistas = document.querySelector(
+          "#artistas .tContainer"
+        );
+        // Vaciar posible contenido
+        contenedorArtistas.innerHTML = "";
+        let artistas = JSON.parse(requestArtistas.responseText);
+        artistas.forEach((a) => {
+          let tarjetaArt = document.createElement("div");
+          tarjetaArt.classList.add("tarjetaArt");
+
+          let anchor = document.createElement("a");
+          anchor.setAttribute("href", "");
+
+          let img = document.createElement("img");
+          img.setAttribute("src", a.imagen);
+          img.setAttribute("alt", "sin imagen");
+
+          anchor.appendChild(img);
+          tarjetaArt.appendChild(anchor);
+
+          let tarjetaLabel = document.createElement("div");
+          tarjetaLabel.classList.add("tarjetaLabel");
+
+          let h4 = document.createElement("h4");
+          h4.innerText = a.nombre;
+          tarjetaLabel.appendChild(h4);
+          tarjetaArt.appendChild(tarjetaLabel);
+
+          contenedorArtistas.appendChild(tarjetaArt);
+        });
+
+        // Jonathan
+        let cuadros = document.getElementsByClassName("tarjetaArt");
+        for (let i = 0; i < cuadros.length; i++) {
+          cuadros[i].style.backgroundColor = losRgb();
+        }
+      }
+    } catch (error) {
+      console.log("Fallo solicitud de artistas: " + error.description);
+    }
+  };
+  requestArtistas.open(
+    "GET",
+    // Evitar la cache
+    "control/artistasControl.php?accion=getArtistasActivos&" +
+      new Date().getTime(),
+    true
+  );
+  requestArtistas.send();
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  getTodosLosGeneros();
+  getTodosLosAlbumes();
+  getTodosLosArtistas();
 });
+
