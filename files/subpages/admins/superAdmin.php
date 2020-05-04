@@ -150,7 +150,7 @@
                                     <td>
                                         <a href="delete.php?id5=<?php echo $row['idArtista']?>&tabla5=artistas" class="btn btn-danger"><i class="fas fa-trash-alt"></i> </a>  
                                         <a href="disable.php?id5=<?php echo $row['idArtista']?>&tabla5=artistas&estado=<?php echo $row['estado'] ?>" class="btn btn-warning"><i class="fas fa-microphone-slash"></i></a>  
-                                        <a href="../../formularios/editarGenero.php?id5=<?php echo $row['idArtista']?>" class="btn btn-dark"><i class="fas fa-edit"></i> </a> 
+                                        <a href="../../formularios/editarGenero.php?id=<?php echo $row['idArtista']?>" class="btn btn-dark"><i class="fas fa-edit"></i> </a> 
                                     </td>
                                     </tr> 
                                 <?php } ?>                   
@@ -355,7 +355,7 @@
                                     <td>
                                         <a href="delete.php?id=<?php echo $row['idUsuario']?>&tabla=usuarios" class="btn btn-danger"><i class="fas fa-trash-alt"></i> </a>             
                                         <a href="disable.php?id=<?php echo $row['idUsuario']?>&tabla=usuarios&estado=<?php echo $row['estado'] ?>" class="btn btn-warning"><i class="fas fa-microphone-slash"></i></a>             
-                                        <a href="../../formularios/editarUsuario.php?id=<?php echo $row['idUsuario']?>" class="btn btn-dark"><i class="fas fa-user-edit"></i> </a>                       
+                                        <a href="../../formularios/editarAdmin.php?id=<?php echo $row['idUsuario']?>" class="btn btn-dark"><i class="fas fa-user-edit"></i> </a>                       
                                     </td>
                                 </tr> 
                             <?php } ?>                  
