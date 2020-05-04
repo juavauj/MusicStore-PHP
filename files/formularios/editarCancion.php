@@ -19,7 +19,7 @@ $dataCancion=listarCancion($idCancion); // funcion de AlbumesControl
 <body>
 <div class="container p-4">
     <div class="row">
-        <div class="col-md-4 mx-auto">
+        <div class="col-md-6 mx-auto">
             <div class="card card-body border border-info">
                 <form method="POST" action="../../control/cancionesControl.php?accion=editarCancion">
                     <label for="nombreIn" class="text-info">Nombre</label>

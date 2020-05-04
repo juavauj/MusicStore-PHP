@@ -19,36 +19,33 @@ $dataArtista=listarArtista($idArtista); // funcion de generosControl
     
 <div class="container p-4">
     <div class="row">
-        <div class="col-md-4 mx-auto">
-            <div class="card card-body">
+        <div class="col-md-6 mx-auto">
+            <div class="card card-body border border-info">
                 <form method="POST" action="../../control/artistasControl.php?accion=editarArtista" enctype="multipart/form-data">
-                    <label for="ArtistaIn">Nombre</label>
-                    <div class="form-group">
-                        
-                        <input type="text" name="artista" id="ArtistaIn" value="<?php echo htmlspecialchars($dataArtista['nombre']);?>" >
-                        <input type="hidden" name="idArtista" value="<?php echo $dataArtista['idArtista'];?>">
 
+                    <div class="form-group">   
+                        <label for="ArtistaIn" class="text-info">Nombre</label> 
+                        <input type="text" name="artista" id="ArtistaIn" class="form-control" value="<?php echo htmlspecialchars($dataArtista['nombre']);?>" >
+                        <input type="hidden" name="idArtista" value="<?php echo $dataArtista['idArtista'];?>">
                     </div>
-                    <label for="imagenIn">Imagen</label>
+
+                    <label for="imagenIn" class="text-info">Imagen</label>
                     <div class="form-group">
                                                                         
-                        <input type="file" class="form-control-file" name="imagen" id="imagenIn">         
+                        <input type="file" class="form-control-file btn btn-secondary" name="imagen" id="imagenIn">         
                         <input type="hidden" name="imagen" value="<?php echo $dataArtista['imagen'];?>">
                     </div>
 
-                    <label for="estadoIn">Estado</label>
+                    <label for="estadoIn" class="text-info">Estado</label>
                     <div class="form-group">
                         
                         <div class="rad-btn-contenedor">
-
                             <input type="hidden" name="estado" id="estadoHidden" value="<?php echo $dataArtista['idEstado'];?>">
-
-
                          </div>
 
                     </div>
                 
-                    <button  type="submit" class="btn-success" name="update">
+                    <button  type="submit" class="btn-info form-control" name="update">
                         Editar
                     </button>
         
