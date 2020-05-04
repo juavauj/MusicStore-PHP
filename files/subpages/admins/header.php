@@ -27,7 +27,7 @@
             <input class="form-control mr-sm-2" type="search" placeholder="no funcional" aria-label="Search">
             <a class="btn btn-outline-success my-2 my-sm-0" type="input" href="#">Search</a>
             <a class="btn btn-outline-success my-2 my-sm-0" type="input" target="blank" href="../../../index.php">User view</a>                 
-            <a class="btn btn-outline-success my-2 my-sm-0" type="input" target="blank" href="../../../index.php"> <?php echo $_SESSION['rol']?></a>
+            <a class="btn btn-outline-success my-2 my-sm-0" type="input" target="blank" href="../../../index.php"> <?php echo $_SESSION['nombre']?></a>
             <input class="btn btn-outline-success my-2 my-sm-0"  type="submit" value="cerrar sesion" name="closesession">
         </form>
     </nav>    
