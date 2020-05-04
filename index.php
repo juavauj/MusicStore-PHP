@@ -3,6 +3,14 @@
 <!-- Comentario ejemplo -->
 <link rel="stylesheet" href="files/subpages/styles/estilos.css">
 
+<!-- Si no hay sesion de usuario, retornar al login -->
+<?php
+session_start();
+if (!isset($_SESSION["rol"])) {
+    header("Location: files/formularios/user_login_registration.php");
+}
+?>
+
 <body>
     <section id="carrusel">
         <div class="carrusel-item img-activa">
