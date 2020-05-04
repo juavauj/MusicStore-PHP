@@ -43,6 +43,12 @@ class Canciones{
 
     }
 
+    // Todas las canciones
+    public function getCanciones() {
+        $db= new Conexion();
+        $sql="SELECT nombre AS nombreCancion, idAlbum AS albumCancion FROM canciones";
+        return $db->query($sql)->fetch_all(MYSQLI_ASSOC);
+    }
 }
 
 ?>
