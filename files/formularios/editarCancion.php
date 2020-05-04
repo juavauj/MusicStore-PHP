@@ -1,5 +1,13 @@
 <?php include('../subpages/admins/header.php'); ?>
 
+<?php 
+
+    if(!isset($_SESSION['nombre'])){
+        header('location: admin_superadmin_login.php');
+    }    
+?>
+
+
 <?php
 require(__DIR__.'/../../control/cancionesControl.php');
 $idCancion= $_GET['id'];//1; //$_GET['idCancion'];  id obtenido desde SuperAdmin
@@ -11,7 +19,7 @@ $dataCancion=listarCancion($idCancion); // funcion de AlbumesControl
 <body>
 <div class="container p-4">
     <div class="row">
-        <div class="col-md-4 mx-auto">
+        <div class="col-md-6 mx-auto">
             <div class="card card-body border border-info">
                 <form method="POST" action="../../control/cancionesControl.php?accion=editarCancion">
                     <label for="nombreIn" class="text-info">Nombre</label>

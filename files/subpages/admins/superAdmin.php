@@ -1,4 +1,12 @@
 <?php include("header.php")?>
+
+<?php 
+    if(!isset($_SESSION['nombre'])){
+        header('location: ../../formularios/admin_superadmin_login.php');
+    }    
+?>
+
+
 <!-- <?php include("db.php")?> -->
 
 <?php
@@ -103,12 +111,17 @@
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="inputAddress">Genero</label>
-                    <input type="number" class="form-control"  name="idGenero" placeholder="Ref de # en Generos">
+                <label for="inputAddress">Genero</label>
+                    <select name="idGenero" class="col-md-12 btn btn-secondary dropdown-toggle" id="albumGeneroSelect">                           
+                    </select>
+                    
+                    <!-- <input type="number" class="form-control"  name="idGenero" placeholder="Ref de # en Generos"> -->
                 </div>
                 <div class="form-group col md-6">
                     <label for="inputAddress2">Artista(s)</label>
-                    <input type="number" class="form-control"  name="idArtista" placeholder="Ref de # en Artistas">
+                    <!-- <input type="number" class="form-control"  name="idArtista" placeholder="Ref de # en Artistas"> -->
+                    <select name="idArtista" class="col-md-12 btn btn-secondary dropdown-toggle" id="albumArtistaSelect">                           
+                    </select>
                 </div>
             </div>
             <input type="submit" class="btn btn-success btn-block" name="save_album" value="Crear album nuevo"></input>
@@ -150,7 +163,7 @@
                                     <td>
                                         <a href="delete.php?id5=<?php echo $row['idArtista']?>&tabla5=artistas" class="btn btn-danger"><i class="fas fa-trash-alt"></i> </a>  
                                         <a href="disable.php?id5=<?php echo $row['idArtista']?>&tabla5=artistas&estado=<?php echo $row['estado'] ?>" class="btn btn-warning"><i class="fas fa-microphone-slash"></i></a>  
-                                        <a href="../../formularios/editarGenero.php?id=<?php echo $row['idArtista']?>" class="btn btn-dark"><i class="fas fa-edit"></i> </a> 
+                                        <a href="../../formularios/editarArtista.php?id=<?php echo $row['idArtista']?>" class="btn btn-dark"><i class="fas fa-edit"></i> </a> 
                                     </td>
                                     </tr> 
                                 <?php } ?>                   
@@ -239,13 +252,17 @@
                         </div>
                         <div class="form-group col md-6">
                             <label for="inputAddress2">Artista</label>
-                            <input type="number" class="form-control"  name="idArtista" placeholder="#referencia de Artistas">
+                            <!-- <input type="number" class="form-control"  name="idArtista" placeholder="#referencia de Artistas"> -->
+                            <select name="idArtista" class="col-md-12 btn btn-secondary dropdown-toggle" id="cancionArtistaSelect">                           
+                            </select>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputAddress">Album</label>
-                            <input type="number" class="form-control"  name="idAlbum" placeholder="#referencia de Albumes">
+                            <!-- <input type="number" class="form-control"  name="idAlbum" placeholder="#referencia de Albumes"> -->
+                            <select name="idAlbum" class="col-md-12 btn btn-secondary dropdown-toggle" id="cancionAlbumSelect">                           
+                            </select>
                         </div>
                         <div class="form-group col md-6">
                             <label for="inputAddress2">Estado</label>
@@ -400,5 +417,6 @@
 </div>
 <hr>
 <?php include("footer.php")?>
+<script src="../scripts/superAdminPage.js"></script>
 </body>
 </html>
