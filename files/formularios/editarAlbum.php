@@ -11,74 +11,80 @@ $idAlbum= $_GET['id'];//1; //$_GET['idAlbum'];  id obtenido desde SuperAdmin
 <body>
 <div class="container p-4">
     <div class="row">
-        <div class="col-md-4 mx-auto">
-            <div class="card card-body">
+        <div class="col-md-6 mx-auto">
+            <div class="card card-body border border-info">
                 <form method="POST" action="../../control/albumesControl.php?accion=editarAlbum" enctype="multipart/form-data">
                     <input type="hidden" name="idAlbum" value="<?php echo $dataAlbum['idAlbum'];?>">
-                    <label for="nombreIn">Nombre</label>
-                    <div class="form-group">                        
-                        <input type="text" name="nombre" id="nombreIn" value="<?php echo htmlspecialchars($dataAlbum['nombre']);?>">          
-                        
+
+                    <div class="form-row">                        
+                        <div class="form-group col-md-6">    
+                            <label class="text-info" for="nombreIn">Nombre</label>                    
+                            <input type="text" name="nombre" class="form-control" id="nombreIn" value="<?php echo htmlspecialchars($dataAlbum['nombre']);?>">          
+                        </div>                        
+                        <div class="form-group col-md-6">
+                            <label class="text-info" for="precioIn">Precio</label>                        
+                            <input type="number" class="form-control" step="any" name="precio" id="precioIn" value="<?php echo $dataAlbum['precio'];?>">
+                        </div>
                     </div>
-                    <label for="imagenIn">Imagen</label>
-                    <div class="form-group">
-                                                                        
-                        <input type="file" class="form-control-file" name="imagen" id="imagenIn">         
+
+                    <label class="text-info" for="imagenIn">Imagen</label>
+                    <div class="form-group">                         
+                        <input type="file" class="form-control-file btn btn-secondary" name="imagen" id="imagenIn">         
                         <input type="hidden" name="imagen" value="<?php echo $dataAlbum['imagen'];?>">
                     </div>
-                    <label for="precioIn">Precio</label>
-                    <div class="form-group">
-                        
-                         <input type="number" step="any" name="precio" id="precioIn" value="<?php echo $dataAlbum['precio'];?>">
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label class="text-info" for="precioIn">Precio</label>                        
+                            <input type="number" class="form-control" step="any" name="precio" id="precioIn" value="<?php echo $dataAlbum['precio'];?>">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="text-info" for="fechaIn">Fecha</label>
+                            <input type="date" class="form-control" name="fecha" id="fechaIn" value="<?php echo $dataAlbum['fecha'];?>">
+                        </div>
                     </div>
-                    <label for="descripcionIn">Descripcion</label>
+
+                    
                     <div class="form-group">
-                        
-                        <textarea name="descripcion" id="descripcionIn" rows="4" cols="40" ><?php echo htmlspecialchars($dataAlbum['descripcion']);?></textarea>
+                        <label class="text-info" for="descripcionIn">Descripcion</label>
+                        <textarea name="descripcion" class="form-control" id="descripcionIn" rows="4" cols="40" ><?php echo htmlspecialchars($dataAlbum['descripcion']);?></textarea>
                     </div>
-                    <label for="fechaIn">Fecha</label>
-                    <div class="form-group">
+                    
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                        <label class="text-info" for="stockIn">Stock Fisico</label>
+                            <input type="number" name="stock" class="form-control" id="stockIn" value="<?php echo $dataAlbum['stockFisico'];?>">
+
+                        </div>
                         
-                        <input type="date" name="fecha" id="fechaIn" value="<?php echo $dataAlbum['fecha'];?>">
-
-                    </div>
-                    <label for="stockIn">Stock Fisico</label>
-                    <div class="form-group">
-                        
-                        <input type="number" name="stock" id="stockIn" value="<?php echo $dataAlbum['stockFisico'];?>">
-
-                    </div>
-                    <label for="estadoIn">Estado</label>
-                    <div class="form-group">
-                        
-                        <div class="rad-btn-contenedor">
-
-                            <input type="hidden" name="estado" id="estadoHidden" value="<?php echo $dataAlbum['idEstado'];?>">
-
-
-                         </div>
+                        <div class="form-group col-md-6">
+                            <label class="text-info" for="estadoIn">Estado</label>
+                            <div class="rad-btn-contenedor pt-1">
+                                <input type="hidden" name="estado" id="estadoHidden" value="<?php echo $dataAlbum['idEstado'];?>">
+                            </div>
+                        </div>
 
                     </div>
-                    <label for="generoSelect">Genero</label>
+                    <label class="text-info" for="generoSelect">Genero</label>
                     <div class="form-group">
                         
-                        <select name="genero" id="generoSelect">
+                        <select name="genero" id="generoSelect" class="form-control btn btn-secondary dropdown-toggle">
                             <option value="<?php echo $dataAlbum['idGenero'];?>"></option>
 
                         </select>
                     </div>
 
 
-                    <label for="artistaSelect">Artista</label>
+                    <label class="text-info" for="artistaSelect">Artista</label>
                     <div class="form-group">
                         
-                        <select name="artista" id="artistaSelect">
+                        <select name="artista" id="artistaSelect" class="form-control btn btn-secondary dropdown-toggle">
                             <option value="<?php echo $dataAlbum['idArtista'];?>"></option>
 
                         </select>
                     </div>
                 
-                    <button  type="submit" class="btn-success" name="update">
+                    <button  type="submit" class="btn-success form-control" name="update">
                         Editar
                     </button>
         
