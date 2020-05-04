@@ -35,6 +35,7 @@
             <div class="puntos"></div>
             <div class="puntos"></div>
         </div>
+    </section>
         <!-- contenidos -->
         <section id="generos">
             <h1 class="titulos">Según tu estilo</h1>
