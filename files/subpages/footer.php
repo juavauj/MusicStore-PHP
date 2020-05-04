@@ -84,7 +84,7 @@
 
     //navbar color
     function scroll() {
-        if (window.pageYOffset > 700) {
+        if (window.pageYOffset > 200) {
             bar.style.backgroundColor = "rgba(0, 0, 0, 0.953)"
             bar.style.transition = "0.3s"
         } else {
