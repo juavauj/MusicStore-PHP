@@ -1,5 +1,4 @@
 <?php
-
 require(__DIR__ . '/../config/class.Conexion.php');
 
 class Canciones{
@@ -29,12 +28,18 @@ class Canciones{
     }
 
     public function editarCancion($id,$nombre,$idArtista,$idAlbum,$estado){
+        session_start();
+        $url='';
         $db= new Conexion();
         $sql="UPDATE canciones SET nombre='$nombre', idArtista='$idArtista', idAlbum='$idAlbum',idEstado='$estado' WHERE idCancion='$id'";
         $db->query($sql);
-       
+        if($_SESSION['rol'] == 'superadmin'){     
+            $url='location: ../files/subpages/admins/superAdmin.php';
+        } else {           
+            $url='location: ../files/subpages/admins/admin.php';
+        }; 
 
-        echo $db->query($sql)?  header('location: ../files/subpages/admins/superAdmin.php') :  'errorsss';
+        echo $db->query($sql)?   header($url) :  'error';
 
     }
 

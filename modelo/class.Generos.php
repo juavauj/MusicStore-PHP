@@ -1,5 +1,4 @@
 <?php
-
 require(__DIR__ . '/../config/class.Conexion.php');
 
 class Generos{
@@ -43,10 +42,18 @@ class Generos{
     }
 
     public function editarGenero($id,$genero,$estado){
+        session_start();
+        $url='';
         $db= new Conexion();
         $sql="UPDATE generos SET genero='$genero',idEstado='$estado'  WHERE idGenero='$id'";
 
-        echo $db->query($sql)?  header('location: ../files/subpages/admins/superAdmin.php') :  'error';
+        if($_SESSION['rol'] == 'superadmin'){     
+            $url='location: ../files/subpages/admins/superAdmin.php';
+        } else {           
+            $url='location: ../files/subpages/admins/admin.php';
+        }; 
+
+        echo $db->query($sql)?   header($url) :  'error';
 
         
 

@@ -11,7 +11,7 @@
 <?php
 require(__DIR__.'/../../control/albumesControl.php');
 $idAlbum= $_GET['id'];//1; //$_GET['idAlbum'];  id obtenido desde SuperAdmin
-    $dataAlbum=listarAlbum($idAlbum); // funcion de AlbumesControl
+$dataAlbum=listarAlbum($idAlbum); // funcion de AlbumesControl
 
 ?>
 
