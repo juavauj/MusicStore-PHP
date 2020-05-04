@@ -227,7 +227,6 @@ function getTodosLosArtistas() {
           let img = document.createElement("img");
           img.setAttribute("src", a.imagen);
           img.setAttribute("alt", "sin imagen");
-<<<<<<< HEAD
 
           anchor.appendChild(img);
           tarjetaArt.appendChild(anchor);
@@ -235,15 +234,6 @@ function getTodosLosArtistas() {
           let tarjetaLabel = document.createElement("div");
           tarjetaLabel.classList.add("tarjetaLabel");
 
-=======
-
-          anchor.appendChild(img);
-          tarjetaArt.appendChild(anchor);
-
-          let tarjetaLabel = document.createElement("div");
-          tarjetaLabel.classList.add("tarjetaLabel");
-
->>>>>>> f0a440eca0f01692490c4605ebdf44d31b45a606
           let h4 = document.createElement("h4");
           h4.innerText = a.nombre;
           tarjetaLabel.appendChild(h4);

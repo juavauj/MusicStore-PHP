@@ -91,21 +91,11 @@ class Usuarios
         }
     }
 
-<<<<<<< HEAD
-    public function editarAdmin($id, $nombre, $apellido, $correo, $contrasena, $idEstado, $idRol)
-    {
-        $db = new Conexion();
-        $sql = "UPDATE usuarios SET nombre='$nombre',apellido='$apellido',correo='$correo',contrasena='$contrasena',idEstado='$idEstado',idRol='$idRol' WHERE idUsuario='$id'";
-        var_dump($sql);
-
-        echo $db->query($sql) ?  header('location: ../files/subpages/admins/superAdmin.php') :  'error';
-=======
     public function editarAdmin($id,$nombre,$apellido,$correo,$contrasena,$idEstado,$idRol){
         $db= new Conexion();
         $sql="UPDATE usuarios SET nombre='$nombre',apellido='$apellido',correo='$correo',contrasena='$contrasena',idEstado='$idEstado',idRol='$idRol' WHERE idUsuario='$id'";
         
         echo $db->query($sql)?  header('location: ../files/subpages/admins/superAdmin.php') :  'error';
->>>>>>> f0a440eca0f01692490c4605ebdf44d31b45a606
     }
 }
 ?>
