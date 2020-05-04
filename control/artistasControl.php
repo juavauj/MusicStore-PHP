@@ -71,7 +71,7 @@ function editarArtista(){
 
 }
 
-?>
+
 function getArtistasActivos()
 {
     header('Content-Type: application/json');
