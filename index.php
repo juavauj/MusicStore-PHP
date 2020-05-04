@@ -3,7 +3,22 @@
 <!-- Comentario ejemplo -->
 <link rel="stylesheet" href="files/subpages/styles/estilos.css">
 
+<!-- Si no hay sesion de usuario, retornar al login -->
+<?php
+session_start();
+if (!isset($_SESSION["rol"])) {
+    header("Location: files/formularios/user_login_registration.php");
+}
+
+// Destruir sesion de usuario
+if (isset($_GET["accion"]) && ($_GET["accion"] == "logout")) {
+    session_destroy();
+    header("Location: files/formularios/user_login_registration.php");
+}
+?>
+
 <body>
+    <?php print_r($_SESSION); ?>
     <section id="carrusel">
         <div class="carrusel-item img-activa">
             <img src="files/images/woman-4158906_1920.jpg" alt="">
@@ -35,18 +50,20 @@
             <div class="puntos"></div>
             <div class="puntos"></div>
         </div>
+    </section>
+        <!-- contenidos -->
         <section id="generos">
-            <h1 class="titulos">Géneros</h1>
+            <h1 class="titulos">Según tu estilo</h1>
             <div class="tContainer">
             </div>
         </section>
         <section id="album">
-            <h1 class="titulos">Álbumes</h1>
+            <h1 class="titulos">Álbumes destacados</h1>
             <div class="tContainer">
             </div>
         </section>
         <section id="artistas">
-            <h1 class="titulos">Artistas</h1>
+            <h1 class="titulos">Tus artistas favoritos</h1>
             <div class="tContainer">
             </div>
         </section>

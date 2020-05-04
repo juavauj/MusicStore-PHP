@@ -1,5 +1,13 @@
 <?php include('../subpages/admins/header.php'); ?>
 
+<?php 
+
+    if(!isset($_SESSION['nombre'])){
+        header('location: admin_superadmin_login.php');
+    }    
+?>
+
+
 <?php
 require(__DIR__.'/../../control/generosControl.php');
 $idGenero= $_GET['id'];//1; //$_GET['idGenero'];  id obtenido desde SuperAdmin

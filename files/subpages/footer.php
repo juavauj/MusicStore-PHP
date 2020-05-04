@@ -23,11 +23,12 @@
     <div>
         <h2 class="footText">Cosas aburridas</h2>
         <p>
-            Music store 2020. Todos los derechos reservados. Dream team BICTIA 2020. Actividad académica.
+            Music store 2020. Todos los derechos reservados. Equipo 5 BICTIA 2020. Actividad académica.
         </p>
     </div>
 </footer>
 <script>
+    //carrusel
     let fotoActiva = [];
     let punto = [];
     let fordward = document.getElementById("fordward");
@@ -69,7 +70,7 @@
         index++
         slider()
     }, 7000);
-
+    //menú responsive
     let menuRes = document.getElementById("anvorguesa")
 
     menuRes.addEventListener("click", function dropDown() {
@@ -80,6 +81,7 @@
             drop.style.display = "none"
         }
     })
+    //modal
     let abrir = document.getElementsByClassName("modalAbrir")
     let modal = document.getElementsByClassName("modal")
     let tarjetas = document.getElementsByClassName("tarjeta")
@@ -99,6 +101,16 @@
     cerrar.addEventListener("click", function() {
         modal[0].style.display = "none"
     })
+    //navbar color
+    function scroll() {
+    if(window.pageYOffset > 700){
+        bar.style.backgroundColor="rgba(0, 0, 0, 0.953)"
+        bar.style.transition="0.3s"
+    }
+    else{
+        bar.style.backgroundColor="rgba(0, 0, 0, 0.603)"
+    }
+}
 </script>
 <script src="files/subpages/scripts/cargaDinamicaAlbumesYGeneros.js"></script>
 </body>

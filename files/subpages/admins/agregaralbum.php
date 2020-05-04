@@ -6,7 +6,7 @@ if (isset($_POST['save_album'])){
   $nombre = $_POST['nombre'];
   $precio = $_POST['precio'];
   $fecha = $_POST['fecha'];
-  $description = $_POST['desciption'];
+  $description = $_POST['descripcion'];
   $stockFisico = $_POST['stockFisico'];
   $idEstado = $_POST['idEstado'];
   $idGenero = $_POST['idGenero'];
