@@ -1,9 +1,6 @@
 <?php include("header.php")?>
 
-<?php if(isset($_POST['closesession'])){
-    session_destroy();
-    header('location: ../../formularios/admin_superadmin_login.php');  
-    }
+<?php 
     if(!isset($_SESSION['nombre'])){
         header('location: ../../formularios/admin_superadmin_login.php');
     }    

@@ -1,4 +1,11 @@
-<?php session_start();?>
+<?php session_start();
+
+if(isset($_POST['closesession'])){
+    session_destroy();
+    header('location: ../../formularios/admin_superadmin_login.php');  
+    }
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
