@@ -164,6 +164,7 @@ text-shadow: 10px 10px 10px black;
     width: 100%;
    /*  color: white; */
     font-size: xxx-large;
+    text-align: center;
 }
 .titulos:first-child{
     margin-top: 0;
@@ -323,16 +324,19 @@ text-shadow: 10px 10px 10px black;
     background-color: rgb(214, 214, 214);
     border-bottom: 3px solid rgb(48, 48, 48);
     max-height: 608px;
+    padding: 2% 0 0.5% 0;
 }
 #generos{
     /* background-color: #bd258f; */
     background-color: rgb(214, 214, 214);
     border-bottom: 3px solid rgb(48, 48, 48);
+    padding: 2% 0 4% 0;
 }
 .tContainer{
     display: flex;
     align-items: center;
     overflow-x: auto;
+    justify-content: center;
 }
 .tarjetaGn{
     min-width: 126px;
