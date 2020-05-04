@@ -50,18 +50,20 @@ if (isset($_GET["accion"]) && ($_GET["accion"] == "logout")) {
             <div class="puntos"></div>
             <div class="puntos"></div>
         </div>
+    </section>
+        <!-- contenidos -->
         <section id="generos">
-            <h1 class="titulos">Géneros</h1>
+            <h1 class="titulos">Según tu estilo</h1>
             <div class="tContainer">
             </div>
         </section>
         <section id="album">
-            <h1 class="titulos">Álbumes</h1>
+            <h1 class="titulos">Álbumes destacados</h1>
             <div class="tContainer">
             </div>
         </section>
         <section id="artistas">
-            <h1 class="titulos">Artistas</h1>
+            <h1 class="titulos">Tus artistas favoritos</h1>
             <div class="tContainer">
             </div>
         </section>
