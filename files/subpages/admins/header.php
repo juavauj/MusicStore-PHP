@@ -11,7 +11,7 @@
 <body>
 <header>
     <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="#superadmin.php">Bandeja de administrador</a>
+        <a class="navbar-brand" href="superAdmin.php">Bandeja de administrador</a>
         <form class="form-inline">
             <input class="form-control mr-sm-2" type="search" placeholder="no funcional" aria-label="Search">
             <a class="btn btn-outline-success my-2 my-sm-0" type="input" href="#">Search</a>
