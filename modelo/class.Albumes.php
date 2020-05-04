@@ -1,5 +1,5 @@
 <?php
-
+//session_start();
 require(__DIR__ . '/../config/class.Conexion.php');
 
 class Albumes
@@ -75,12 +75,20 @@ class Albumes
     }
 
     public function modificarAlbum($id,$nombre,$imagen,$precio,$descripcion,$fecha,$stock,$estado,$genero,$artista){
+        session_start();
+        $url='';
         $db = new Conexion();
         $sql="UPDATE albumes SET nombre='$nombre',imagen='$imagen',precio='$precio',descripcion='$descripcion',fecha='$fecha', stockFisico='$stock', idEstado='$estado',idGenero='$genero',idArtista='$genero' WHERE idAlbum='$id'";
 
-        var_dump($sql);
+        //var_dump($sql);
 
-        echo $db->query($sql)?  header('location: ../files/subpages/admins/superAdmin.php') :  'error';
+        if($_SESSION['rol'] == 'superadmin'){     
+            $url='location: ../files/subpages/admins/superAdmin.php';
+        } else {           
+            $url='location: ../files/subpages/admins/admin.php';
+        }; 
+
+        echo $db->query($sql)?   header($url) :  'error';
     }
 }
 ?>
