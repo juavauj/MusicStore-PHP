@@ -2,13 +2,13 @@
 $url='';
 if(isset($_POST['closesession'])){
     session_destroy();
-    header('location: ../../formularios/admin_superadmin_login.php');  
-    }
+   header('Location: ../../formularios/admin_superadmin_login.php');  
+}
 
-    if($_SESSION['rol'] == 'superadmin'){     
-        $url='location: ../files/subpages/admins/superAdmin.php';
+    if($_SESSION['rol'] == 'superadmin'){    
+        $url='../subpages/admins/superAdmin.php';
     } else {           
-        $url='location: ../files/subpages/admins/admin.php';
+        $url='../subpages/admins/admin.php';
     }; 
 
 ?>
@@ -27,12 +27,12 @@ if(isset($_POST['closesession'])){
 <body>
 <header>
     <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href=<?php  $url?>>Bandeja de administrador</a>
-        <form class="form-inline" action="header.php" method="POST">
+        <a class="navbar-brand" href=<?php echo $url?>>Bandeja de administrador</a>
+        <form class="form-inline" action="../subpages/admins/headerForms.php" method="POST">
             <input class="form-control mr-sm-2" type="search" placeholder="no funcional" aria-label="Search">
             <a class="btn btn-outline-success my-2 my-sm-0" type="input" href="#">Search</a>
-            <a class="btn btn-outline-success my-2 my-sm-0" type="input" target="blank" href="../../../index.php">User view</a>                 
-            <a class="btn btn-outline-success my-2 my-sm-0" type="input" target="blank" href="../../../index.php"> <?php echo $_SESSION['nombre']?></a>
+            <a class="btn btn-outline-success my-2 my-sm-0" type="input" target="blank" href="../../index.php">User view</a>                 
+            <a class="btn btn-outline-success my-2 my-sm-0" type="input" target="blank" href="../../index.php"> <?php echo $_SESSION['nombre']?></a>
             <input class="btn btn-outline-success my-2 my-sm-0"  type="submit" value="cerrar sesion" name="closesession">
         </form>
     </nav>    

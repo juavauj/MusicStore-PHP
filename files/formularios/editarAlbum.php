@@ -1,7 +1,6 @@
-<?php include('../subpages/admins/header.php'); ?>
+<?php include('../subpages/admins/headerForms.php'); ?>
 
 <?php 
-
     if(!isset($_SESSION['nombre'])){
         header('location: admin_superadmin_login.php');
     }    
