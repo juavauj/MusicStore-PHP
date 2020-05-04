@@ -15,8 +15,8 @@ $idGenero= $_GET['id'];//1; //$_GET['idGenero'];  id obtenido desde SuperAdmin
             <div class="card card-body border border-info">
                 <form method="POST" action="../../control/generosControl.php?accion=editarGenero">
                     <div class="form-group">
-                        <label for="generoIn" class="text-info">Genero</label>
-                        <input type="text" name="genero" id="generoIn" class="form-control" value="<?php echo $dataGenero['genero'];?>" >
+                        <label for="generoIn">Genero</label>
+                        <input type="text" name="genero" id="generoIn" value="<?php echo htmlspecialchars($dataGenero['genero']);?>" >
                         <input type="hidden" name="idGenero" value="<?php echo $dataGenero['idGenero'];?>">
                     </div>
                     <div class="form-group">
@@ -33,6 +33,7 @@ $idGenero= $_GET['id'];//1; //$_GET['idGenero'];  id obtenido desde SuperAdmin
         </div>
     </div>
 </div>
-    <?php include("../subpages/admins/footer.php")?>
-    <script src="../subpages/scripts/editarGenero.js"></script>
-</body>
+    
+<script src="../subpages/scripts/editarGenero.js"></script>
+<?php include("../subpages/admins/footer.php")?>
+    
