@@ -1,5 +1,3 @@
-<?php include("../subpages/header.html")?> 
-
 <?php include('../subpages/admins/header.php'); ?>
 
 <?php
@@ -13,37 +11,29 @@ $idGenero= $_GET['id'];//1; //$_GET['idGenero'];  id obtenido desde SuperAdmin
     
 <div class="container p-4">
     <div class="row">
-        <div class="col-md-4 mx-auto">
-            <div class="card card-body">
+        <div class="col-md-5 mx-auto ">
+            <div class="card card-body border border-info">
                 <form method="POST" action="../../control/generosControl.php?accion=editarGenero">
                     <div class="form-group">
                         <label for="generoIn">Genero</label>
-                        <input type="text" name="genero" id="generoIn" value="<?php echo $dataGenero['genero'];?>" >
+                        <input type="text" name="genero" id="generoIn" value="<?php echo htmlspecialchars($dataGenero['genero']);?>" >
                         <input type="hidden" name="idGenero" value="<?php echo $dataGenero['idGenero'];?>">
-
                     </div>
-                    <label for="estadoIn">Estado</label>
                     <div class="form-group">
-                        
+                        <label for="estadoIn" class="text-info">Estado</label>      
                         <div class="rad-btn-contenedor">
-
                             <input type="hidden" name="estado" id="estadoHidden" value="<?php echo $dataGenero['idEstado'];?>">
-
-
                          </div>
-
                     </div>
-                
-                    <button  type="submit" class="btn-success" name="update">
+                    <button  type="submit" class="btn btn-info btn-block" name="update">
                         Editar
-                    </button>
-        
-     
+                    </button>       
                 </form>
             </div>
         </div>
     </div>
 </div>
-    <?php include("../subpages/admins/footer.php")?>
-    <script src="../subpages/scripts/editarGenero.js"></script>
-</body>
+    
+<script src="../subpages/scripts/editarGenero.js"></script>
+<?php include("../subpages/admins/footer.php")?>
+    
