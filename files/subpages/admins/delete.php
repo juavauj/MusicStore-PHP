@@ -1,5 +1,6 @@
 <?php 
-      
+      session_start();
+
       $mysqli = new mysqli('localhost', 'root', '', 'musicstore');
 
       /* comprobar la conexión */
@@ -21,8 +22,12 @@
             die("Query Failed");
         }
 
-        header("location: superAdmin.php");
-      
+        if($session['rol'] == 'superadmin'){     
+            header("location: superAdmin.php");
+        } else {           
+            header("location: admin.php");
+        }; 
+        
         
       } elseif (isset($_GET['id2'])) {
         
@@ -35,7 +40,13 @@
         if(!$result){
             die("Query Failed");
         }
-        header("location: superAdmin.php");                    
+
+        if($session['rol'] == 'superadmin'){     
+            header("location: superAdmin.php");
+        } else {           
+            header("location: admin.php");
+        }; 
+                          
         
         }elseif (isset($_GET['id3'])) {
         
@@ -48,7 +59,11 @@
             if(!$result){
                 die("Query Failed");
             }
-            header("location: superAdmin.php");      
+            if($session['rol'] == 'superadmin'){     
+                header("location: superAdmin.php");
+            } else {           
+                header("location: admin.php");
+            }; 
 
       } elseif (isset($_GET['id4'])) {
         
@@ -62,7 +77,11 @@
         if(!$result){
             die("Query Failed");
         }
-        header("location: superAdmin.php");                    
+        if($session['rol'] == 'superadmin'){     
+            header("location: superAdmin.php");
+        } else {           
+            header("location: admin.php");
+        };                   
   } elseif (isset($_GET['id5'])) {
         
     $id = $_GET['id5'];
@@ -75,6 +94,10 @@
     if(!$result){
         die("Query Failed");
     }
-    header("location: superAdmin.php");    
+    if($session['rol'] == 'superadmin'){     
+        header("location: superAdmin.php");
+    } else {           
+        header("location: admin.php");
+    };    
     }
 ?>
