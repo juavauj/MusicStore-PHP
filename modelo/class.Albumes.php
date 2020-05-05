@@ -78,7 +78,7 @@ class Albumes
         session_start();
         $url='';
         $db = new Conexion();
-        $sql="UPDATE albumes SET nombre='$nombre',imagen='$imagen',precio='$precio',descripcion='$descripcion',fecha='$fecha', stockFisico='$stock', idEstado='$estado',idGenero='$genero',idArtista='$genero' WHERE idAlbum='$id'";
+        $sql="UPDATE albumes SET nombre='$nombre',imagen='$imagen',precio='$precio',descripcion='$descripcion',fecha='$fecha', stockFisico='$stock', idEstado='$estado',idGenero='$genero',idArtista='$artista' WHERE idAlbum='$id'";
 
         //var_dump($sql);
 

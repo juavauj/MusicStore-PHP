@@ -40,7 +40,7 @@ if (isset($_GET["accion"]) && ($_GET["accion"] == "logout")) {
         <div class="carrusel-item">
             <img src="files/images/vinyl-1595847_1920.jpg" alt="">
             <h3 class="slideTitulo">
-                En Music Store somos amantes de lo antiguo
+                En Music Store somos amantes de los clásicos
             </h3>
             <div class="btn-container">
                 <a href="">Ver sección histórica</a>
