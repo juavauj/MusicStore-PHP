@@ -40,7 +40,7 @@ if (isset($_GET['accion'])) {
                 header("Location: ../files/formularios/user_login_registration.php?form=form_login&success=ok");
                 exit();
             } else {
-                header("Location: ../files/formularios/user_login_registration.php?form=form_registration&error=user_exists");
+                header("Location: ../files/formularios/user_login_registration.php?form=form_registration&error=registration_failed");
                 exit();
             }
         }
