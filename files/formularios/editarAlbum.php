@@ -24,14 +24,10 @@ $dataAlbum=listarAlbum($idAlbum); // funcion de AlbumesControl
                     <input type="hidden" name="idAlbum" value="<?php echo $dataAlbum['idAlbum'];?>">
 
                     <div class="form-row">                        
-                        <div class="form-group col-md-6">    
+                        <div class="form-group col-md-12">    
                             <label class="text-info" for="nombreIn">Nombre</label>                    
                             <input type="text" name="nombre" class="form-control" id="nombreIn" value="<?php echo htmlspecialchars($dataAlbum['nombre']);?>">          
-                        </div>                        
-                        <div class="form-group col-md-6">
-                            <label class="text-info" for="precioIn">Precio</label>                        
-                            <input type="number" class="form-control" step="any" name="precio" id="precioIn" value="<?php echo $dataAlbum['precio'];?>">
-                        </div>
+                        </div>    
                     </div>
 
                     <label class="text-info" for="imagenIn">Imagen</label>
