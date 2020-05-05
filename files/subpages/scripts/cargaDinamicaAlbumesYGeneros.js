@@ -118,7 +118,7 @@ function getAlbumesConGenero(idGenero) {
           tarjetaHover.appendChild(p);
 
           let span = document.createElement("span");
-          span.innerText = a.precio;
+          span.innerText = "$" + a.precio;
           tarjetaHover.appendChild(span);
 
           let button = document.createElement("button");
@@ -133,6 +133,12 @@ function getAlbumesConGenero(idGenero) {
           tarjetaHover.appendChild(button);
 
           tarjeta.appendChild(tarjetaHover);
+
+          tarjeta.addEventListener("click", function () {
+            modal.style.display = "block";
+            document.querySelector("body").style.overflow = "hidden";
+            modal.style.overflowY = "scroll";
+          });
 
           contenedorAlbumes.appendChild(tarjeta);
           contenedorAlbumes.appendChild(modal);
@@ -247,7 +253,7 @@ function getTodosLosAlbumes() {
           divHover.appendChild(p);
 
           let span = document.createElement("span");
-          span.innerText = a.precio;
+          span.innerText = "$" + a.precio;
           divHover.appendChild(span);
 
           let button = document.createElement("button");
@@ -262,6 +268,12 @@ function getTodosLosAlbumes() {
           divHover.appendChild(button);
 
           div.appendChild(divHover);
+
+          div.addEventListener("click", function () {
+            modal.style.display = "block";
+            document.querySelector("body").style.overflow = "hidden";
+            modal.style.overflowY = "scroll";
+          });
 
           contenedorAlbumes.appendChild(div);
           contenedorAlbumes.appendChild(modal);
