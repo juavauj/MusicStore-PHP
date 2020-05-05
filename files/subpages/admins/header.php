@@ -1,3 +1,18 @@
+<?php session_start();
+$url='';
+if(isset($_POST['closesession'])){
+    session_destroy();
+    header('location: ../../formularios/admin_superadmin_login.php');  
+    }
+
+    if($_SESSION['rol'] == 'superadmin'){     
+        $url='location: ../files/subpages/admins/superAdmin.php';
+    } else {           
+        $url='location: ../files/subpages/admins/admin.php';
+    }; 
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,44 +22,18 @@
     <!-- boostrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/7045981063.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
-
 <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-        
-        <a class="navbar-brand" > 
-            <i class="fas fa-music"></i> Music Store <i class="fas fa-music"></i>
-        </a>
-        <button class="navbar-toggler" data-target="#menu" data-toggle="collapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="menu">
-            <ul class="navbar-nav ml-auto" >    
-                <li class="nav-item active">
-                    <a href="#" class="nav-link"> Inicio </a>
-                </li>      
-                <li class="nav-item active">
-                    <!-- in process -->
-                    <a href="" class="nav-link"> Artistas </a>
-                </li>      
-                <li class="nav-item active">
-                    <a href="#" class="nav-link"> Generos </a>
-                </li>  
-                <li class="nav-item active">
-                    <a href="#" class="nav-link"> Login </a>
-                </li>            
-                <!-- <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown" data-target="desplegable">
-                        Redes
-                    </a>
-                    <div class="dropdown-menu">
-                        <a href="#" target="blank" class="dropdown-item"> Facebook </a>
-                        <a href="#" target="blank" class="dropdown-item"> Instagram </a>                            
-                    </d> -->
-                                        
-                
-            </ul>
-        </div>
-    </nav>       
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href=<?php  $url?>>Bandeja de administrador</a>
+        <form class="form-inline" action="header.php" method="POST">
+            <input class="form-control mr-sm-2" type="search" placeholder="no funcional" aria-label="Search">
+            <a class="btn btn-outline-success my-2 my-sm-0" type="input" href="#">Search</a>
+            <a class="btn btn-outline-success my-2 my-sm-0" type="input" target="blank" href="../../../index.php">User view</a>                 
+            <a class="btn btn-outline-success my-2 my-sm-0" type="input" target="blank" href="../../../index.php"> <?php echo $_SESSION['nombre']?></a>
+            <input class="btn btn-outline-success my-2 my-sm-0"  type="submit" value="cerrar sesion" name="closesession">
+        </form>
+    </nav>    
 </header>

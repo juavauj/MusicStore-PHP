@@ -1,10 +1,15 @@
+/* Iconos informativos */
+@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+
 html {
   font-family: "Roboto", sans-serif;
 }
 
-html, body {
-    margin: 0;
-    height: 100%;
+html,
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
 }
 
 body {
@@ -13,6 +18,7 @@ body {
       rgba(21, 21, 56, 0.5)
     ),
     url("../../images/bg_img_user_login_registration.jpg");
+  background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: center;
   padding: 0 10px;
@@ -38,13 +44,19 @@ body {
     para dispositivos moviles
     */
   max-width: 360px;
-  margin: 0 auto 100px;
-  padding: 45px;
+  margin: 0 auto 10px;
+  padding: 5px 45px 45px;
   text-align: center;
 
   /* Sensacion de relieve */
-  box-shadow: 0 0 20px 0 rgba(138, 67, 147, 0.4), 0 5px 5px 0 rgba(138, 67, 147, 0.4);
+  box-shadow: 0 0 20px 0 rgba(138, 67, 147, 0.4),
+    0 5px 5px 0 rgba(138, 67, 147, 0.4);
+}
 
+.form h2 {
+  font-size: 2em;
+  text-transform: uppercase;
+  color: #4caf50;
 }
 
 /* Consistencia en los controles del formulario */
@@ -86,8 +98,10 @@ body {
   background: #43a047;
 }
 
-.form, .form input, .form button {
-    border-radius: 10px;
+.form,
+.form input,
+.form button {
+  border-radius: 10px;
 }
 
 .form .message {
@@ -101,7 +115,24 @@ body {
   text-decoration: none;
 }
 
-/* Ocultar por defecto el formulario de registro */
-.form .form-registration {
-  display: none;
+/* Estilo para mensajes */
+.error,
+.success {
+  max-width: 360px;
+  margin: 0 auto;
+  padding: 12px;
+  text-align: center;
+  border-radius: 10px;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.error {
+  color: #d8000c;
+  background-color: #ffd2d2;
+}
+
+.success {
+  color: #4f8a10;
+  background-color: #dff2bf;
 }

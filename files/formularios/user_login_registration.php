@@ -13,22 +13,65 @@
     <!-- Contiene ambos formularios -->
     <section class="form-container">
         <section class="form">
-            <form action="" class="form-registration" method="POST">
+            <form action="../../control/usuariosControl.php?accion=registro_usuario" class="form-registration" method="POST">
+                <h2>Registro</h2>
                 <!-- Correspondencia directa con los campos en DB -->
                 <input type="text" name="nombre" placeholder="Nombre" required>
                 <input type="text" name="apellido" placeholder="Apellido" required>
                 <input type="email" name="correo" placeholder="Correo" required>
                 <input type="password" name="contrasena" placeholder="Contraseña" required>
-                <button type="submit">Registrarme</button>
+                <button type="submit" name="form-registration">Registrarme</button>
                 <p class="message">Si ya esta registrado <a href="#">inicie sesión</a></p>
             </form>
-            <form action="" class="form-login" method="POST">
+            <form action="../../control/usuariosControl.php?accion=login_usuario" class="form-login" method="POST">
+                <h2>Inicio de sesión</h2>
                 <input type="email" name="correo" placeholder="Correo" required>
                 <input type="password" name="contrasena" placeholder="Contraseña" required>
-                <button type="submit">Iniciar sesión</button>
+                <button type="submit" name="form-login">Iniciar sesión</button>
                 <p class="message">Si no tiene cuenta <a href="#">registrese</a></p>
             </form>
         </section>
+        <?php if (isset($_GET["error"])) : ?>
+            <section class="error">
+                <?php $error = $_GET["error"]; ?>
+                <?php if ($error == "empty_fields") : ?>
+                    <p>
+                        <span class="fa fa-times-circle"></span>
+                        Los campos no pueden estar vacíos.
+                    </p>
+                <?php endif; ?>
+                <?php if ($error == "invalid_email") : ?>
+                    <p>
+                        <span class="fa fa-times-circle"></span>
+                        Correo electrónico inválido.
+                    </p>
+                <?php endif; ?>
+                <?php if ($error == "login_failed") : ?>
+                    <p>
+                        <span class="fa fa-times-circle"></span>
+                        Usuario o contraseña incorrectos. Intente de nuevo
+                        o comuníquese con el administrador.
+                    </p>
+                <?php endif; ?>
+                <!-- Posibilidad de enumeracion (sacrificio usabilidad vs seguridad) -->
+                <?php if ($error == "registration_failed") : ?>
+                    <p>
+                        <span class="fa fa-times-circle"></span>
+                        El registro no ha sido posible. Si usted ya tiene una
+                        cuenta, inicie sesión, de lo contrario, comuníquese con el
+                        administrador.
+                    </p>
+                <?php endif; ?>
+            </section>
+        <?php endif; ?>
+        <?php if (isset($_GET["success"])) : ?>
+            <section class="success">
+                <p>
+                    <span class="fa fa-check"></span>
+                    Registro exitoso, ya puede iniciar sesión.
+                </p>
+            </section>
+        <?php endif; ?>
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous">
     </script>
